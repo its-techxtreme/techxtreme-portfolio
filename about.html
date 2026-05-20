@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About — Techxtreme</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&family=Manrope:wght@400;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+</head>
+<body data-page="about">
+  <div class="grid-bg"></div>
+  <div class="preloader" id="preloader"><div><div class="preloader-text">TX</div><div class="preloader-bar"><span></span></div></div></div>
+  <nav class="dock" id="dock">
+    <a href="index.html" class="dock-logo">TX</a>
+    <div class="dock-links">
+      <a href="work.html" data-nav="work">Work</a>
+      <a href="about.html" data-nav="about">About</a>
+      <a href="contact.html" data-nav="contact">Contact</a>
+    </div>
+    <a href="contact.html" class="dock-cta">Start project</a>
+  </nav>
+
+  <main class="container section" style="padding-top:calc(var(--nav-h) + 4rem)">
+    <p class="section-label reveal">About</p>
+    <h1 class="section-title reveal">Remote studio.<br /><span class="grad">Global delivery.</span></h1>
+    <p class="lead reveal" style="margin-top:1.5rem">
+      I'm not a UK agency — I'm a self-taught builder working remotely for clients anywhere.
+      Your timezone, your stack, your deadline. Production code — not slide decks.
+    </p>
+
+    <div class="service-panel-grid reveal" style="margin-top:4rem">
+      <img src="assets/workspace.jpg" alt="Workspace" style="border-radius:var(--radius-lg);border:1px solid var(--line)" />
+      <div>
+        <h2 style="font-family:var(--display);font-size:1.75rem;margin-bottom:1rem">How I work</h2>
+        <p style="color:var(--muted);margin-bottom:1rem">Async-first communication (email / written updates). Fast iterations with AI-assisted development — every deliverable reviewed and tested before handover.</p>
+        <p style="color:var(--muted)">No degree on the wall. Proof is in live URLs, client platforms, and traffic graphs.</p>
+        <ul class="about-stats" style="margin-top:2rem">
+          <li><strong>Global</strong><span>All regions</span></li>
+          <li><strong>Async</strong><span>24h response</span></li>
+          <li><strong>Full stack</strong><span>Web + AI</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <h2 class="section-title reveal" style="margin-top:5rem;font-size:2.5rem">Stack &amp; tools</h2>
+    <div class="skills-grid reveal">
+      <div class="skill-chip">WordPress</div>
+      <div class="skill-chip">PHP 8</div>
+      <div class="skill-chip">Python</div>
+      <div class="skill-chip">MySQL</div>
+      <div class="skill-chip">n8n</div>
+      <div class="skill-chip">Firebase</div>
+      <div class="skill-chip">Tailwind</div>
+      <div class="skill-chip">GSAP</div>
+      <div class="skill-chip">AI APIs</div>
+      <div class="skill-chip">SEO</div>
+      <div class="skill-chip">Linux VPS</div>
+      <div class="skill-chip">Cursor</div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="timeline-item">
+        <span>2024–26</span>
+        <div><strong>London Museums Directory</strong><p style="color:var(--muted);margin-top:0.35rem">Built, launched, grew to 350+ monthly organic visits.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span>2025–26</span>
+        <div><strong>Project Logic Arbitrage</strong><p style="color:var(--muted);margin-top:0.35rem">Private AI research platform for prediction markets client.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span>2024</span>
+        <div><strong>Virtalent &amp; service sites</strong><p style="color:var(--muted);margin-top:0.35rem">Lead-gen websites for UK-based service businesses.</p></div>
+      </div>
+      <div class="timeline-item">
+        <span>Ongoing</span>
+        <div><strong>Project Aura</strong><p style="color:var(--muted);margin-top:0.35rem">R&amp;D — local-first voice AI assistant (Phase 2).</p></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:4rem" class="reveal">
+      <a href="contact.html" class="btn btn-primary">Work with me →</a>
+    </div>
+  </main>
+
+  <footer class="footer container">
+    <a href="index.html" class="dock-logo" style="border-radius:8px;padding:0.4rem 0.7rem;font-size:0.75rem">TX</a>
+    <span style="font-size:0.8rem;color:var(--muted)">© <span id="year"></span> Techxtreme</span>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Geist:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #070708;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: #e3e2e7;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .glass-card:hover {
+            border-color: #00dce5;
+            background: rgba(255, 255, 255, 0.08);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-dot {
+            box-shadow: 0 0 10px #00dce5;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "surface-tint": "#00dce5",
+                      "on-tertiary-fixed-variant": "#544600",
+                      "tertiary-fixed-dim": "#e7c427",
+                      "on-primary": "#003739",
+                      "inverse-primary": "#00696e",
+                      "error": "#ffb4ab",
+                      "surface-container-highest": "#343539",
+                      "on-error": "#690005",
+                      "tertiary": "#fff9f0",
+                      "secondary": "#c6c6c7",
+                      "on-primary-container": "#006c71",
+                      "outline-variant": "#3a494a",
+                      "surface-container-low": "#1a1b1f",
+                      "primary-fixed-dim": "#00dce5",
+                      "tertiary-container": "#ffdb3f",
+                      "on-secondary-fixed": "#1a1c1c",
+                      "on-error-container": "#ffdad6",
+                      "outline": "#849495",
+                      "on-background": "#e3e2e7",
+                      "background": "#121317",
+                      "primary-fixed": "#63f7ff",
+                      "on-secondary-fixed-variant": "#454747",
+                      "on-primary-fixed": "#002021",
+                      "error-container": "#93000a",
+                      "on-secondary-container": "#b4b5b5",
+                      "surface-bright": "#38393d",
+                      "on-surface-variant": "#b9caca",
+                      "inverse-on-surface": "#2f3034",
+                      "on-tertiary-fixed": "#221b00",
+                      "secondary-fixed-dim": "#c6c6c7",
+                      "on-tertiary-container": "#736000",
+                      "secondary-fixed": "#e2e2e2",
+                      "primary-container": "#00f5ff",
+                      "surface-container": "#1e1f23",
+                      "surface-dim": "#121317",
+                      "surface-container-lowest": "#0d0e12",
+                      "surface-container-high": "#292a2e",
+                      "on-surface": "#e3e2e7",
+                      "on-tertiary": "#3a3000",
+                      "surface-variant": "#343539",
+                      "secondary-container": "#454747",
+                      "on-primary-fixed-variant": "#004f53",
+                      "on-secondary": "#2f3131",
+                      "inverse-surface": "#e3e2e7",
+                      "tertiary-fixed": "#ffe16c",
+                      "primary": "#e9feff",
+                      "surface": "#121317"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "margin-mobile": "20px",
+                      "gutter": "24px",
+                      "bento-gap": "16px",
+                      "margin-desktop": "64px",
+                      "unit": "8px"
+              },
+              "fontFamily": {
+                      "display-lg": ["Space Grotesk"],
+                      "mono-sm": ["Geist"],
+                      "body-md": ["Geist"],
+                      "display-xl": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "body-lg": ["Geist"],
+                      "headline-sm": ["Space Grotesk"],
+                      "label-md": ["Geist"]
+              },
+              "fontSize": {
+                      "display-lg": ["56px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "mono-sm": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "headline-sm": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300">
+<div class="flex justify-between items-center px-margin-desktop py-unit max-w-7xl mx-auto">
+<div class="text-headline-sm font-headline-sm font-bold tracking-tighter text-primary">ARCHITECT.IO</div>
+<div class="hidden md:flex gap-gutter items-center">
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Work</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Expertise</a>
+<a class="text-on-surface-variant font-body-md text-body-md hover:text-primary transition-colors" href="#">Studio</a>
+<button class="bg-surface-tint text-on-primary-fixed px-6 py-2 rounded-full font-bold transition-all hover:brightness-110 active:scale-95">Hire Us</button>
+</div>
+</div>
+</nav>
+<!-- SideNavBar (Desktop Only) -->
+<aside class="hidden lg:flex fixed left-8 top-1/2 -translate-y-1/2 rounded-full py-8 bg-surface-container-low/80 backdrop-blur-xl border border-outline-variant/10 shadow-xl flex-col items-center gap-gutter z-40 px-3">
+<div class="w-8 h-8 rounded-full bg-surface-tint flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-primary text-sm">architecture</span>
+</div>
+<a class="text-on-surface-variant p-3 hover:bg-white/5 transition-transform scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+</a>
+<a class="text-surface-tint bg-surface-tint/10 rounded-full p-3 transition-transform scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view" data-weight="fill" style="font-variation-settings: 'FILL' 1;">grid_view</span>
+</a>
+<a class="text-on-surface-variant p-3 hover:bg-white/5 transition-transform scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+</a>
+<a class="text-on-surface-variant p-3 hover:bg-white/5 transition-transform scale-110" href="#">
+<span class="material-symbols-outlined" data-icon="mail">mail</span>
+</a>
+</aside>
+<main class="max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop pt-32 pb-48">
+<!-- Hero Header -->
+<header class="mb-16">
+<div class="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-surface-tint/30 bg-surface-tint/5 mb-6">
+<div class="w-1.5 h-1.5 rounded-full bg-surface-tint active-dot"></div>
+<span class="font-mono-sm text-mono-sm text-surface-tint uppercase tracking-widest">Portfolio 2024</span>
+</div>
+<h1 class="font-display-xl text-display-xl max-w-4xl leading-none">CRAFTING DIGITAL <br/><span class="text-surface-tint">INSTRUMENTS.</span></h1>
+</header>
+<!-- Bento Grid Portfolio -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-bento-gap auto-rows-[280px]">
+<!-- Featured Card (Large) -->
+<div class="md:col-span-8 md:row-span-2 glass-card rounded-xl overflow-hidden relative group cursor-pointer">
+<img alt="Project Zenith" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="A high-fidelity minimalist website layout displayed on a sleek glass monitor in a dark, atmospheric tech studio. The UI design features neon cyan accents and complex data visualizations. The lighting is low-key with sharp highlights reflecting off clean surfaces, creating a premium futuristic development aesthetic with deep blacks and subtle glows." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCHWk2x4_SVB7Djv0n947Oj3CiewfILD61kT4w_sLfz3MRFJrk_Bkhdexz2emWOkaAbAJREvL-terZB9WuYcchdRhaVlZhRvtiUlluvFhya9CZTylqU6ExUoLX5MPK3hSWBYOoQMrzGI9bK9lcedwbAIzkQsayjonS85tZHyamx1BT_vPvo0PoZ7o639KdWI397v0RQqUrAHok2AGSMRApIZRxFyY1idAA6lH9_6lioSbRL1plfrUlgYf9MUGrSLLZUsi0zzymkHnQ"/>
+<div class="absolute top-6 right-6 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-tint flex items-center justify-center text-on-primary-fixed shadow-[0_0_15px_rgba(0,220,229,0.4)] transition-transform duration-300 group-hover:rotate-45">
+<span class="material-symbols-outlined">north_east</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent backdrop-blur-md">
+<p class="font-mono-sm text-mono-sm text-surface-tint mb-2">Fintech Infrastructure</p>
+<h3 class="font-headline-lg text-headline-lg">PROJECT ZENITH</h3>
+</div>
+</div>
+<!-- Small Tech Stack Card -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-xl p-8 flex flex-col justify-between">
+<div>
+<h4 class="font-mono-sm text-mono-sm text-on-surface-variant uppercase mb-4">Core Stack</h4>
+<ul class="space-y-3">
+<li class="flex justify-between border-b border-white/5 pb-1">
+<span class="font-mono-sm text-mono-sm">React/Next.js</span>
+<span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+</li>
+<li class="flex justify-between border-b border-white/5 pb-1">
+<span class="font-mono-sm text-mono-sm">TypeScript</span>
+<span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+</li>
+<li class="flex justify-between border-b border-white/5 pb-1">
+<span class="font-mono-sm text-mono-sm">Rust/WASM</span>
+<span class="material-symbols-outlined text-surface-tint text-sm">check_circle</span>
+</li>
+</ul>
+</div>
+<span class="material-symbols-outlined text-surface-tint text-4xl" data-weight="fill">terminal</span>
+</div>
+<!-- Medium Project Card -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-xl overflow-hidden relative group cursor-pointer">
+<img alt="Nexus OS" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A macro shot of a complex hardware interface with glowing cyan status lights and etched glass components. The background is a dark, shadowy laboratory setting. The aesthetic is industrial futurism, emphasizing technical precision and avant-garde engineering through sharp focus and high contrast lighting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDqVC11TPCt_CecVRYk2fOdOarteXCwxIgjjl14VNutZdYR_OJepkyJkOS9ZGwAwpYRtACOqvXB2-Mz41pVwRaNbErMi_6z3gFPpqmZRlAs6tZUjBAUF3TpoGUyyjt4TBamt1pEQnTpwIJZJwtv9MSAq9LJvJrv58IXpEThk4hF9WNzyvmL97g82lPiAR_hTjiGe8HZBefwaECw0PPEnNgDaYOp6cdrh3E-w6aS0LC7rWo8MkIoIUjRDxASsoJlI5xoF69W_QCgn_0"/>
+<div class="absolute top-4 right-4 z-20">
+<div class="w-10 h-10 rounded-full bg-surface-tint/20 border border-surface-tint/50 flex items-center justify-center text-surface-tint backdrop-blur-md transition-all group-hover:bg-surface-tint group-hover:text-black">
+<span class="material-symbols-outlined">north_east</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-surface-container/60 backdrop-blur-lg">
+<h3 class="font-headline-sm text-headline-sm">NEXUS OS</h3>
+</div>
+</div>
+<!-- Tall Project Card -->
+<div class="md:col-span-4 md:row-span-2 glass-card rounded-xl overflow-hidden relative group cursor-pointer">
+<img alt="Aether Design" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" data-alt="Abstract 3D render of flowing liquid metal ribbons in a void, illuminated by a single neon cyan light source from above. The textures are hyper-realistic with intricate reflections and deep shadows. The composition is vertical and balanced, conveying a sense of mysterious and sophisticated technical power." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDhNiQTjFY_pm9O3-IMn5cUg-3-L8jE9CvZAKg0t_JagW1ixVkTNKyNShQNiCVGr06jz3R15hdB_V7fEGP0QVoBsFhN9Nb_c9DJ6UGuc9_nlbVa7kmAK20417MduDDNHesnrfofxF_W1e6oYWT_SAvGmoUG9vVhLtRU7E1oTq6xHertQGwgxZqjAs5QXAJ5CKJIOSicAtdXeWGwslNTwztXRVDhXQZRF1PZM5axMt68NaYwy1OsDEg4Gw37CsVVf1O2X7PYLpLrwo"/>
+<div class="absolute top-6 right-6 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-tint flex items-center justify-center text-on-primary-fixed transition-transform group-hover:translate-x-1 group-hover:-translate-y-1">
+<span class="material-symbols-outlined">north_east</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/90 to-transparent">
+<p class="font-mono-sm text-mono-sm text-surface-tint mb-2">Generative AI</p>
+<h3 class="font-headline-lg text-headline-lg">AETHER</h3>
+</div>
+</div>
+<!-- Wide Project Card -->
+<div class="md:col-span-8 md:row-span-1 glass-card rounded-xl overflow-hidden relative group cursor-pointer">
+<img alt="Global Node" class="w-full h-full object-cover opacity-60 transition-transform duration-1000 group-hover:scale-110" data-alt="Digital representation of a global satellite network with vibrant cyan data paths connecting glowing nodes over a dark Earth. The style is clean and architectural, using thin lines and modular grid patterns to represent high-speed data transfer in a vast, futuristic space environment." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBXT7Hojih6TgQjfAcjILXOFBpIYlLF3FcoWy-pcaddvCvwmxwd3ol5YUyCfXxuxiMxw22GFPbaY4xgJySvklqY7bZrJ21f40Yx7E1ED8Jie5wg9JvZ723ZS3lqW1ZIF4zfo2y3oK5-EVRS1v6oV0adGfV-0WFLb3l2e22x4XRApZ8S0Q52oAYmsMyDE-YrbwOoEE3rmGFewDN53-d1K9TCJsea7djrDGMMJjZDjPxnjnY7AIhkIMnpyzBvnWDzdrjs64PFek5G178"/>
+<div class="absolute top-6 right-6 z-20">
+<div class="w-12 h-12 rounded-full bg-surface-tint flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined">north_east</span>
+</div>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-8 flex justify-between items-end bg-gradient-to-t from-black/80 to-transparent">
+<div>
+<p class="font-mono-sm text-mono-sm text-surface-tint mb-2">Web3 Protocol</p>
+<h3 class="font-headline-lg text-headline-lg">QUANTUM CHAIN</h3>
+</div>
+<div class="hidden md:block font-mono-sm text-mono-sm opacity-50 max-w-[200px]">
+                        SCALABLE BLOCKCHAIN SOLUTIONS FOR ENTERPRISE DEPLOYMENT.
+                    </div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile-First Floating Dock) -->
+<nav class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex justify-around items-center gap-8 bg-surface-container/40 backdrop-blur-2xl border border-white/10 rounded-full px-8 py-4 w-fit min-w-[320px] shadow-[0_0_20px_rgba(0,220,229,0.1)] transition-all duration-500 cubic-bezier(0.4, 0, 0.2, 1)">
+<a class="text-secondary flex flex-col items-center gap-1 opacity-60 hover:opacity-100 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</a>
+<a class="text-surface-tint flex flex-col items-center gap-1 scale-110 transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="rocket_launch" data-weight="fill" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+<span class="font-label-md text-label-md">Work</span>
+</a>
+<a class="text-secondary flex flex-col items-center gap-1 opacity-60 hover:opacity-100 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label-md text-label-md">Tech</span>
+</a>
+<a class="text-secondary flex flex-col items-center gap-1 opacity-60 hover:opacity-100 hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined" data-icon="send">send</span>
+<span class="font-label-md text-label-md">Contact</span>
+</a>
+</nav>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop bg-surface border-t border-outline-variant/5">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-unit opacity-80 hover:opacity-100 transition-all">
+<div class="text-label-md font-label-md text-surface-tint">© 2024 ARCHITECT.IO — BUILT FOR THE FUTURE</div>
+<div class="flex gap-gutter">
+<a class="font-mono-sm text-mono-sm text-on-surface-variant hover:text-surface-tint transition-colors" href="#">Github</a>
+<a class="font-mono-sm text-mono-sm text-on-surface-variant hover:text-surface-tint transition-colors" href="#">LinkedIn</a>
+<a class="font-mono-sm text-mono-sm text-on-surface-variant hover:text-surface-tint transition-colors" href="#">Twitter</a>
+<a class="font-mono-sm text-mono-sm text-on-surface-variant hover:text-surface-tint transition-colors" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the TopNavBar on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-background/80', 'backdrop-blur-xl', 'py-4', 'shadow-lg');
+                nav.querySelector('div').classList.remove('py-unit');
+                nav.querySelector('div').classList.add('py-2');
+            } else {
+                nav.classList.remove('bg-background/80', 'backdrop-blur-xl', 'py-4', 'shadow-lg');
+                nav.querySelector('div').classList.add('py-unit');
+                nav.querySelector('div').classList.remove('py-2');
+            }
+        });
+
+        // Interactive parallax effect on bento cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const xPercent = (x / rect.width - 0.5) * 10;
+                const yPercent = (y / rect.height - 0.5) * -10;
+                
+                card.style.transform = `perspective(1000px) rotateY(${xPercent}deg) rotateX(${yPercent}deg)`;
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+            });
+        });
+    </script>
+</body></html>
