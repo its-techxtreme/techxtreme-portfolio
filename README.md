@@ -1,63 +1,57 @@
 # Techxtreme Portfolio
 
-Multi-page premium portfolio — **GitHub Pages ready** (no Vercel).
-
-## Pages
-
-| File | URL |
-|------|-----|
-| `index.html` | Home — bento work, stats, tabs, testimonials |
-| `work.html` | All projects + filters |
-| `about.html` | Story, stack, timeline |
-| `contact.html` | **Working form** (FormSubmit) + FAQ |
-| `work/*.html` | Full case studies with galleries |
-
-## Preview locally
-
-```powershell
-cd "C:\Users\notte\OneDrive\Desktop\Portfolio"
-python -m http.server 8080
-```
-
-Open http://localhost:8080
-
-## Git backup
-
-Local repo is initialized on `main`. To push to a **new** GitHub repo:
-
-```powershell
-cd "C:\Users\notte\OneDrive\Desktop\Portfolio"
-gh auth login
-gh repo create techxtreme-portfolio --public --source=. --remote=origin --push
-```
-
-Or create an empty repo on GitHub (e.g. `techxtreme-portfolio`), then:
-
-```powershell
-git remote add origin https://github.com/YOUR_USERNAME/techxtreme-portfolio.git
-git push -u origin main
-```
-
-## Deploy (GitHub Pages)
-
-1. Push repo to GitHub (see above)
-2. Settings → Pages → Source: **GitHub Actions**
-3. Optional domain: `techxtreme.is-a.dev` (see [is-a.dev](https://github.com/is-a-dev/register))
-
-## Contact form
-
-Uses [FormSubmit](https://formsubmit.co) — first submission emails you a confirmation link to activate. Update `_next` URL in `contact.html` after you know your live domain.
-
-## Assets
-
-- `assets/projects/` — London Museums & Virtalent screenshots (live captures)
-- `assets/pla/` — PLA UI screenshots (client-approved, no secrets visible)
-- `assets/stitch assests/` — old Stitch exports (ignore; use prompts in `STITCH_PROMPTS.md`)
-- `assets/stitch/` — put **new** Stitch exports here after generating
+Premium **React + Tailwind + Framer Motion** portfolio — GitHub Pages ready.
 
 ## Stack
 
-Lenis smooth scroll · GSAP ScrollTrigger · Swiper · GLightbox · Pure HTML/CSS
+- **Vite** · **React 19** · **TypeScript**
+- **Tailwind CSS** · **Framer Motion** · **Lenis** smooth scroll
+- **React Router** — client-side navigation (all links, menus, filters work)
+- **FormSubmit** — working contact form (no backend required)
+
+## Commands
+
+```powershell
+cd "C:\Users\notte\OneDrive\Desktop\Portfolio"
+npm install
+npm run dev      # http://localhost:5173
+npm run build    # output → dist/
+npm run preview  # preview production build
+```
+
+## Pages
+
+| Route | Page |
+|-------|------|
+| `/` | Home — hero, bento, process, services tabs, testimonials |
+| `/work` | Portfolio grid with live filters |
+| `/work/:slug` | Case studies + image lightbox |
+| `/about` | Story, stack, timeline |
+| `/contact` | FAQ accordion + FormSubmit form |
+
+## Deploy (GitHub Pages)
+
+1. Push to GitHub
+2. Settings → Pages → Source: **GitHub Actions**
+3. Workflow builds `dist/` and deploys automatically
+4. For **user/org site** (`username.github.io`): set `base: "/"` in `vite.config.ts` (default)
+5. For **project site** (`username.github.io/repo-name/`): build sets `GITHUB_PAGES=true` in CI — update repo name in `vite.config.ts` if needed
+
+Optional domain: `techxtreme.is-a.dev`
+
+## Assets
+
+- `public/assets/` — screenshots (synced from `assets/` for Vite)
+- `assets/stitch assests/` — old Stitch exports (ignore)
+- New Stitch exports → `public/assets/stitch/` — see `STITCH_PROMPTS.md`
+
+## Contact form
+
+Uses [FormSubmit](https://formsubmit.co). First submission emails you an activation link. `_next` redirects back to `/contact?sent=1`.
+
+## Legacy static HTML
+
+Pre-React files (`work/*.html`, `css/site.css`, etc.) remain in the repo for reference but are **not** deployed — GitHub Pages serves the Vite build only.
 
 ## Email
 

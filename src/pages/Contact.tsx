@@ -1,0 +1,176 @@
+import { FormEvent, useState } from "react";
+import { useSearchParams } from "react-router-dom";
+import { EMAIL, FORM_ACTION } from "../lib/constants";
+import { Button } from "../components/ui/Button";
+import { Reveal } from "../components/ui/Reveal";
+import { SectionLabel } from "../components/ui/SectionLabel";
+
+const faqs = [
+  {
+    q: "What do you build?",
+    a: "Directories, service/lead-gen sites, WordPress, and private AI dashboards with automation.",
+  },
+  {
+    q: "Do you work in my timezone?",
+    a: "Yes — I'm fully remote. Async updates with overlap calls when needed.",
+  },
+  {
+    q: "Typical timeline?",
+    a: "Landing pages: 1–2 weeks. Directories & platforms: 3–8 weeks depending on scope.",
+  },
+  {
+    q: "Budget range?",
+    a: "Projects typically start from focused builds — share your scope and I'll quote honestly.",
+  },
+];
+
+export function Contact() {
+  const [params] = useSearchParams();
+  const sent = params.get("sent") === "1";
+  const [openFaq, setOpenFaq] = useState(0);
+  const [copied, setCopied] = useState(false);
+  const [error, setError] = useState("");
+
+  const copyEmail = async () => {
+    await navigator.clipboard.writeText(EMAIL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    const form = e.currentTarget;
+    const name = (form.elements.namedItem("name") as HTMLInputElement).value.trim();
+    const email = (form.elements.namedItem("email") as HTMLInputElement).value.trim();
+    if (!name || !email) {
+      e.preventDefault();
+      setError("Please fill in name and email.");
+      return;
+    }
+    setError("");
+  };
+
+  return (
+    <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
+      <Reveal>
+        <SectionLabel>Contact</SectionLabel>
+        <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
+          Let's build
+          <br />
+          <span className="text-gradient">your next product.</span>
+        </h1>
+        <p className="mt-4 max-w-xl text-lg text-muted">
+          Serious inquiries only. I work with founders worldwide — async-friendly, any timezone.
+        </p>
+      </Reveal>
+
+      <div className="mt-16 grid gap-12 lg:grid-cols-2">
+        <Reveal>
+          <p className="text-muted">Prefer email? Reach me directly:</p>
+          <a href={`mailto:${EMAIL}`} className="mt-4 block font-display text-2xl text-accent">
+            {EMAIL}
+          </a>
+          <Button variant="ghost" className="mt-4 !px-4 !py-2 text-sm" onClick={copyEmail}>
+            {copied ? "Copied!" : "Copy email"}
+          </Button>
+
+          <div className="mt-12 divide-y divide-line">
+            {faqs.map((f, i) => (
+              <div key={f.q} className="py-4">
+                <button
+                  type="button"
+                  className="flex w-full items-center justify-between text-left font-semibold"
+                  onClick={() => setOpenFaq(openFaq === i ? -1 : i)}
+                  aria-expanded={openFaq === i}
+                >
+                  {f.q}
+                  <span className="text-accent">{openFaq === i ? "×" : "+"}</span>
+                </button>
+                {openFaq === i && <p className="mt-3 text-sm text-muted">{f.a}</p>}
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          {sent && (
+            <p className="mb-4 rounded-lg bg-lime/10 px-4 py-3 text-sm text-lime">
+              Message sent — I'll reply within 24 hours.
+            </p>
+          )}
+          <form
+            action={FORM_ACTION}
+            method="POST"
+            onSubmit={onSubmit}
+            className="flex flex-col gap-4 rounded-card border border-line bg-bg-2 p-8"
+          >
+            <input type="hidden" name="_subject" value="New project inquiry — Techxtreme" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input
+              type="hidden"
+              name="_next"
+              value={`${window.location.origin}${import.meta.env.BASE_URL}contact?sent=1`}
+            />
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Name
+              <input
+                name="name"
+                required
+                placeholder="Your name"
+                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Email
+              <input
+                type="email"
+                name="email"
+                required
+                placeholder="you@company.com"
+                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Project type
+              <select
+                name="type"
+                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+              >
+                <option>Website / Landing page</option>
+                <option>Directory / SEO site</option>
+                <option>AI dashboard / automation</option>
+                <option>WordPress / Maintenance</option>
+                <option>Other</option>
+              </select>
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Budget range
+              <select
+                name="budget"
+                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+              >
+                <option>Under $1,000</option>
+                <option>$1,000 – $3,000</option>
+                <option>$3,000 – $8,000</option>
+                <option>$8,000+</option>
+              </select>
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Message
+              <textarea
+                name="message"
+                required
+                rows={5}
+                placeholder="Tell me about your project, timeline, and goals…"
+                className="resize-y rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+              />
+            </label>
+            {error && <p className="text-sm text-hot">{error}</p>}
+            <Button type="submit" className="w-full">
+              Send message →
+            </Button>
+          </form>
+        </Reveal>
+      </div>
+    </main>
+  );
+}

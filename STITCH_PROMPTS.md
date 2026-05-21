@@ -56,7 +56,7 @@ Portfolio "Selected work" section mockup, 1440×1200px, dark #070708.
 
 STRUCTURE:
 - Section label: cyan monospace "SELECTED WORK" with 32px cyan line before it
-- H2: "Shipped products." white + "Real screenshots." with gradient text cyan→violet→pink
+- H2: "Shipped products." white + "*Real screenshots." with gradient text cyan→violet→pink
 - Subtext muted #71717a
 
 BENTO GRID (12-col, 16px gap):

@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Geist:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-tint": "#00dce5",
+                    "on-tertiary-fixed-variant": "#544600",
+                    "tertiary-fixed-dim": "#e7c427",
+                    "on-primary": "#003739",
+                    "inverse-primary": "#00696e",
+                    "error": "#ffb4ab",
+                    "surface-container-highest": "#343539",
+                    "on-error": "#690005",
+                    "tertiary": "#fff9f0",
+                    "secondary": "#c6c6c7",
+                    "on-primary-container": "#006c71",
+                    "outline-variant": "#3a494a",
+                    "surface-container-low": "#1a1b1f",
+                    "primary-fixed-dim": "#00dce5",
+                    "tertiary-container": "#ffdb3f",
+                    "on-secondary-fixed": "#1a1c1c",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#849495",
+                    "on-background": "#e3e2e7",
+                    "background": "#121317",
+                    "primary-fixed": "#63f7ff",
+                    "on-secondary-fixed-variant": "#454747",
+                    "on-primary-fixed": "#002021",
+                    "error-container": "#93000a",
+                    "on-error-container": "#ffdad6",
+                    "surface-bright": "#38393d",
+                    "on-surface-variant": "#b9caca",
+                    "inverse-on-surface": "#2f3034",
+                    "on-tertiary-fixed": "#221b00",
+                    "secondary-fixed-dim": "#c6c6c7",
+                    "on-tertiary-container": "#736000",
+                    "secondary-fixed": "#e2e2e2",
+                    "primary-container": "#00f5ff",
+                    "surface-container": "#1e1f23",
+                    "surface-dim": "#121317",
+                    "surface-container-lowest": "#0d0e12",
+                    "surface-container-high": "#292a2e",
+                    "on-surface": "#e3e2e7",
+                    "on-tertiary": "#3a3000",
+                    "surface-variant": "#343539",
+                    "secondary-container": "#454747",
+                    "on-primary-fixed-variant": "#004f53",
+                    "on-secondary": "#2f3131",
+                    "inverse-surface": "#e3e2e7",
+                    "tertiary-fixed": "#ffe16c",
+                    "primary": "#e9feff",
+                    "surface": "#121317"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gutter": "24px",
+                    "bento-gap": "16px",
+                    "margin-desktop": "64px",
+                    "unit": "8px"
+            },
+            "fontFamily": {
+                    "display-lg": ["Space Grotesk"],
+                    "mono-sm": ["Geist"],
+                    "body-md": ["Geist"],
+                    "display-xl": ["Space Grotesk"],
+                    "headline-lg": ["Space Grotesk"],
+                    "body-lg": ["Geist"],
+                    "headline-sm": ["Space Grotesk"],
+                    "label-md": ["Geist"]
+            },
+            "fontSize": {
+                    "display-lg": ["56px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                    "mono-sm": ["12px", {"lineHeight": "1.5", "letterSpacing": "0.02em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "display-xl": ["80px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-sm": ["24px", {"lineHeight": "1.4", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "500"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #070708;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 32px 32px;
+            color: #e3e2e7;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .glow-accent {
+            box-shadow: 0 0 20px rgba(0, 220, 229, 0.15);
+        }
+
+        .browser-chrome {
+            background: #1a1b1f;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .cyan-scanline {
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, transparent, #00dce5, transparent);
+            position: absolute;
+            top: 0;
+            animation: scan 4s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); opacity: 0; }
+            50% { opacity: 1; }
+            100% { transform: translateY(600px); opacity: 0; }
+        }
+    </style>
+</head>
+<body class="antialiased overflow-x-hidden">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full z-50 transition-all duration-300 flex justify-between items-center px-margin-desktop py-unit max-w-7xl mx-auto left-1/2 -translate-x-1/2">
+<div class="text-headline-sm font-headline-sm font-bold tracking-tighter text-primary">ARCHITECT.IO</div>
+<div class="hidden md:flex items-center gap-gutter">
+<a class="font-body-md text-body-md text-surface-tint font-bold hover:text-primary transition-colors" href="#">Work</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Expertise</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Studio</a>
+</div>
+<button class="bg-surface-tint text-on-primary px-6 py-2 rounded-full font-label-md text-label-md font-bold hover:scale-105 transition-transform">Hire Us</button>
+</nav>
+<main class="pt-32 pb-40 px-margin-mobile md:px-margin-desktop max-w-7xl mx-auto">
+<!-- Project Header Section -->
+<section class="space-y-12">
+<!-- Browser Mockup Frame -->
+<div class="relative group">
+<div class="absolute -inset-1 bg-surface-tint/20 blur-2xl opacity-20 group-hover:opacity-40 transition-opacity duration-700"></div>
+<div class="relative overflow-hidden rounded-xl border border-outline-variant/30 shadow-2xl bg-surface-container-lowest">
+<!-- Browser Chrome -->
+<div class="flex items-center justify-between px-4 py-3 browser-chrome">
+<div class="flex gap-2">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary-fixed-dim/40"></div>
+<div class="w-3 h-3 rounded-full bg-surface-tint/40"></div>
+</div>
+<div class="bg-surface-container rounded-md px-12 py-1 text-[10px] font-mono-sm text-on-surface-variant/50 border border-outline-variant/10">
+                            architect.io/case-study/neural-flow
+                        </div>
+<div class="w-12"></div>
+</div>
+<!-- Browser Content Preview -->
+<div class="relative aspect-video md:aspect-[21/9] w-full bg-surface-container-lowest overflow-hidden">
+<div class="cyan-scanline"></div>
+<img class="w-full h-full object-cover grayscale-[0.2] contrast-[1.1]" data-alt="A sophisticated UI design preview of a high-tech AI dashboard dashboard with glowing cyan data visualizations and dark sleek glass containers. The interface features intricate neural network graphs and deep atmospheric depth with soft neon highlights. The background is a rich dark onyx with subtle architectural grid lines, reflecting a premium futurist precision aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD16_ffly24P5d5hzjsFI9KT6gXMt0DWylkrTE76Wqf3bJbiJ1dWXJ4VFMfY4y_y5ZRiMN-mNeYLCcMDZNmeOzFR7O1dMnz362Am0c_x_cxpfxOCKyCAv75dS1yFgiyN62N7M2D09v2MzHv0FLDjxkEk6ggVcv8nPeQlZxl3giIwQspeDAcfg4IlwmLOuvQtU43HyPiQxp2OYkGxPkseA48PUPeIwPmUJlh0ZfoSlxLLKn3PTd4d67hwxBP8kAodFBSp2amLmoumRE"/>
+<!-- Overlay for premium feel -->
+<div class="absolute inset-0 bg-gradient-to-t from-[#070708] via-transparent to-transparent opacity-60"></div>
+</div>
+</div>
+</div>
+<!-- Project Identity -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 pt-4">
+<div class="space-y-4 max-w-2xl">
+<div class="flex flex-wrap gap-2">
+<span class="px-3 py-1 rounded-full border border-surface-tint/30 bg-surface-tint/10 text-surface-tint font-mono-sm text-mono-sm">UI/UX DESIGN</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant/30 bg-white/5 text-on-surface-variant font-mono-sm text-mono-sm">WEB3 DEVELOPMENT</span>
+<span class="px-3 py-1 rounded-full border border-outline-variant/30 bg-white/5 text-on-surface-variant font-mono-sm text-mono-sm">AI INTEGRATION</span>
+</div>
+<h1 class="font-display-xl text-display-xl tracking-tighter text-primary">NeuralFlow Ecosystem</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+                        Redefining the architecture of distributed intelligence. A comprehensive brand and product system built for the next generation of autonomous compute platforms.
+                    </p>
+</div>
+<div class="flex gap-margin-mobile border-l border-outline-variant/20 pl-gutter hidden lg:flex">
+<div class="flex flex-col">
+<span class="font-mono-sm text-mono-sm text-on-surface-variant/60 uppercase">Year</span>
+<span class="font-headline-sm text-headline-sm text-primary">2024</span>
+</div>
+<div class="flex flex-col">
+<span class="font-mono-sm text-mono-sm text-on-surface-variant/60 uppercase">Client</span>
+<span class="font-headline-sm text-headline-sm text-primary">Synapse Lab</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs / Bento Style Mini -->
+<div class="mt-24 grid grid-cols-1 md:grid-cols-3 gap-bento-gap">
+<div class="glass-panel rounded-xl p-8 space-y-4">
+<span class="material-symbols-outlined text-surface-tint">terminal</span>
+<h3 class="font-headline-sm text-headline-sm text-primary">Tech Stack</h3>
+<ul class="font-mono-sm text-mono-sm text-on-surface-variant space-y-2">
+<li class="flex justify-between border-b border-outline-variant/5 pb-2"><span>Framework</span> <span class="text-primary">Next.js 14</span></li>
+<li class="flex justify-between border-b border-outline-variant/5 pb-2"><span>Engine</span> <span class="text-primary">WebAssembly</span></li>
+<li class="flex justify-between border-b border-outline-variant/5 pb-2"><span>Styling</span> <span class="text-primary">Tailwind CSS</span></li>
+</ul>
+</div>
+<div class="glass-panel rounded-xl p-8 space-y-4 md:col-span-2 relative overflow-hidden group">
+<div class="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+<span class="material-symbols-outlined text-[120px] text-surface-tint" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-primary">Performance Metrics</h3>
+<div class="grid grid-cols-2 gap-8 pt-4">
+<div>
+<div class="font-display-lg text-display-lg text-surface-tint">0.4s</div>
+<div class="font-mono-sm text-mono-sm text-on-surface-variant">LCP Response</div>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-surface-tint">99.9%</div>
+<div class="font-mono-sm text-mono-sm text-on-surface-variant">Uptime SLA</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- SideNavBar (Hidden on small screens) -->
+<aside class="fixed left-8 top-1/2 -translate-y-1/2 rounded-full py-8 hidden lg:flex flex-col items-center gap-gutter bg-surface-container-low/80 backdrop-blur-xl border border-outline-variant/10 shadow-xl z-50">
+<div class="text-primary font-display-lg px-4 mb-4">A</div>
+<div class="text-surface-tint bg-surface-tint/10 rounded-full p-3 scale-110 transition-transform cursor-pointer">
+<span class="material-symbols-outlined">home</span>
+</div>
+<div class="text-on-surface-variant p-3 hover:bg-white/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined">grid_view</span>
+</div>
+<div class="text-on-surface-variant p-3 hover:bg-white/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined">terminal</span>
+</div>
+<div class="text-on-surface-variant p-3 hover:bg-white/5 transition-all cursor-pointer">
+<span class="material-symbols-outlined">mail</span>
+</div>
+</aside>
+<!-- BottomNavBar (Mobile only) -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 flex justify-around items-center gap-8 md:hidden bg-surface-container/40 backdrop-blur-2xl rounded-full px-6 py-3 min-w-[320px] border border-white/10 shadow-[0_0_20px_rgba(0,220,229,0.1)]">
+<div class="text-secondary flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">home</span>
+<span class="font-label-md text-label-md">Home</span>
+</div>
+<div class="text-surface-tint flex flex-col items-center gap-1 scale-110">
+<span class="material-symbols-outlined">rocket_launch</span>
+<span class="font-label-md text-label-md">Work</span>
+</div>
+<div class="text-secondary flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">database</span>
+<span class="font-label-md text-label-md">Tech</span>
+</div>
+<div class="text-secondary flex flex-col items-center gap-1 opacity-60">
+<span class="material-symbols-outlined">send</span>
+<span class="font-label-md text-label-md">Contact</span>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-margin-desktop border-t border-outline-variant/5 bg-surface mt-20">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center px-margin-desktop gap-unit">
+<div class="text-label-md font-label-md text-on-surface-variant">© 2024 ARCHITECT.IO — BUILT FOR THE FUTURE</div>
+<div class="flex gap-gutter opacity-80">
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-mono-sm text-mono-sm" href="#">Github</a>
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-mono-sm text-mono-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-mono-sm text-mono-sm" href="#">Twitter</a>
+<a class="text-on-surface-variant hover:text-surface-tint transition-colors font-mono-sm text-mono-sm" href="#">Contact</a>
+</div>
+</div>
+</footer>
+<script>
+        // Simple scroll effect for navbar
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-background/80', 'backdrop-blur-md', 'shadow-lg');
+            } else {
+                nav.classList.remove('bg-background/80', 'backdrop-blur-md', 'shadow-lg');
+            }
+        });
+
+        // Hover effect for browser mockup
+        const browserFrame = document.querySelector('.relative.group');
+        browserFrame.addEventListener('mousemove', (e) => {
+            const { left, top, width, height } = browserFrame.getBoundingClientRect();
+            const x = (e.clientX - left) / width - 0.5;
+            const y = (e.clientY - top) / height - 0.5;
+            
+            browserFrame.style.transform = `perspective(1000px) rotateY(${x * 2}deg) rotateX(${-y * 2}deg)`;
+        });
+
+        browserFrame.addEventListener('mouseleave', () => {
+            browserFrame.style.transform = `perspective(1000px) rotateY(0deg) rotateX(0deg)`;
+        });
+    </script>
+</body></html>
