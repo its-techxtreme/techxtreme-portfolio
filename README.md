@@ -1,13 +1,13 @@
 # Techxtreme Portfolio
 
-Premium **React + Tailwind + Framer Motion** portfolio — GitHub Pages ready.
+Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme.is-a.dev](https://techxtreme.is-a.dev)**.
 
 ## Stack
 
 - **Vite** · **React 19** · **TypeScript**
 - **Tailwind CSS** · **Framer Motion** · **Lenis** smooth scroll
-- **React Router** — client-side navigation (all links, menus, filters work)
-- **FormSubmit** — working contact form (no backend required)
+- **React Router** — client-side navigation
+- **FormSubmit** — contact form (no backend)
 
 ## Commands
 
@@ -29,30 +29,51 @@ npm run preview  # preview production build
 | `/about` | Story, stack, timeline |
 | `/contact` | FAQ accordion + FormSubmit form |
 
-## Deploy (GitHub Pages)
+## Deploy (GitHub Pages + is-a.dev)
 
-1. Push to GitHub
-2. Settings → Pages → Source: **GitHub Actions**
-3. Workflow builds `dist/` and deploys automatically
-4. For **user/org site** (`username.github.io`): set `base: "/"` in `vite.config.ts` (default)
-5. For **project site** (`username.github.io/repo-name/`): build sets `GITHUB_PAGES=true` in CI — update repo name in `vite.config.ts` if needed
+**GitHub:** [@its-techxtreme](https://github.com/its-techxtreme)  
+**Live URL:** https://techxtreme.is-a.dev  
+**Fallback:** https://its-techxtreme.github.io/techxtreme-portfolio/
 
-Optional domain: `techxtreme.is-a.dev`
+### 1. Push to GitHub
+
+```powershell
+gh auth login
+cd "C:\Users\notte\OneDrive\Desktop\Portfolio"
+git remote set-url origin https://github.com/its-techxtreme/techxtreme-portfolio.git
+gh repo create techxtreme-portfolio --public --source=. --remote=origin --push
+```
+
+(If the repo already exists, use `git push -u origin main` instead.)
+
+### 2. Enable GitHub Pages
+
+1. Repo → **Settings** → **Pages**
+2. **Build and deployment** → Source: **GitHub Actions**
+3. After the workflow runs, under **Custom domain** enter: `techxtreme.is-a.dev`
+4. Enable **Enforce HTTPS** when available
+
+`public/CNAME` is included in the build so Pages keeps the domain on deploy.
+
+### 3. DNS (is-a.dev)
+
+In your [is-a.dev](https://is-a.dev) dashboard for **techxtreme**:
+
+| Type | Name | Value |
+|------|------|--------|
+| CNAME | `techxtreme` (or `@` if supported) | `its-techxtreme.github.io` |
+
+DNS can take a few minutes to propagate. GitHub will show a green check when the domain is verified.
+
+### 4. FormSubmit redirect
+
+After the site is live, confirm FormSubmit’s `_next` URL uses `https://techxtreme.is-a.dev/contact?sent=1` (see `Contact.tsx`).
 
 ## Assets
 
-- `public/assets/` — screenshots (synced from `assets/` for Vite)
-- `assets/stitch assests/` — old Stitch exports (ignore)
-- New Stitch exports → `public/assets/stitch/` — see `STITCH_PROMPTS.md`
+- `public/assets/` — production screenshots and logos
+- `assets/stitch assests/` — Stitch source exports (not deployed)
 
-## Contact form
-
-Uses [FormSubmit](https://formsubmit.co). First submission emails you an activation link. `_next` redirects back to `/contact?sent=1`.
-
-## Legacy static HTML
-
-Pre-React files (`work/*.html`, `css/site.css`, etc.) remain in the repo for reference but are **not** deployed — GitHub Pages serves the Vite build only.
-
-## Email
+## Contact
 
 techxtremebuisness@gmail.com

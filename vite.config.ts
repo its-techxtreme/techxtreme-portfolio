@@ -17,5 +17,6 @@ export default defineConfig({
       },
     },
   ],
-  base: process.env.GITHUB_PAGES === "true" ? "/techxtreme-portfolio/" : "/",
+  /** Root base for techxtreme.is-a.dev (custom domain) and local dev */
+  base: "/",
 });
