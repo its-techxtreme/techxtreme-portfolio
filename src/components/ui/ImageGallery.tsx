@@ -1,5 +1,6 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
+import { assetUrl } from "../../lib/assets";
 
 export function ImageGallery({ images }: { images: string[] }) {
   const [lightbox, setLightbox] = useState<string | null>(null);
@@ -29,7 +30,7 @@ export function ImageGallery({ images }: { images: string[] }) {
             onClick={() => setLightbox(src)}
             className="mb-4 block w-full break-inside-avoid overflow-hidden rounded-2xl border border-line transition hover:border-accent hover:scale-[1.02]"
           >
-            <img src={src} alt="" className="w-full" />
+            <img src={assetUrl(src)} alt="" className="w-full" />
           </button>
         ))}
       </div>
@@ -51,7 +52,7 @@ export function ImageGallery({ images }: { images: string[] }) {
               Close ✕
             </button>
             <motion.img
-              src={lightbox}
+              src={assetUrl(lightbox)}
               alt=""
               className="max-h-[90vh] max-w-full rounded-lg"
               initial={{ scale: 0.9 }}

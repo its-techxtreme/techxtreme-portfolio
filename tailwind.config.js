@@ -10,7 +10,7 @@ export default {
         line: "rgba(255,255,255,0.08)",
         muted: "#71717a",
         accent: "#22d3ee",
-        "accent-2": "#a78bfa",
+        "accent-2": "#67e8f9",
         hot: "#f472b6",
         lime: "#a3e635",
       },

@@ -11,8 +11,8 @@ const faqs = [
     a: "Directories, service/lead-gen sites, WordPress, and private AI dashboards with automation.",
   },
   {
-    q: "Do you work in my timezone?",
-    a: "Yes — I'm fully remote. Async updates with overlap calls when needed.",
+    q: "How do we collaborate?",
+    a: "Async-first: written updates, shared milestones, and calls when a decision needs a live conversation.",
   },
   {
     q: "Typical timeline?",
@@ -59,7 +59,7 @@ export function Contact() {
           <span className="text-gradient">your next product.</span>
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted">
-          Serious inquiries only. I work with founders worldwide — async-friendly, any timezone.
+          Serious inquiries only. Share your scope, timeline, and budget — I reply within 24 hours on qualified leads.
         </p>
       </Reveal>
 
@@ -101,7 +101,7 @@ export function Contact() {
             action={FORM_ACTION}
             method="POST"
             onSubmit={onSubmit}
-            className="flex flex-col gap-4 rounded-card border border-line bg-bg-2 p-8"
+            className="glass-card flex flex-col gap-4 rounded-card border border-line p-8"
           >
             <input type="hidden" name="_subject" value="New project inquiry — Techxtreme" />
             <input type="hidden" name="_captcha" value="false" />
@@ -148,10 +148,11 @@ export function Contact() {
                 name="budget"
                 className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
               >
-                <option>Under $1,000</option>
-                <option>$1,000 – $3,000</option>
-                <option>$3,000 – $8,000</option>
-                <option>$8,000+</option>
+                <option>Under $300</option>
+                <option>$300 – $500</option>
+                <option>$500 – $1,000</option>
+                <option>$1,000 – $5,000</option>
+                <option>$5,000+</option>
               </select>
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">

@@ -1,9 +1,13 @@
 import { Link, Navigate, useParams } from "react-router-dom";
 import clsx from "clsx";
 import { getProject, projects } from "../data/projects";
+import { SkillsMarquee } from "../components/jee/SkillsMarquee";
+import { CaseStudyBlocks, DeliverablesBlock } from "../components/projects/CaseStudyBlocks";
+import { MobileScreenshots } from "../components/projects/MobileScreenshots";
 import { ImageGallery } from "../components/ui/ImageGallery";
 import { ButtonLink } from "../components/ui/Button";
 import { Reveal } from "../components/ui/Reveal";
+import { assetUrl } from "../lib/assets";
 
 function tagClass(tag: string) {
   if (tag === "Live") return "border-lime/35 text-lime";
@@ -15,6 +19,11 @@ export function ProjectDetail() {
   const { slug } = useParams();
   const project = slug ? getProject(slug) : undefined;
   if (!project) return <Navigate to="/work" replace />;
+
+  const showDesktopGallery =
+    project.gallery &&
+    project.gallery.length > 0 &&
+    project.slug !== "study-notes";
 
   return (
     <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
@@ -72,10 +81,15 @@ export function ProjectDetail() {
             )}
           </Reveal>
 
+          <Reveal className="mt-8">
+            <h2 className="font-display text-xl font-bold text-zinc-200">The project</h2>
+            <CaseStudyBlocks paragraphs={project.caseStudy} />
+          </Reveal>
+
           {project.stats && (
             <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {project.stats.map((s) => (
-                <div key={s.label} className="rounded-2xl border border-line bg-bg-2 p-6">
+                <div key={s.label} className="glass-card rounded-2xl border border-line p-6">
                   <strong className="font-display text-3xl font-bold text-gradient">{s.value}</strong>
                   <span className="mt-1 block text-sm text-muted">{s.label}</span>
                 </div>
@@ -83,40 +97,58 @@ export function ProjectDetail() {
             </Reveal>
           )}
 
-          {project.gallery && project.gallery.length > 0 && (
+          {project.mobileScreenshots && project.mobileScreenshots.length > 0 && (
+            <MobileScreenshots screens={project.mobileScreenshots} />
+          )}
+
+          {showDesktopGallery && (
             <Reveal className="mt-12">
-              <h2 className="font-display text-2xl font-bold">Screenshots</h2>
+              <h2 className="font-display text-2xl font-bold">
+                {project.slug === "aura" ? "Aura interface" : "Screenshots"}
+              </h2>
               <p className="mt-2 text-muted">Click any image to enlarge.</p>
               <div className="mt-6">
-                <ImageGallery images={project.gallery} />
+                <ImageGallery images={project.gallery!} />
               </div>
             </Reveal>
           )}
 
           {project.slug === "study-notes" && (
-            <Reveal className="mt-10 grid items-center gap-8 rounded-card border border-line bg-bg-2 p-8 md:grid-cols-[280px_1fr]">
-              <img src={project.image} alt="JEE Notes Wallah logo" className="rounded-2xl" />
-              <div>
-                <h2 className="font-display text-xl font-bold">Brand-first EdTech UI</h2>
-                <ul className="mt-4 list-disc space-y-2 pl-5 text-muted">
-                  {project.deliverables?.map((d) => (
-                    <li key={d}>{d}</li>
-                  ))}
-                </ul>
-              </div>
-            </Reveal>
+            <>
+              <Reveal className="mt-10">
+                <SkillsMarquee />
+              </Reveal>
+              <Reveal className="relative mt-10 overflow-hidden rounded-card border border-orange-500/20 bg-gradient-to-br from-[#1c1410] to-bg-2 p-8 md:p-12">
+                <div
+                  className="pointer-events-none absolute inset-0 opacity-60"
+                  style={{
+                    backgroundImage:
+                      "linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)",
+                    backgroundSize: "64px 64px",
+                  }}
+                  aria-hidden
+                />
+                <div className="relative z-10 flex flex-col items-center text-center md:flex-row md:items-center md:gap-10 md:text-left">
+                  <img
+                    src={assetUrl("/assets/projects/jee-notes-wallah-logo.jpg")}
+                    alt="JEE Notes Wallah logo"
+                    className="w-40 shrink-0 drop-shadow-[0_0_30px_rgba(251,146,60,0.25)] md:w-48"
+                  />
+                  <div>
+                    <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-orange-400">
+                      Notes for Toppers, By Toppers
+                    </p>
+                    <p className="mt-3 text-muted">
+                      Brand, mobile flows, and Firebase membership architecture — prototype ready for engineering
+                      sprints.
+                    </p>
+                  </div>
+                </div>
+              </Reveal>
+            </>
           )}
 
-          {project.deliverables && project.slug !== "study-notes" && (
-            <Reveal className="mt-12">
-              <h2 className="font-display text-2xl font-bold">Deliverables</h2>
-              <ul className="mt-4 list-disc space-y-2 pl-5 text-muted">
-                {project.deliverables.map((d) => (
-                  <li key={d}>{d}</li>
-                ))}
-              </ul>
-            </Reveal>
-          )}
+          {project.deliverables && <DeliverablesBlock items={project.deliverables} />}
 
           {project.techScope && (
             <Reveal className="mt-12">

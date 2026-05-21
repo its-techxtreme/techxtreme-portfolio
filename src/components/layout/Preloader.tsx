@@ -32,7 +32,7 @@ export function Preloader() {
         </motion.p>
         <div className="mx-auto mt-6 h-0.5 w-48 overflow-hidden rounded bg-line">
           <motion.div
-            className="h-full bg-gradient-to-r from-accent to-accent-2"
+            className="h-full bg-accent"
             initial={{ width: "0%" }}
             animate={{ width: "100%" }}
             transition={{ duration: 1.6, ease: "easeInOut" }}

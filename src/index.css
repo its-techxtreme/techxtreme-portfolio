@@ -22,21 +22,39 @@
 
 @layer utilities {
   .text-gradient {
-    @apply bg-gradient-to-br from-accent via-accent-2 to-hot bg-clip-text text-transparent;
+    @apply bg-gradient-to-br from-white via-accent to-accent bg-clip-text text-transparent;
   }
   .grid-bg {
     background-image:
-      linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+      linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
     background-size: 64px 64px;
     mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, black, transparent);
+  }
+  .hero-scan {
+    animation: heroScan 8s ease-in-out infinite;
   }
   .glass {
     @apply border border-line bg-white/[0.04] backdrop-blur-xl;
   }
+  .glass-card {
+    @apply border border-line bg-white/[0.06] backdrop-blur-2xl;
+  }
   .outline-text {
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.25);
     color: transparent;
+  }
+}
+
+@keyframes heroScan {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: translateY(-20vh);
+  }
+  50% {
+    opacity: 0.55;
+    transform: translateY(40vh);
   }
 }
 

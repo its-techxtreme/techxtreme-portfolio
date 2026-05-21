@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import type { Project } from "../../data/projects";
-
+import { assetUrl } from "../../lib/assets";
 function tagClass(tag: string) {
   if (tag === "Live") return "bg-lime/15 text-lime";
   if (tag === "Client work") return "bg-accent/15 text-accent";
@@ -21,16 +21,21 @@ export function BentoCard({ project }: { project: Project }) {
       </Link>
       <div className="absolute inset-0">
         {project.logoCard ? (
-          <div className="flex h-full min-h-[220px] items-center justify-center bg-gradient-to-br from-[#1c1410] to-bg-2">
+          <div
+            className={clsx(
+              "flex h-full min-h-[220px] items-center justify-center bg-gradient-to-br from-[#1c1410] to-bg-2",
+              project.slug === "study-notes" && "shadow-[inset_0_0_80px_-20px_rgba(251,146,60,0.25)]"
+            )}
+          >
             <img
-              src={project.image}
+              src={assetUrl(project.image)}
               alt={project.title}
-              className="max-h-[55%] max-w-[72%] object-contain drop-shadow-2xl transition duration-700 group-hover:scale-105"
+              className="max-h-[58%] max-w-[78%] object-contain drop-shadow-[0_8px_40px_rgba(251,146,60,0.35)] transition duration-700 group-hover:scale-105"
             />
           </div>
         ) : (
           <img
-            src={project.image}
+            src={assetUrl(project.image)}
             alt={project.title}
             className="h-full w-full object-cover object-top transition duration-700 group-hover:scale-105"
           />
@@ -79,11 +84,24 @@ export function ProjectTile({ project }: { project: Project }) {
             ))}
           </div>
           {project.logoCard ? (
-            <div className="flex h-full items-center justify-center bg-gradient-to-br from-[#1c1410] to-bg-2">
-              <img src={project.image} alt="" className="h-[45%] object-contain" />
+            <div
+              className={clsx(
+                "flex h-full items-center justify-center bg-gradient-to-br from-[#1c1410] to-bg-2",
+                project.slug === "study-notes" && "shadow-[inset_0_0_60px_-16px_rgba(251,146,60,0.2)]"
+              )}
+            >
+              <img
+                src={assetUrl(project.image)}
+                alt=""
+                className="h-[50%] max-h-[220px] w-auto max-w-[85%] object-contain drop-shadow-[0_6px_32px_rgba(251,146,60,0.3)]"
+              />
             </div>
           ) : (
-            <img src={project.image} alt="" className="h-full w-full object-cover object-top transition group-hover:scale-[1.04]" />
+            <img
+              src={assetUrl(project.image)}
+              alt=""
+              className="h-full w-full object-cover object-top transition group-hover:scale-[1.04]"
+            />
           )}
         </div>
         <div className="p-7">

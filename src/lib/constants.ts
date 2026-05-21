@@ -2,14 +2,19 @@ export const EMAIL = "techxtremebuisness@gmail.com";
 export const FORM_ACTION = "https://formsubmit.co/techxtremebuisness@gmail.com";
 
 export const TECH_MARQUEE = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "Python",
+  "Java",
+  "Node.js",
   "WordPress",
   "PHP",
-  "Python",
-  "n8n",
-  "Perplexity",
+  "Docker",
+  "Ubuntu",
   "Firebase",
-  "Polymarket APIs",
-  "SEO",
-  "React",
+  "PostgreSQL",
+  "n8n",
   "Tailwind",
+  "SEO",
 ] as const;
