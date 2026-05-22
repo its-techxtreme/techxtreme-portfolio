@@ -1,6 +1,6 @@
 # Techxtreme Portfolio
 
-Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme.is-a.dev](https://techxtreme.is-a.dev)**.
+Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme-portfolio.vercel.app](https://techxtreme-portfolio.vercel.app)** (custom domain **techxtreme.is-a.dev** after is-a.dev PR merges).
 
 ## Stack
 
@@ -41,8 +41,9 @@ CLI (optional): `npx vercel login` then `npx vercel --prod`
 ## Deploy (GitHub Pages + is-a.dev)
 
 **GitHub:** [@its-techxtreme](https://github.com/its-techxtreme)  
-**Live URL:** https://techxtreme.is-a.dev  
-**Fallback:** https://its-techxtreme.github.io/techxtreme-portfolio/
+**Preview (use in is-a.dev PR):** https://techxtreme-portfolio.vercel.app  
+**GitHub Pages:** https://its-techxtreme.github.io/techxtreme-portfolio/  
+**Custom domain (after PR merge):** https://techxtreme.is-a.dev — add `public/CNAME` then re-enable in Pages settings
 
 ### 1. Push to GitHub
 
@@ -62,7 +63,7 @@ gh repo create techxtreme-portfolio --public --source=. --remote=origin --push
 3. After the workflow runs, under **Custom domain** enter: `techxtreme.is-a.dev`
 4. Enable **Enforce HTTPS** when available
 
-`public/CNAME` is included in the build so Pages keeps the domain on deploy.
+Do **not** add `public/CNAME` until the is-a.dev PR is merged (otherwise preview URLs redirect to the is-a.dev homepage).
 
 ### 3. DNS (is-a.dev)
 
