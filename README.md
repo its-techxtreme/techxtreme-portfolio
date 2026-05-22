@@ -29,6 +29,15 @@ npm run preview  # preview production build
 | `/about` | Story, stack, timeline |
 | `/contact` | FAQ accordion + FormSubmit form |
 
+## Deploy (Vercel — quick preview while is-a.dev is pending)
+
+1. Sign in at [vercel.com](https://vercel.com) with GitHub (`its-techxtreme`)
+2. **Add New… → Project** → import **techxtreme-portfolio**
+3. Framework: **Vite** (auto-detected) · Build: `npm run build` · Output: `dist`
+4. Deploy — you get a free `*.vercel.app` URL (SPA routing is in `vercel.json`)
+
+CLI (optional): `npx vercel login` then `npx vercel --prod`
+
 ## Deploy (GitHub Pages + is-a.dev)
 
 **GitHub:** [@its-techxtreme](https://github.com/its-techxtreme)  
