@@ -65,6 +65,8 @@ gh repo create techxtreme-portfolio --public --source=. --remote=origin --push
 
 Do **not** add `public/CNAME` until the is-a.dev PR is merged (otherwise preview URLs redirect to the is-a.dev homepage).
 
+After merge, add `public/CNAME` and set `VITE_BASE=/` in `.github/workflows/pages.yml` build step so the custom domain serves assets from root.
+
 ### 3. DNS (is-a.dev)
 
 In your [is-a.dev](https://is-a.dev) dashboard for **techxtreme**:

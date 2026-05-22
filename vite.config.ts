@@ -17,6 +17,8 @@ export default defineConfig({
       },
     },
   ],
-  /** Root base for techxtreme.is-a.dev (custom domain) and local dev */
-  base: "/",
+  /** Project site preview on github.io; override with VITE_BASE=/ after custom domain is live */
+  base:
+    process.env.VITE_BASE ??
+    (process.env.GITHUB_PAGES === "true" ? "/techxtreme-portfolio/" : "/"),
 });
