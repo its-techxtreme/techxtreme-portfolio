@@ -1,6 +1,6 @@
 # Techxtreme Portfolio
 
-Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme-portfolio.vercel.app](https://techxtreme-portfolio.vercel.app)** (custom domain **techxtreme.is-a.dev** after is-a.dev PR merges).
+Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme.is-a.dev](https://techxtreme.is-a.dev)** (also [Vercel](https://techxtreme-portfolio.vercel.app) · [GitHub Pages project URL](https://its-techxtreme.github.io/techxtreme-portfolio/)).
 
 ## Stack
 
@@ -41,9 +41,9 @@ CLI (optional): `npx vercel login` then `npx vercel --prod`
 ## Deploy (GitHub Pages + is-a.dev)
 
 **GitHub:** [@its-techxtreme](https://github.com/its-techxtreme)  
-**Preview (use in is-a.dev PR):** https://techxtreme-portfolio.vercel.app  
-**GitHub Pages:** https://its-techxtreme.github.io/techxtreme-portfolio/  
-**Custom domain (after PR merge):** https://techxtreme.is-a.dev — add `public/CNAME` then re-enable in Pages settings
+**Primary:** https://techxtreme.is-a.dev  
+**Vercel:** https://techxtreme-portfolio.vercel.app  
+**GitHub Pages (project URL):** https://its-techxtreme.github.io/techxtreme-portfolio/
 
 ### 1. Push to GitHub
 
@@ -60,12 +60,10 @@ gh repo create techxtreme-portfolio --public --source=. --remote=origin --push
 
 1. Repo → **Settings** → **Pages**
 2. **Build and deployment** → Source: **GitHub Actions**
-3. After the workflow runs, under **Custom domain** enter: `techxtreme.is-a.dev`
-4. Enable **Enforce HTTPS** when available
+3. **Custom domain:** `techxtreme.is-a.dev` (set in repo settings + `public/CNAME`)
+4. Enable **Enforce HTTPS** when GitHub shows the option (after DNS verifies)
 
-Do **not** add `public/CNAME` until the is-a.dev PR is merged (otherwise preview URLs redirect to the is-a.dev homepage).
-
-After merge, add `public/CNAME` and set `VITE_BASE=/` in `.github/workflows/pages.yml` build step so the custom domain serves assets from root.
+Build uses `VITE_BASE=/` in `.github/workflows/pages.yml` so assets load at the custom domain root.
 
 ### 3. DNS (is-a.dev)
 
