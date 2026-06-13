@@ -97,6 +97,9 @@ function defaultBudgetForCountry(c: string) {
   return c === "India" ? DEFAULT_BUDGET_INR : budgetUsd[0];
 }
 
+const fieldClass =
+  "rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent light:text-light-primary";
+
 export function Contact() {
   const [params] = useSearchParams();
   const sent = params.get("sent") === "1";
