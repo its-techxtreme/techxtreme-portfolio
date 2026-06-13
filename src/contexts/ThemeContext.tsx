@@ -6,56 +6,50 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
-  useLightUI: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
-    // Check localStorage first, then system preference, default to dark
     const stored = localStorage.getItem("theme") as Theme | null;
+    let initial: Theme = "dark";
+
     if (stored && (stored === "light" || stored === "dark")) {
-      return stored;
+      initial = stored;
+    } else if (typeof window !== "undefined" && window.matchMedia) {
+      initial = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
     }
-    
-    if (typeof window !== "undefined" && window.matchMedia) {
-      return window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
-    }
-    
-    return "dark";
-  });
 
-  // Light UI uses completely different UI components (Stitch-generated)
-  const useLightUI = theme === "light";
-
-  useEffect(() => {
-    console.log("Theme useEffect triggered, theme:", theme);
-    // Apply theme to document
-    if (theme === "dark") {
+    if (initial === "dark") {
       document.documentElement.classList.add("dark");
       document.documentElement.classList.remove("light");
-      console.log("Applied dark mode classes");
     } else {
       document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
-      console.log("Applied light mode classes");
     }
-    
-    // Save to localStorage
+
+    return initial;
+  });
+
+  useEffect(() => {
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+      document.documentElement.classList.remove("light");
+    } else {
+      document.documentElement.classList.add("light");
+      document.documentElement.classList.remove("dark");
+    }
+
     localStorage.setItem("theme", theme);
-    console.log("Theme saved to localStorage:", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    console.log("Theme toggle clicked, current theme:", theme);
-    const newTheme = theme === "dark" ? "light" : "dark";
-    console.log("Setting new theme:", newTheme);
-    setTheme(newTheme);
+    setTheme((current) => (current === "dark" ? "light" : "dark"));
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, useLightUI }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
       {children}
     </ThemeContext.Provider>
   );
