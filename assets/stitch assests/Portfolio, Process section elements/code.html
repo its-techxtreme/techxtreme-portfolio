@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "surface-container-highest": "#353436",
+                    "inverse-on-surface": "#313031",
+                    "outline-variant": "#3c494c",
+                    "inverse-primary": "#006877",
+                    "on-secondary-fixed-variant": "#4f319c",
+                    "tertiary-fixed-dim": "#98da27",
+                    "on-primary-fixed-variant": "#004e5a",
+                    "text-primary": "#FFFFFF",
+                    "on-tertiary": "#213600",
+                    "canvas": "#070708",
+                    "on-surface-variant": "#bbc9cd",
+                    "surface-bright": "#3a393a",
+                    "background": "#131314",
+                    "surface-dim": "#131314",
+                    "tertiary": "#adf140",
+                    "on-tertiary-fixed": "#121f00",
+                    "on-primary-fixed": "#001f25",
+                    "inverse-surface": "#e5e2e3",
+                    "primary": "#8aebff",
+                    "surface": "#131314",
+                    "on-tertiary-fixed-variant": "#334f00",
+                    "error": "#ffb4ab",
+                    "tertiary-container": "#93d420",
+                    "primary-container": "#22d3ee",
+                    "surface-container-high": "#2a2a2b",
+                    "on-tertiary-container": "#395800",
+                    "secondary": "#cebdff",
+                    "grid-line": "rgba(255, 255, 255, 0.05)",
+                    "on-primary": "#00363e",
+                    "surface-stroke": "rgba(255, 255, 255, 0.08)",
+                    "text-secondary": "#8B93A1",
+                    "surface-container-lowest": "#0e0e0f",
+                    "on-surface": "#e5e2e3",
+                    "surface-fill": "rgba(255, 255, 255, 0.04)",
+                    "error-container": "#93000a",
+                    "on-error": "#690005",
+                    "on-background": "#e5e2e3",
+                    "on-primary-container": "#005763",
+                    "primary-fixed-dim": "#2fd9f4",
+                    "secondary-container": "#4f319c",
+                    "on-secondary": "#381385",
+                    "on-error-container": "#ffdad6",
+                    "outline": "#859397",
+                    "tertiary-fixed": "#b2f746",
+                    "surface-container": "#201f21",
+                    "on-secondary-container": "#bea8ff",
+                    "secondary-fixed": "#e8ddff",
+                    "surface-variant": "#353436",
+                    "on-secondary-fixed": "#21005e",
+                    "primary-fixed": "#a2eeff",
+                    "surface-container-low": "#1c1b1d",
+                    "surface-tint": "#2fd9f4",
+                    "secondary-fixed-dim": "#cebdff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem",
+                    "card": "28px"
+            },
+            "spacing": {
+                    "margin-mobile": "20px",
+                    "gap-md": "24px",
+                    "base": "4px",
+                    "gap-xs": "8px",
+                    "max-width": "1280px",
+                    "margin-desktop": "80px",
+                    "gap-sm": "16px",
+                    "gap-lg": "48px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Space Grotesk", "sans-serif"],
+                    "label-md": ["Manrope", "sans-serif"],
+                    "headline-lg": ["Space Grotesk", "sans-serif"],
+                    "label-sm": ["Manrope", "sans-serif"],
+                    "headline-lg-mobile": ["Space Grotesk", "sans-serif"],
+                    "body-lg": ["Manrope", "sans-serif"],
+                    "body-md": ["Manrope", "sans-serif"],
+                    "headline-xl": ["Space Grotesk", "sans-serif"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "1", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "1", "letterSpacing": "0.05em", "fontWeight": "500"}],
+                    "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                    "headline-xl": ["64px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: #070708;
+            color: #FFFFFF;
+            overflow-x: hidden;
+        }
+
+        .bg-grid {
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+
+        .ambient-orb-1 {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(138, 235, 255, 0.12) 0%, rgba(138, 235, 255, 0) 70%);
+            filter: blur(80px);
+            z-index: -1;
+            top: -200px;
+            left: -100px;
+        }
+
+        .ambient-orb-2 {
+            position: absolute;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(206, 189, 255, 0.08) 0%, rgba(206, 189, 255, 0) 70%);
+            filter: blur(100px);
+            z-index: -1;
+            bottom: -300px;
+            right: -100px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+        }
+
+        .active-glow {
+            border-color: rgba(138, 235, 255, 0.4);
+            box-shadow: 0 0 30px rgba(138, 235, 255, 0.15);
+        }
+
+        .watermark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            font-size: 8rem;
+            line-height: 1;
+            color: rgba(255, 255, 255, 0.06);
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .text-gradient-cyan-violet {
+            background: linear-gradient(135deg, #8aebff 0%, #cebdff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="antialiased">
+<!-- Header / TopNavBar Anchor -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl border-b border-surface-stroke">
+<div class="flex justify-between items-center max-w-max-width mx-auto px-margin-desktop h-20">
+<div class="font-headline-md text-headline-md font-bold text-text-primary tracking-tighter">
+                STUDIO_2.0
+            </div>
+<nav class="hidden md:flex items-center gap-gap-md">
+<a class="text-text-secondary hover:text-text-primary transition-colors font-label-md text-label-md" href="#">Services</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors font-label-md text-label-md" href="#">Work</a>
+<a class="text-primary font-bold border-b-2 border-primary pb-1 font-label-md text-label-md" href="#">Process</a>
+<a class="text-text-secondary hover:text-text-primary transition-colors font-label-md text-label-md" href="#">About</a>
+</nav>
+<button class="bg-primary-container text-on-primary-container px-gap-sm py-base rounded-lg font-label-md text-label-md active:scale-95 opacity-80 transition-transform">
+                Start Project
+            </button>
+</div>
+</header>
+<main class="relative pt-32 pb-64 overflow-hidden">
+<!-- Background Elements -->
+<div class="bg-grid absolute inset-0 opacity-20 pointer-events-none"></div>
+<div class="ambient-orb-1"></div>
+<div class="ambient-orb-2"></div>
+<div class="max-w-[1440px] mx-auto px-margin-desktop">
+<!-- Section Header -->
+<div class="mb-20">
+<h1 class="font-headline-xl text-headline-xl text-text-primary max-w-3xl">
+                    From brief to <span class="text-gradient-cyan-violet">live URL.</span>
+</h1>
+</div>
+<!-- Process Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-gap-md">
+<!-- Card 01 -->
+<div class="glass-card rounded-card p-gap-md relative min-h-[320px] flex flex-col justify-end group hover:bg-white/[0.08]">
+<span class="watermark">01</span>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-base">Discovery</h3>
+<p class="font-body-md text-body-md text-text-secondary">goals &amp; metrics</p>
+</div>
+</div>
+<!-- Card 02 -->
+<div class="glass-card rounded-card p-gap-md relative min-h-[320px] flex flex-col justify-end group hover:bg-white/[0.08]">
+<span class="watermark">02</span>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-base">Design &amp; build</h3>
+<p class="font-body-md text-body-md text-text-secondary">high-fidelity UI, real content</p>
+</div>
+</div>
+<!-- Card 03 (Active State) -->
+<div class="glass-card active-glow rounded-card p-gap-md relative min-h-[320px] flex flex-col justify-end">
+<span class="watermark !text-primary/10">03</span>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-base">Launch</h3>
+<p class="font-body-md text-body-md text-text-secondary">DNS, SEO, handover docs</p>
+<div class="mt-gap-sm flex items-center gap-xs">
+<span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-primary uppercase tracking-widest">Active Phase</span>
+</div>
+</div>
+</div>
+<!-- Card 04 -->
+<div class="glass-card rounded-card p-gap-md relative min-h-[320px] flex flex-col justify-end group hover:bg-white/[0.08]">
+<span class="watermark">04</span>
+<div class="relative z-10">
+<h3 class="font-headline-md text-headline-md text-text-primary mb-base">Grow</h3>
+<p class="font-body-md text-body-md text-text-secondary">traffic &amp; automation</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Anchor -->
+<footer class="w-full py-gap-lg bg-canvas border-t border-surface-stroke">
+<div class="max-w-max-width mx-auto px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-md">
+<div class="font-headline-sm text-headline-sm font-black text-text-primary">
+                STUDIO_2.0
+            </div>
+<div class="font-label-sm text-label-sm text-text-secondary text-center md:text-left">
+                © 2024 STUDIO_2.0. High-performance digital execution.
+            </div>
+<div class="flex gap-gap-sm">
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary transition-colors" href="#">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-text-secondary hover:text-primary transition-colors" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for cards
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Subtle perspective shift
+                const xRotation = (y - rect.height / 2) / 20;
+                const yRotation = (rect.width / 2 - x) / 20;
+                
+                if(!card.classList.contains('active-glow')) {
+                    card.style.transform = `perspective(1000px) rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale3d(1.02, 1.02, 1.02)`;
+                }
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+            });
+        });
+
+        // Ambient orb mouse follow effect
+        const orb1 = document.querySelector('.ambient-orb-1');
+        const orb2 = document.querySelector('.ambient-orb-2');
+        
+        window.addEventListener('mousemove', e => {
+            const x = (e.clientX / window.innerWidth) * 50;
+            const y = (e.clientY / window.innerHeight) * 50;
+            
+            orb1.style.transform = `translate(${x}px, ${y}px)`;
+            orb2.style.transform = `translate(${-x}px, ${-y}px)`;
+        });
+    </script>
+</body></html>

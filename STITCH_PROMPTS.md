@@ -197,21 +197,89 @@ Tags and typography match Techxtreme dark wrapper — case study is FRAMED in da
 
 ---
 
-## 9. Project Aura — abstract UI (no fake product UI)
+## 9. Project Aura — portfolio mockup (paste into Stitch)
 
-**Filename:** `aura-abstract-ui.png`  
-**Use for:** Aura bento card / case study gallery only if you want a stylized supplement to Unsplash photos
+**Purpose:** One marketing-quality UI preview for the Techxtreme portfolio only (home bento, work tile, `/work/aura` case study). **Not** the full app — skip tablet status, dream modals, approval flows, and every peripheral screen for now.
+
+**Inspired by** `Project-Aura/docs/prompts/stitch-ui-prompt.md` + `docs/11-ui-and-3d.md` (read-only; do not edit that repo).
+
+**After export:** save PNG as `public/assets/projects/aura-portfolio-ui.png` → tell Cursor to wire it in and remove `aura-ui.jpg` / `aura-holo.jpg` / `aura-laptop.jpg`.
+
+**Optional second run:** only if you want a second gallery image — use the short follow-up block at the end.
+
+---
+
+### Copy from here ↓ (single paste for Stitch)
 
 ```
-Abstract AI product visual, 16:9, 1200×675px — NOT a readable fake dashboard.
+Design a portfolio hero mockup of a desktop app UI named "AURA" — a local-first personal AI assistant (voice, memory, persona engine). This is for a developer portfolio case study, not a full product build. Show only the screens we need to communicate the product vision.
 
-Dark purple-black gradient base #1a1030 to #070708
-Floating glass panels: waveform visualizer, chat bubbles with soft cyan glow, memory graph nodes connected by thin lines
-Holographic laptop silhouette optional, heavily blurred
-Neon accents cyan and violet only, depth of field, cinematic — feels like Apple Intelligence keynote aesthetic meets dark mode IDE
+CANVAS: 1440×900px, 16:9 friendly composition, crisp and readable when scaled down to a small project card.
 
-NO text labels, NO fake charts with numbers, NO human faces
+THEME
+- Sci-fi command center / holographic dashboard
+- Background #05060B with subtle grid lines at 4% opacity
+- Panel backgrounds #0D1018, borders rgba(120, 195, 255, 0.25)
+- Accents: cyan #6BE3FF (primary), violet #B58CFF (secondary), touch of magenta #FF6BD0 only on character halo or mood badge
+- Soft glow on panels; premium and restrained — NOT gamer RGB, NOT generic ChatGPT layout, NOT stock photos
+
+CENTERPIECE — CARTOON AI COMPANION (not a real person)
+- Large center stage (~45% of width): a professional 2D animated cartoon mascot for the AI assistant
+- Style: modern cel-shaded or clean vector cartoon — polished app mascot quality (think high-end game UI companion or motion-design character), friendly and composed
+- Character is fully fictional/stylized: simplified features, expressive eyes, elegant silhouette — NO photorealism, NO live-action, NO specific anime character likeness, NO human stock photo, NO uncanny realism
+- Soft cyan-violet radial halo behind the character; mood badge pill below reading "Focused"; small label "Listening..."
+- Optional subtle voice waveform under the character
+
+INCLUDE ONLY THESE UI ZONES (keep it simple):
+
+1) TOP BAR (~40px): "AURA" wordmark left · green-dot status "Connected · Local Brain" center · minimal window controls right
+
+2) LEFT COLUMN (~30% width): "Conversation" header · 3 chat bubbles (user right, assistant left with faint cyan edge) · 2 quick-prompt chips — do NOT draw a full memory graph, tiny node hint is enough
+
+3) CENTER: cartoon mascot + halo + mood badge (dominant focal point)
+
+4) RIGHT COLUMN (~28% width): ONE card titled "Brain Monitor" only — pill "Local · Llama 8B", small tokens/sec sparkline, VRAM bar, context bar with JetBrains Mono numbers
+
+5) BOTTOM BAR: mic icon · input placeholder "Type or speak…" · send button · thin status line "Local Llama 8B · GPU 23%"
+
+DO NOT INCLUDE: approval modals, tablet pairing UI, action history lists, system toggle matrix, dream-cycle dialogs, settings drawers, or extra screens — we are not generating the full software today.
+
+TYPOGRAPHY: Inter or Geist for UI labels; JetBrains Mono for numeric stats.
+
+OUTPUT: One polished static mockup PNG. If Stitch offers code export, include HTML/CSS as a bonus — but the PNG is what matters for the portfolio.
+
+MOOD: intimate, intelligent, slightly futuristic — personal AI command center you would trust on a laptop.
 ```
+
+---
+
+### Follow-up paste (only if the first result needs a fix)
+
+**Character too realistic / looks like a real person:**
+```
+Replace the center character with a fully stylized 2D cartoon AI mascot — cel-shaded illustration, no photorealistic skin, no anime schoolgirl likeness, no human photography. Bigger head-to-body ratio, cleaner shapes, professional app-mascot style.
+```
+
+**Too crowded / character too small:**
+```
+Make the cartoon mascot 50% larger in the center. Remove extra widgets — keep only Conversation (left), Brain Monitor (right), title bar, and chat input. Narrow the side panels.
+```
+
+**Optional second image (gallery only — skip if one PNG is enough):**
+```
+Close-up crop 1200×675 of the AURA "Brain Monitor" card and left chat bubbles only — same #05060B / #6BE3FF palette, no character, no stock AI art. For portfolio case-study gallery slide 2. Save as aura-portfolio-detail.png.
+```
+
+---
+
+### Portfolio wiring (after Stitch)
+
+| File | Use |
+|------|-----|
+| `aura-portfolio-ui.png` | Bento card, work tile, case study hero, gallery image 1 |
+| `aura-portfolio-detail.png` | Gallery image 2 (optional) |
+
+Tell Cursor: *"Replace Project Aura stock images with aura-portfolio-ui.png."*
 
 ---
 
@@ -263,7 +331,8 @@ Elegant closing section, high conversion focus
 | `contact-split.png` | 6 | `contact.html` |
 | `case-study-london-museums.png` | 7 | `work/london-museums.html` |
 | `case-study-virtalent.png` | 8 | `work/virtalent.html` |
-| `aura-abstract-ui.png` | 9 | `work/aura.html` (optional) |
+| `aura-portfolio-ui.png` | 9 | Bento, work tile, case study (primary) |
+| `aura-portfolio-detail.png` | 9 (optional follow-up) | Case study gallery slide 2 |
 | `jee-brand-card.png` | 10 | `work/study-notes.html` (optional) |
 | `cta-footer.png` | 11 | `index.html` footer CTA |
 
@@ -281,5 +350,6 @@ Elegant closing section, high conversion focus
 - No hex codes, no "do not include" list → stock faces and generic purple AI art
 - Mixed hero + grid + contact in one shot → unusable all-in-one mockups
 - No mapping to real project screenshots → didn't match londonmuseums.co.uk / virtalent.com reality
+- Project Aura used generic stock photos → use section **9** paste prompt; cartoon mascot, not realistic humans
 
-These prompts are tied to your **live** stack, colors in `css/site.css`, and real project names.
+Techxtreme prompts use `css/site.css`. **Aura uses `#05060B` / `#6BE3FF` from Project Aura spec** — separate from the portfolio site palette.

@@ -160,6 +160,73 @@ export const projects: Project[] = [
     ],
   },
   {
+    slug: "panache-designs",
+    title: "Panache Designs",
+    short: "Luxury interior design studio · Next.js · Premium portfolio",
+    description:
+      "A premium interior design portfolio for Panache Designs in Noida — showcasing luxury residential and commercial projects with elegant typography, immersive galleries, and consultation booking flows.",
+    caseStudy: [
+      "Panache Designs needed a sophisticated web presence that reflects their high-end interior work: the site had to feel premium, showcase their portfolio effectively, and convert visitors into consultation bookings.",
+      "Built with Next.js and modern web technologies, the site features a cinematic hero section, elegant service showcases, and immersive project galleries. The design system uses warm neutrals and sophisticated typography to match their luxury positioning.",
+      "The result is a conversion-focused portfolio that positions Panache as the go-to studio for luxury interiors in Noida's premium residential and commercial sectors.",
+    ],
+    image: "/assets/projects/panache-hero.png",
+    categories: ["live", "client"],
+    tags: ["Live", "Client work", "Next.js", "Interior design", "2026"],
+    liveUrl: "https://panache-designs-demo.vercel.app",
+    bentoClass: "md:col-span-4",
+    gallery: [
+      "/assets/projects/panache-hero.png",
+      "/assets/projects/panache-services.png",
+    ],
+    deliverables: [
+      "Premium Next.js website with sophisticated design system",
+      "Immersive hero section showcasing luxury residential work",
+      "Service portfolio grid with residential, commercial, and consultation options",
+      "Mobile-optimized galleries and booking flow integration",
+      "SEO-optimized content structure for local Noida market",
+    ],
+  },
+  {
+    slug: "clientverse",
+    title: "Clientverse",
+    short: "Automated lead scraper · Reddit & X scanning · AI filtering",
+    description:
+      "Custom lead generation platform that automatically scans Reddit and X for potential clients using intelligent keyword matching, configurable filtering rules, and real-time monitoring to identify high-quality prospects.",
+    caseStudy: [
+      "Developed a specialized lead generation tool to automate the time-intensive process of finding potential clients on social platforms. The system runs continuous scans across Reddit and X, filtering posts based on configurable keyword criteria.",
+      "Features include hourly automated scanning with manual trigger options, sophisticated keyword pre-filtering (include/exclude logic), lead categorization, and a comprehensive dashboard for monitoring scan progress and managing discovered prospects.",
+      "Built with scalability in mind, the platform handles rate limiting, provides detailed analytics on scan performance, and includes advanced settings for fine-tuning discovery algorithms based on specific business requirements.",
+    ],
+    image: "/assets/projects/clientverse-scans.png",
+    categories: ["ai"],
+    tags: ["SaaS", "Lead generation", "Automation", "Web scraping", "2026"],
+    bentoClass: "md:col-span-4",
+    stats: [
+      { value: "Hourly", label: "Automated scans" },
+      { value: "2", label: "Platform integrations" },
+      { value: "Smart", label: "Keyword filtering" },
+    ],
+    gallery: [
+      "/assets/projects/clientverse-scans.png",
+      "/assets/projects/clientverse-settings.png",
+    ],
+    techScope: [
+      "Reddit API integration with rate limiting and error handling",
+      "X (Twitter) platform scanning and content analysis", 
+      "Configurable keyword matching with include/exclude filters",
+      "Automated scan scheduling with manual trigger capabilities",
+      "Lead management dashboard with analytics and export features",
+    ],
+    deliverables: [
+      "Full-stack lead scanning platform with intuitive dashboard",
+      "Automated Reddit and X content monitoring system",
+      "Advanced keyword filtering with boolean logic support",
+      "Lead categorization and export functionality",
+      "Real-time scan progress tracking and analytics",
+    ],
+  },
+  {
     slug: "study-notes",
     title: "JEE Notes Wallah",
     short: "Client EdTech app · Firebase · Premium note marketplace",

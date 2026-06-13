@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURA // NEURAL CORE INTERFACE</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-primary": "#003640",
+                        "on-tertiary-container": "#426500",
+                        "outline": "#879397",
+                        "tertiary-fixed-dim": "#98da27",
+                        "primary-fixed-dim": "#5cd6f2",
+                        "outline-variant": "#3d494c",
+                        "on-surface-variant": "#bcc9cd",
+                        "on-secondary": "#3f0b84",
+                        "on-primary-container": "#006475",
+                        "status-lime": "#A3E635",
+                        "inverse-surface": "#e3e1ea",
+                        "border-glass": "rgba(255, 255, 255, 0.08)",
+                        "tertiary-fixed": "#b2f746",
+                        "tertiary": "#d0ff8a",
+                        "surface-container-high": "#282a30",
+                        "on-secondary-fixed-variant": "#572c9c",
+                        "primary-fixed": "#aaedff",
+                        "surface-container": "#1e1f26",
+                        "primary": "#d4f5ff",
+                        "background": "#05060B",
+                        "surface-dim": "#121319",
+                        "surface-tint": "#5cd6f2",
+                        "inverse-primary": "#006879",
+                        "surface-variant": "#33343b",
+                        "on-tertiary": "#213600",
+                        "on-secondary-fixed": "#260058",
+                        "on-error-container": "#ffdad6",
+                        "fill-glass": "rgba(255, 255, 255, 0.04)",
+                        "on-error": "#690005",
+                        "inverse-on-surface": "#2f3037",
+                        "on-tertiary-fixed-variant": "#334f00",
+                        "primary-container": "#6be3ff",
+                        "surface-container-highest": "#33343b",
+                        "tertiary-container": "#a4e736",
+                        "on-primary-fixed": "#001f26",
+                        "on-primary-fixed-variant": "#004e5c",
+                        "on-tertiary-fixed": "#121f00",
+                        "secondary-container": "#572c9c",
+                        "surface": "#121319",
+                        "secondary-fixed-dim": "#d4bbff",
+                        "surface-bright": "#383940",
+                        "secondary": "#d4bbff",
+                        "error": "#ffb4ab",
+                        "on-surface": "#e3e1ea",
+                        "surface-container-lowest": "#0d0e14",
+                        "bg-deep": "#05060B",
+                        "error-container": "#93000a",
+                        "secondary-fixed": "#ebdcff",
+                        "on-background": "#e3e1ea",
+                        "bg-panel": "#0D1018",
+                        "surface-container-low": "#1a1b21",
+                        "on-secondary-container": "#c6a5ff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "grid-line": "64px",
+                        "margin-mobile": "20px",
+                        "base-unit": "4px",
+                        "margin-desktop": "80px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["JetBrains Mono"],
+                        "headline-md": ["Space Grotesk"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "stats-xl": ["JetBrains Mono"],
+                        "display-xl": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "stats-xl": ["32px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                        "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #05060B;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+            background-size: 64px 64px;
+            color: #e3e1ea;
+            overflow: hidden;
+        }
+        .glass {
+            background: rgba(13, 16, 24, 0.6);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(120, 195, 255, 0.15);
+        }
+        .glow-cyan {
+            box-shadow: 0 0 20px rgba(107, 227, 255, 0.15);
+        }
+        .waveform-bar {
+            animation: waveform 1.2s ease-in-out infinite;
+        }
+        @keyframes waveform {
+            0%, 100% { height: 4px; }
+            50% { height: 16px; }
+        }
+        .radial-halo {
+            background: radial-gradient(circle, rgba(107, 227, 255, 0.15) 0%, rgba(181, 140, 255, 0.05) 50%, transparent 70%);
+        }
+    </style>
+</head>
+<body class="h-screen w-full font-body-md text-body-md flex flex-col">
+<!-- Top Navigation (Component: TopAppBar Mapping) -->
+<header class="flex justify-between items-center w-full px-8 h-16 z-50 border-b border-border-glass backdrop-blur-xl bg-surface/80">
+<div class="flex items-center gap-6">
+<h1 class="font-display-xl text-2xl tracking-tighter text-primary">AURA</h1>
+<div class="flex items-center gap-2 px-3 py-1 bg-fill-glass rounded-full border border-border-glass">
+<span class="w-2 h-2 bg-status-lime rounded-full animate-pulse"></span>
+<span class="font-label-mono text-[10px] uppercase tracking-widest text-on-surface-variant">Connected · Local Brain</span>
+</div>
+</div>
+<nav class="hidden md:flex gap-8">
+<a class="font-label-mono text-label-mono text-primary border-b-2 border-primary pb-1" href="#">Terminal</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Cognition</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Memory</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors" href="#">Nexus</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-all" data-icon="sensors">sensors</span>
+<span class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer transition-all" data-icon="memory">memory</span>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-status-lime" data-icon="battery_charging_full">battery_charging_full</span>
+<div class="flex gap-1">
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+<div class="w-1.5 h-1.5 rounded-full bg-white/20"></div>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Dashboard Grid -->
+<main class="flex-1 grid grid-cols-12 gap-6 p-8 overflow-hidden">
+<!-- Left Column: Conversation -->
+<section class="col-span-3 flex flex-col gap-6">
+<div class="glass rounded-xl p-6 flex flex-col h-full overflow-hidden">
+<header class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-lg text-primary uppercase tracking-tight">Conversation</h2>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="history_edu">history_edu</span>
+</header>
+<div class="flex-1 flex flex-col gap-4 overflow-y-auto pr-2 custom-scrollbar">
+<!-- User Message -->
+<div class="self-end max-w-[85%]">
+<div class="bg-fill-glass border border-border-glass p-3 rounded-lg rounded-tr-none">
+<p class="text-sm text-on-surface-variant">Analyze the last neural trace for pattern anomalies.</p>
+</div>
+</div>
+<!-- Assistant Message -->
+<div class="self-start max-w-[85%]">
+<div class="bg-primary/5 border-l-2 border-primary p-3 rounded-lg rounded-tl-none glow-cyan">
+<p class="text-sm text-primary">Trace complete. Found 3 recursive loops in the primary cognition sector. Shall I purge or archive?</p>
+</div>
+</div>
+<!-- User Message -->
+<div class="self-end max-w-[85%]">
+<div class="bg-fill-glass border border-border-glass p-3 rounded-lg rounded-tr-none">
+<p class="text-sm text-on-surface-variant">Archive and flag for node V2 optimization.</p>
+</div>
+</div>
+</div>
+<div class="mt-6 flex flex-wrap gap-2">
+<div class="px-3 py-1.5 bg-fill-glass border border-border-glass rounded-full cursor-pointer hover:bg-primary/10 transition-all flex items-center gap-2">
+<div class="w-1 h-1 bg-primary rounded-full"></div>
+<span class="font-label-mono text-[10px] text-primary">OPTIMIZE_NODE</span>
+</div>
+<div class="px-3 py-1.5 bg-fill-glass border border-border-glass rounded-full cursor-pointer hover:bg-primary/10 transition-all flex items-center gap-2">
+<div class="w-1 h-1 bg-status-lime rounded-full"></div>
+<span class="font-label-mono text-[10px] text-on-surface-variant">LOG_DUMP</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Column: Focal Point -->
+<section class="col-span-6 relative flex flex-col items-center justify-center">
+<div class="absolute inset-0 radial-halo pointer-events-none"></div>
+<div class="relative z-10 flex flex-col items-center gap-8">
+<!-- Mascot Image -->
+<div class="w-[380px] h-[380px] relative">
+<img alt="AURA AI Mascot" class="w-full h-full object-contain drop-shadow-[0_0_40px_rgba(107,227,255,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDE4ZDz2QR57ZunfQ0H14Tn46o905aduz832boQElErZttzb0GoPpNpetgDGcxhAE-XRzscdtjwK8DV-9z72iJopZ8NREdVy8cxg_3qiEl5n0P25VBeknYYbX2zWp66FxS3TJLHdjqWfCxmYqRpsgEVS7GJ8bJT5GUWsVvrA726inZVR5fi8qcpWETB7eYzg96ePQmPrBaj799J2Ytl3s4x1OgcftDhNTzDYwSd9MasiNWHZ3O5-zjbJaN-wem_0Ssv0gphS4mjVuCQ"/>
+</div>
+<div class="flex flex-col items-center gap-4">
+<div class="px-6 py-1 bg-primary-container/20 border border-primary/30 rounded-full backdrop-blur-md">
+<span class="font-label-mono text-sm font-bold text-primary tracking-widest uppercase">Focused</span>
+</div>
+<p class="font-label-mono text-outline-variant animate-pulse">Listening...</p>
+<!-- Voice Waveform -->
+<div class="flex items-end gap-1 h-8 mt-2">
+<div class="waveform-bar w-1 bg-primary/40" style="animation-delay: 0.1s"></div>
+<div class="waveform-bar w-1 bg-primary/60" style="animation-delay: 0.3s"></div>
+<div class="waveform-bar w-1 bg-primary/80" style="animation-delay: 0.5s"></div>
+<div class="waveform-bar w-1 bg-primary" style="animation-delay: 0.2s"></div>
+<div class="waveform-bar w-1 bg-primary/80" style="animation-delay: 0.4s"></div>
+<div class="waveform-bar w-1 bg-primary/60" style="animation-delay: 0.6s"></div>
+<div class="waveform-bar w-1 bg-primary/40" style="animation-delay: 0.1s"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Right Column: Brain Monitor -->
+<section class="col-span-3 flex flex-col gap-6">
+<div class="glass rounded-xl p-6">
+<header class="flex justify-between items-center mb-6">
+<h2 class="font-headline-md text-lg text-primary uppercase tracking-tight">Brain Monitor</h2>
+<span class="material-symbols-outlined text-outline text-sm" data-icon="analytics">analytics</span>
+</header>
+<div class="space-y-8">
+<!-- LLM Context -->
+<div>
+<div class="flex justify-between items-center mb-2">
+<span class="font-label-mono text-[10px] text-outline uppercase">Active Model</span>
+<span class="px-2 py-0.5 bg-secondary-container/30 text-secondary border border-secondary/20 rounded text-[10px] font-bold">LOCAL · LLAMA 8B</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden">
+<div class="h-full bg-secondary w-3/4 rounded-full"></div>
+</div>
+</div>
+<!-- VRAM Usage -->
+<div>
+<div class="flex justify-between items-center mb-3">
+<span class="font-label-mono text-[10px] text-outline uppercase">VRAM / ALLOCATION</span>
+<span class="font-label-mono text-xs text-primary">8.2GB / 12GB</span>
+</div>
+<div class="flex items-end gap-0.5 h-12">
+<div class="flex-1 bg-primary/20 h-[40%] rounded-sm"></div>
+<div class="flex-1 bg-primary/30 h-[60%] rounded-sm"></div>
+<div class="flex-1 bg-primary/20 h-[30%] rounded-sm"></div>
+<div class="flex-1 bg-primary/40 h-[70%] rounded-sm"></div>
+<div class="flex-1 bg-primary/50 h-[90%] rounded-sm"></div>
+<div class="flex-1 bg-primary/40 h-[65%] rounded-sm"></div>
+<div class="flex-1 bg-primary/30 h-[50%] rounded-sm"></div>
+<div class="flex-1 bg-primary/20 h-[45%] rounded-sm"></div>
+</div>
+</div>
+<!-- Neural Map Summary -->
+<div class="border-t border-border-glass pt-6">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-label-mono text-[10px] text-outline uppercase">Latency</span>
+<span class="font-stats-xl text-lg text-status-lime">12ms</span>
+</div>
+<div class="flex flex-col text-right">
+<span class="font-label-mono text-[10px] text-outline uppercase">Neurons</span>
+<span class="font-stats-xl text-lg text-primary">1.4M</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- HUD Elements Mapping -->
+<div class="flex-1 glass rounded-xl p-4 flex flex-col justify-end gap-2">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-outline text-xs" data-icon="terminal">terminal</span>
+<span class="font-label-mono text-[10px] text-outline uppercase">Log Feed</span>
+</div>
+<div class="space-y-1 opacity-50">
+<p class="font-label-mono text-[9px] text-primary-fixed-dim">&gt; SYN_TASK: MEMORY_CONSOLIDATION</p>
+<p class="font-label-mono text-[9px] text-on-surface-variant">&gt; NODE_02: OPTIMIZING_RESOURCES</p>
+<p class="font-label-mono text-[9px] text-status-lime">&gt; READY_FOR_COMMAND</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Bottom Bar: Input Interface -->
+<footer class="h-24 px-8 pb-6 flex items-center gap-6">
+<div class="flex-1 relative flex items-center">
+<div class="absolute left-6 text-on-surface-variant flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="mic">mic</span>
+</div>
+<input class="w-full h-14 glass rounded-full pl-14 pr-24 focus:ring-1 focus:ring-primary focus:outline-none placeholder:text-outline-variant font-body-md text-primary" placeholder="Type or speak..." type="text"/>
+<div class="absolute right-4 flex items-center gap-4">
+<span class="font-label-mono text-[10px] text-outline-variant hidden lg:block">⌘ + ENTER</span>
+<button class="bg-primary px-6 py-2 rounded-full text-on-primary font-headline-md text-sm hover:scale-95 transition-transform">
+                    SEND
+                </button>
+</div>
+</div>
+</footer>
+<!-- Global System Status (Component: Footer Mapping) -->
+<div class="fixed bottom-0 left-0 w-full h-8 flex justify-between items-center px-gutter bg-surface-container-lowest/90 border-t border-border-glass text-[10px] z-[100] font-label-mono uppercase tracking-widest text-outline">
+<div class="flex items-center gap-4">
+<span class="text-primary">AURA ENGINE // ENCRYPTED SESSION</span>
+<span class="text-status-lime">Status: Online</span>
+</div>
+<div class="flex items-center gap-6">
+<span>Latency: 12ms</span>
+<span>VRAM: 8.2GB</span>
+<span class="text-primary font-bold">GPU 23%</span>
+</div>
+</div>
+<!-- Mouse Interaction Script -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const x = (e.clientX / window.innerWidth) * 100;
+            const y = (e.clientY / window.innerHeight) * 100;
+            document.body.style.backgroundPosition = `${x}% ${y}%`;
+        });
+
+        // Click interaction for inputs
+        document.querySelector('button').addEventListener('mousedown', function() {
+            this.style.transform = 'scale(0.95)';
+        });
+        document.querySelector('button').addEventListener('mouseup', function() {
+            this.style.transform = 'scale(1)';
+        });
+    </script>
+</body></html>

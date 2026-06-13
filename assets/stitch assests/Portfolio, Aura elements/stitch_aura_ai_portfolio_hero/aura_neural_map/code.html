@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURA // Neural Map</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #05060B;
+            overflow: hidden;
+            height: 100vh;
+        }
+        .grid-background {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .glow-cyan { box-shadow: 0 0 15px rgba(92, 214, 242, 0.2); }
+        .glow-violet { box-shadow: 0 0 15px rgba(212, 187, 255, 0.2); }
+        .neural-node { transition: all 0.3s ease; }
+        .neural-node:hover { transform: scale(1.5); filter: brightness(1.5); }
+        .backdrop-blur-md { backdrop-filter: blur(12px); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                "error": "#ffb4ab",
+                "on-surface-variant": "#bcc9cd",
+                "surface-container-high": "#282a30",
+                "surface-container": "#1e1f26",
+                "secondary-fixed": "#ebdcff",
+                "border-glass": "rgba(255, 255, 255, 0.08)",
+                "on-surface": "#e3e1ea",
+                "on-primary-fixed-variant": "#004e5c",
+                "surface-bright": "#383940",
+                "secondary-container": "#572c9c",
+                "fill-glass": "rgba(255, 255, 255, 0.04)",
+                "primary": "#d4f5ff",
+                "on-primary-fixed": "#001f26",
+                "on-secondary": "#3f0b84",
+                "status-lime": "#A3E635",
+                "on-tertiary-fixed-variant": "#334f00",
+                "inverse-surface": "#e3e1ea",
+                "secondary": "#d4bbff",
+                "surface-dim": "#121319",
+                "on-tertiary-fixed": "#121f00",
+                "on-error": "#690005",
+                "tertiary-fixed-dim": "#98da27",
+                "secondary-fixed-dim": "#d4bbff",
+                "on-secondary-container": "#c6a5ff",
+                "surface-variant": "#33343b",
+                "error-container": "#93000a",
+                "on-background": "#e3e1ea",
+                "outline": "#879397",
+                "inverse-on-surface": "#2f3037",
+                "primary-fixed": "#aaedff",
+                "surface-tint": "#5cd6f2",
+                "background": "#121319",
+                "outline-variant": "#3d494c",
+                "on-error-container": "#ffdad6",
+                "on-secondary-fixed": "#260058",
+                "primary-fixed-dim": "#5cd6f2",
+                "bg-panel": "#0D1018",
+                "surface-container-lowest": "#0d0e14",
+                "surface-container-highest": "#33343b",
+                "on-tertiary": "#213600",
+                "on-secondary-fixed-variant": "#572c9c",
+                "on-tertiary-container": "#426500",
+                "primary-container": "#6be3ff",
+                "bg-deep": "#05060B",
+                "tertiary": "#d0ff8a",
+                "surface-container-low": "#1a1b21",
+                "inverse-primary": "#006879",
+                "tertiary-fixed": "#b2f746",
+                "on-primary-container": "#006475",
+                "on-primary": "#003640",
+                "tertiary-container": "#a4e736",
+                "surface": "#121319"
+              },
+              "borderRadius": {
+                "DEFAULT": "0.125rem",
+                "lg": "0.25rem",
+                "xl": "0.5rem",
+                "full": "0.75rem"
+              },
+              "spacing": {
+                "gutter": "24px",
+                "margin-mobile": "20px",
+                "grid-line": "64px",
+                "base-unit": "4px",
+                "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                "label-mono": ["JetBrains Mono"],
+                "headline-md": ["Space Grotesk"],
+                "headline-lg": ["Space Grotesk"],
+                "stats-xl": ["JetBrains Mono"],
+                "display-xl": ["Space Grotesk"],
+                "body-md": ["Manrope"],
+                "body-lg": ["Manrope"]
+              }
+            }
+          }
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Background Grid and Ambient Lighting -->
+<div class="fixed inset-0 grid-background z-0"></div>
+<div class="fixed top-[-10%] left-[-10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px] z-0"></div>
+<div class="fixed bottom-[-10%] right-[-10%] w-[40%] h-[40%] rounded-full bg-secondary/10 blur-[120px] z-0"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-fill-glass backdrop-blur-md border-b border-border-glass">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">AURA</span>
+<div class="h-4 w-[1px] bg-border-glass mx-2"></div>
+<span class="font-label-mono text-label-mono text-on-surface-variant uppercase tracking-widest">Neural Map</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center gap-6">
+<span class="font-label-mono text-label-mono text-primary font-bold border-b-2 border-primary cursor-pointer">Nexus</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-all cursor-pointer">Terminal</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-all cursor-pointer">Memory</span>
+</div>
+<div class="flex items-center gap-4 ml-8">
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-fill-glass p-2 transition-all rounded" data-icon="notifications">notifications</span>
+<span class="material-symbols-outlined text-primary cursor-pointer hover:bg-fill-glass p-2 transition-all rounded" data-icon="settings">settings</span>
+<div class="w-8 h-8 rounded-full border border-primary/30 overflow-hidden">
+<img alt="User profile" class="w-full h-full object-cover" data-alt="A futuristic digital avatar portrait for a high-performance AI platform. The avatar is composed of abstract cyan geometric fragments and luminous data streams. The background is a deep charcoal black with subtle holographic noise. Lighting is crisp, high-tech, and unidirectional, highlighting the crystalline textures." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTcA8OCsSttEv0IjfwNpJvrADlfKPXFBXAZEp6B9ZCm2WMr4Bbrr1PrL4It-vdN5tldUETri1EsuYo6txPnxlo1Z0oQMU1r0kSlwc5592VoVDZO2z0NE7cYV17NaRjEnRNKAOOFzbLxStTU4XJ3d8Q0pogfnKclZc4q-pCV4V1AuahYp3p42yPIWknkR5pP4t6D4Sp7xq9UkLoQBUu5k7FIQAiAQcgXE10pU3vNFVje9kp7Yo-mzjuDinQMzZFN5LVRIudFw0YNNH6"/>
+</div>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Nexus Active) -->
+<aside class="fixed left-0 top-0 h-full flex flex-col pt-20 pb-16 z-40 bg-surface-container-low border-r border-border-glass w-64 hidden lg:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" data-icon="hub">hub</span>
+</div>
+<div>
+<div class="font-headline-md text-sm font-bold text-primary">AURA v1.0</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase">Local Intelligence</div>
+</div>
+</div>
+<button class="w-full mt-4 py-2 bg-primary text-on-primary-fixed font-bold rounded-lg flex items-center justify-center gap-2 hover:brightness-110 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm" data-icon="add">add</span>
+<span class="font-label-mono text-xs">New Session</span>
+</button>
+</div>
+<nav class="flex-1 px-4 space-y-2">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span class="font-label-mono text-label-mono">Terminal</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span class="font-label-mono text-label-mono">Memory</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 bg-secondary-container text-on-secondary-container rounded-lg cursor-pointer">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span class="font-label-mono text-label-mono font-bold">Nexus</span>
+</div>
+</nav>
+<div class="px-4 space-y-2 border-t border-border-glass pt-6">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span class="font-label-mono text-label-mono">Docs</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:text-primary transition-colors cursor-pointer">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span class="font-label-mono text-label-mono">Help</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="lg:ml-64 pt-16 pb-10 h-full relative overflow-hidden flex flex-col md:flex-row">
+<!-- Left Data Panel -->
+<section class="w-full md:w-80 h-full p-6 flex flex-col gap-6 z-10">
+<div class="bg-panel border border-border-glass rounded-xl p-6 backdrop-blur-md">
+<div class="flex items-center justify-between mb-6">
+<h2 class="font-label-mono text-xs uppercase tracking-widest text-on-surface-variant">Cognitive Load</h2>
+<span class="w-2 h-2 rounded-full bg-status-lime animate-pulse"></span>
+</div>
+<div class="flex flex-col gap-4">
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<span class="font-label-mono text-xs text-primary">Core Processing</span>
+<span class="font-label-mono text-xs text-primary">84%</span>
+</div>
+<div class="overflow-hidden h-1.5 mb-4 text-xs flex rounded bg-fill-glass">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-primary glow-cyan" style="width:84%"></div>
+</div>
+</div>
+<div class="relative pt-1">
+<div class="flex mb-2 items-center justify-between">
+<span class="font-label-mono text-xs text-secondary">Neural Synapse</span>
+<span class="font-label-mono text-xs text-secondary">42%</span>
+</div>
+<div class="overflow-hidden h-1.5 mb-4 text-xs flex rounded bg-fill-glass">
+<div class="shadow-none flex flex-col text-center whitespace-nowrap text-white justify-center bg-secondary glow-violet" style="width:42%"></div>
+</div>
+</div>
+</div>
+<div class="mt-6 pt-6 border-t border-border-glass">
+<div class="grid grid-cols-2 gap-4">
+<div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Threads</div>
+<div class="font-stats-xl text-stats-xl text-on-surface">1,204</div>
+</div>
+<div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase mb-1">Latency</div>
+<div class="font-stats-xl text-stats-xl text-status-lime">12ms</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-panel border border-border-glass rounded-xl flex-1 p-6 backdrop-blur-md flex flex-col overflow-hidden">
+<h2 class="font-label-mono text-xs uppercase tracking-widest text-on-surface-variant mb-4">Active Synapses</h2>
+<div class="flex-1 overflow-y-auto space-y-4 pr-2">
+<!-- Active Synapse Item -->
+<div class="group cursor-pointer hover:bg-fill-glass p-3 rounded-lg border border-transparent hover:border-border-glass transition-all">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-primary text-lg" data-icon="bolt">bolt</span>
+<span class="font-label-mono text-sm font-bold text-on-surface">Quantum Field 01</span>
+</div>
+<div class="text-[11px] font-label-mono text-on-surface-variant opacity-60">Status: Entangled // Priority: High</div>
+</div>
+<div class="group cursor-pointer hover:bg-fill-glass p-3 rounded-lg border border-transparent hover:border-border-glass transition-all">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-secondary text-lg" data-icon="memory">memory</span>
+<span class="font-label-mono text-sm font-bold text-on-surface">Vector Storage B</span>
+</div>
+<div class="text-[11px] font-label-mono text-on-surface-variant opacity-60">Status: Syncing // Priority: Med</div>
+</div>
+<div class="group cursor-pointer hover:bg-fill-glass p-3 rounded-lg border border-transparent hover:border-border-glass transition-all">
+<div class="flex items-center gap-3 mb-2">
+<span class="material-symbols-outlined text-status-lime text-lg" data-icon="hub">hub</span>
+<span class="font-label-mono text-sm font-bold text-on-surface">External Gateway</span>
+</div>
+<div class="text-[11px] font-label-mono text-on-surface-variant opacity-60">Status: Active // Priority: Low</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Center Visualization Area -->
+<section class="flex-1 relative flex items-center justify-center p-6 min-h-[400px]">
+<!-- Interactive Neural Graph Simulator -->
+<div class="absolute inset-0 z-0 opacity-80 cursor-move" id="neural-container">
+<canvas class="w-full h-full" id="neuralCanvas"></canvas>
+</div>
+<!-- Overlay HUD -->
+<div class="absolute inset-x-0 bottom-12 flex justify-center pointer-events-none">
+<div class="bg-fill-glass border border-border-glass backdrop-blur-md px-8 py-4 rounded-full flex items-center gap-8 pointer-events-auto">
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="zoom_in">zoom_in</span>
+<span class="font-label-mono text-xs text-on-surface-variant uppercase tracking-tighter">Zoom</span>
+</button>
+<div class="w-[1px] h-4 bg-border-glass"></div>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="filter_list">filter_list</span>
+<span class="font-label-mono text-xs text-on-surface-variant uppercase tracking-tighter">Filter Layers</span>
+</button>
+<div class="w-[1px] h-4 bg-border-glass"></div>
+<button class="flex items-center gap-2 group">
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary" data-icon="refresh">refresh</span>
+<span class="font-label-mono text-xs text-on-surface-variant uppercase tracking-tighter">Re-Index</span>
+</button>
+</div>
+</div>
+<!-- Floating Tooltips/Nodes -->
+<div class="absolute top-1/4 left-1/4 animate-pulse pointer-events-none">
+<div class="bg-primary/20 border border-primary p-2 rounded-lg backdrop-blur-sm">
+<div class="font-label-mono text-[10px] text-primary uppercase">Cluster_A9</div>
+</div>
+</div>
+<div class="absolute bottom-1/3 right-1/4 animate-pulse delay-700 pointer-events-none">
+<div class="bg-secondary/20 border border-secondary p-2 rounded-lg backdrop-blur-sm">
+<div class="font-label-mono text-[10px] text-secondary uppercase">Memory_Buffer_0x</div>
+</div>
+</div>
+</section>
+<!-- Right Side: Details/Active Node -->
+<section class="hidden xl:flex w-80 p-6 flex-col gap-6 z-10">
+<div class="bg-panel border border-border-glass rounded-xl p-6 backdrop-blur-md flex flex-col h-full">
+<h2 class="font-label-mono text-xs uppercase tracking-widest text-on-surface-variant mb-6">Cognitive Context</h2>
+<div class="mb-8">
+<div class="w-full aspect-square rounded-lg border border-border-glass bg-surface-container-lowest relative overflow-hidden mb-4 group">
+<img alt="Neural node detail" class="w-full h-full p-4 opacity-80" data-alt="A highly detailed close-up of a 3D procedural neural network node. It features interconnected filaments of soft purple light and electric blue sparks within a dark, void-like space. The design is scientific yet artistic, with thin glowing lines creating complex patterns. Minimalist UI overlays like coordinates and percentage scales are subtly etched into the edges." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDHDUnn6gbYMb7MpRE0H-pkMR-qHf16onHqwVeE5IGyyorOoc5T5vSzMyBHpcDLFJyWwD5IDFqLXEzoVupOZnZKkiyYDGZ9UUt4IlTgEQQt6xlWxV8wpqoMp-2kD24_9l0J7AwJcz5GPevBe47zvn5CyFoeO08vlgkcKDXVGngo0NwL-NZPeYGOLwR6tZDZT3jNdAmzmTz1XduhEc48kHg_fFpPmamxOzRfUcyC2wRw9MoN2rjttvFutE_yAVy3vELiCQjFJoRLzYo2"/>
+<div class="absolute inset-0 bg-gradient-to-t from-bg-deep to-transparent opacity-60"></div>
+<div class="absolute bottom-3 left-3 flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-primary glow-cyan"></span>
+<span class="font-label-mono text-[10px] uppercase text-primary">Node Focused</span>
+</div>
+</div>
+<h3 class="font-headline-md text-sm text-on-surface mb-2">Neural Pathway: NEXUS-CORE-07</h3>
+<p class="font-body-md text-xs text-on-surface-variant leading-relaxed mb-4">
+                        Primary associative bridge for natural language processing and semantic mapping. Current optimization level is within threshold parameters.
+                    </p>
+</div>
+<div class="space-y-4">
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-mono text-on-surface-variant uppercase">Connections</span>
+<span class="font-label-mono text-primary">14,293</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-mono text-on-surface-variant uppercase">Reliability</span>
+<span class="font-label-mono text-status-lime">99.98%</span>
+</div>
+<div class="flex justify-between items-center text-xs">
+<span class="font-label-mono text-on-surface-variant uppercase">Access Level</span>
+<span class="font-label-mono text-secondary">Admin</span>
+</div>
+</div>
+<div class="mt-auto pt-6 border-t border-border-glass">
+<button class="w-full py-3 border border-primary/40 text-primary font-bold rounded-lg font-label-mono text-xs hover:bg-primary/10 transition-all">
+                        EXPLORE SUB-NODES
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer Status Bar -->
+<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-gutter py-2 h-10 bg-surface-dim border-t border-border-glass">
+<div class="flex items-center gap-6">
+<span class="font-label-mono text-label-mono uppercase text-status-lime flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-status-lime"></span>
+                SYSTEM STATUS: OPTIMAL // ENCRYPTED
+            </span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Uptime: 99.9%</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Latency: 12ms</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">v1.0.4-stable</span>
+</div>
+</footer>
+<script>
+        // Interactive Neural Network Canvas Animation
+        const canvas = document.getElementById('neuralCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        let width, height;
+        const particles = [];
+        const maxParticles = 80;
+        const maxDistance = 150;
+
+        function init() {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            particles.length = 0;
+            for (let i = 0; i < maxParticles; i++) {
+                particles.push({
+                    x: Math.random() * width,
+                    y: Math.random() * height,
+                    vx: (Math.random() - 0.5) * 0.5,
+                    vy: (Math.random() - 0.5) * 0.5,
+                    radius: Math.random() * 2 + 1
+                });
+            }
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            for (let i = 0; i < particles.length; i++) {
+                const p = particles[i];
+                p.x += p.vx;
+                p.y += p.vy;
+
+                if (p.x < 0 || p.x > width) p.vx *= -1;
+                if (p.y < 0 || p.y > height) p.vy *= -1;
+
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+                ctx.fillStyle = i % 5 === 0 ? '#d4bbff' : '#5cd6f2';
+                ctx.fill();
+
+                for (let j = i + 1; j < particles.length; j++) {
+                    const p2 = particles[j];
+                    const dist = Math.sqrt((p.x - p2.x) ** 2 + (p.y - p2.y) ** 2);
+
+                    if (dist < maxDistance) {
+                        ctx.beginPath();
+                        ctx.moveTo(p.x, p.y);
+                        ctx.lineTo(p2.x, p2.y);
+                        ctx.strokeStyle = `rgba(92, 214, 242, ${1 - dist / maxDistance})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animate);
+        }
+
+        window.addEventListener('resize', init);
+        init();
+        animate();
+
+        // Micromovement hover effects for data items
+        document.querySelectorAll('.group').forEach(item => {
+            item.addEventListener('mouseenter', () => {
+                // Haptic feel logic or simple sound if allowed
+            });
+        });
+    </script>
+</body></html>

@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AETHER STUDIO | London Museums Directory Case Study</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #070708;
+            color: #e5e2e3;
+            overflow-x: hidden;
+        }
+
+        /* 64px Engineering Grid */
+        .grid-overlay {
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ambient Orbs */
+        .ambient-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .orb-cyan {
+            background-color: #22d3ee;
+            width: 400px;
+            height: 400px;
+            top: 10%;
+            left: -100px;
+        }
+
+        .orb-violet {
+            background-color: #a78bfa;
+            width: 500px;
+            height: 500px;
+            top: 40%;
+            right: -150px;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .glass-hover:hover {
+            border-color: rgba(255, 255, 255, 0.2);
+            transition: border-color 0.3s ease;
+        }
+
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "canvas": "#070708",
+                      "on-tertiary": "#213600",
+                      "on-primary-fixed-variant": "#004e5a",
+                      "tertiary-fixed-dim": "#98da27",
+                      "on-secondary-fixed-variant": "#4f319c",
+                      "surface-container-highest": "#353436",
+                      "inverse-on-surface": "#313031",
+                      "outline-variant": "#3c494c",
+                      "inverse-primary": "#006877",
+                      "tertiary-container": "#93d420",
+                      "primary-container": "#22d3ee",
+                      "surface-container-high": "#2a2a2b",
+                      "surface": "#131314",
+                      "on-tertiary-fixed-variant": "#334f00",
+                      "error": "#ffb4ab",
+                      "primary": "#8aebff",
+                      "on-primary-fixed": "#001f25",
+                      "inverse-surface": "#e5e2e3",
+                      "on-tertiary-fixed": "#121f00",
+                      "surface-dim": "#131314",
+                      "tertiary": "#adf140",
+                      "background": "#131314",
+                      "on-surface-variant": "#bbc9cd",
+                      "glass-fill": "rgba(255, 255, 255, 0.06)",
+                      "surface-bright": "#3a393a",
+                      "error-container": "#93000a",
+                      "violet": "#a78bfa",
+                      "lime": "#a3e635",
+                      "on-surface": "#e5e2e3",
+                      "glass-border": "rgba(255, 255, 255, 0.08)",
+                      "surface-container-lowest": "#0e0e0f",
+                      "secondary": "#cebdff",
+                      "on-primary": "#00363e",
+                      "on-tertiary-container": "#395800",
+                      "surface-tint": "#2fd9f4",
+                      "secondary-fixed-dim": "#cebdff",
+                      "electric-cyan": "#22d3ee",
+                      "surface-container-low": "#1c1b1d",
+                      "on-secondary-fixed": "#21005e",
+                      "surface-variant": "#353436",
+                      "primary-fixed": "#a2eeff",
+                      "outline": "#859397",
+                      "tertiary-fixed": "#b2f746",
+                      "surface-container": "#201f21",
+                      "on-secondary-container": "#bea8ff",
+                      "secondary-fixed": "#e8ddff",
+                      "on-error-container": "#ffdad6",
+                      "secondary-container": "#4f319c",
+                      "on-secondary": "#381385",
+                      "on-background": "#e5e2e3",
+                      "on-error": "#690005",
+                      "on-primary-container": "#005763",
+                      "primary-fixed-dim": "#2fd9f4"
+              },
+              "spacing": {
+                      "stack-sm": "8px",
+                      "margin-mobile": "20px",
+                      "stack-lg": "32px",
+                      "margin-desktop": "80px",
+                      "grid-unit": "64px",
+                      "stack-md": "16px",
+                      "gutter": "24px"
+              },
+              "fontFamily": {
+                      "headline-sm": ["Space Grotesk"],
+                      "body-sm": ["Manrope"],
+                      "headline-md": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "headline-xl": ["Space Grotesk"],
+                      "label-caps": ["Manrope"],
+                      "body-lg": ["Manrope"],
+                      "body-md": ["Manrope"]
+              },
+              "fontSize": {
+                      "headline-sm": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0.01em", "fontWeight": "400"}],
+                      "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "600"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md selection:bg-electric-cyan selection:text-canvas">
+<div class="grid-overlay"></div>
+<div class="ambient-orb orb-cyan"></div>
+<div class="ambient-orb orb-violet"></div>
+<!-- Navigation (TopNavBar Shared Component Implementation) -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-margin-mobile md:px-margin-desktop h-[64px] bg-glass-fill backdrop-blur-[24px] border-b border-glass-border">
+<div class="font-headline-sm text-headline-sm tracking-tighter text-on-surface">
+            AETHER_STUDIO
+        </div>
+<nav class="hidden md:flex items-center gap-stack-lg">
+<a class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 font-body-sm text-body-sm" href="#">Work</a>
+<a class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 font-body-sm text-body-sm" href="#">Expertise</a>
+<a class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 font-body-sm text-body-sm" href="#">About</a>
+<a class="text-on-surface-variant hover:text-electric-cyan transition-colors duration-300 font-body-sm text-body-sm" href="#">Contact</a>
+</nav>
+<button class="bg-electric-cyan text-on-primary px-stack-md py-stack-sm rounded font-label-caps text-label-caps uppercase transition-all hover:scale-105 active:opacity-80">
+            Start Project
+        </button>
+</header>
+<main class="relative z-10 pt-[128px]">
+<!-- Breadcrumb & Header Section -->
+<section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
+<a class="group flex items-center gap-2 text-on-surface-variant font-body-sm hover:text-electric-cyan transition-colors mb-stack-lg" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+<span>All work</span>
+</a>
+<div class="flex flex-wrap gap-stack-sm mb-stack-md">
+<span class="px-2 py-1 bg-lime/10 border border-lime text-lime font-label-caps text-[10px] tracking-widest rounded-sm">LIVE</span>
+<span class="px-2 py-1 bg-electric-cyan/10 border border-electric-cyan text-electric-cyan font-label-caps text-[10px] tracking-widest rounded-sm">CLIENT WORK</span>
+<span class="px-2 py-1 bg-white/5 border border-glass-border text-on-surface-variant font-label-caps text-[10px] tracking-widest rounded-sm">WordPress</span>
+<span class="px-2 py-1 bg-white/5 border border-glass-border text-on-surface-variant font-label-caps text-[10px] tracking-widest rounded-sm">SEO</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl mb-stack-sm">
+                London Museums Directory
+            </h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl">
+                A high-performance archival platform and discovery engine engineered for London's premier cultural institutions. Accessible at 
+                <a class="text-electric-cyan border-b border-electric-cyan/30 hover:border-electric-cyan transition-colors" href="https://londonmuseums.co.uk">londonmuseums.co.uk</a>.
+            </p>
+</section>
+<!-- Hero Browser Mockup -->
+<section class="max-w-[1440px] mx-auto px-margin-mobile md:px-margin-desktop mb-stack-lg">
+<div class="glass-card rounded-xl overflow-hidden shadow-2xl relative">
+<!-- Browser Controls -->
+<div class="h-10 border-b border-glass-border flex items-center px-4 gap-2 bg-white/5">
+<div class="flex gap-1.5">
+<div class="w-3 h-3 rounded-full bg-error/40"></div>
+<div class="w-3 h-3 rounded-full bg-tertiary/40"></div>
+<div class="w-3 h-3 rounded-full bg-primary/40"></div>
+</div>
+<div class="mx-auto bg-white/5 px-4 py-0.5 rounded text-[10px] text-on-surface-variant font-body-sm w-1/3 text-center border border-glass-border">
+                        londonmuseums.co.uk
+                    </div>
+</div>
+<!-- Main Hero Image -->
+<div class="aspect-video w-full bg-surface-container-low relative group">
+<img alt="London Museums Directory Interface" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCgKnfD9I2Fj4TXR2FcOFZqmNhMcZ3Bx46MaiZLaSMRC0-v3EJpj_bjV3AbrcfmcI3Drfo3nYSRkO7F-cFR5sR_lbZpeT8mEi_ynUM5dHIN9VmucU3XOil66TS9MeEPYue0c3scunXnRCgH0uCupPsB0FL-1nZ5WBnzBRZqCVpmHCc1mkw1Ba5J-tRtwsYlSmofBZTv-QmMdB27CjfENWCWHxaofpRdOOOXA92jk5zQEuolnjkaGLXs3MXpjM3RZENhgjLrPAuJD3Pf"/>
+<!-- Overlay Glow -->
+<div class="absolute inset-0 bg-gradient-to-t from-canvas/80 via-transparent to-transparent pointer-events-none"></div>
+</div>
+</div>
+</section>
+<!-- Metrics Section -->
+<section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop mb-[128px]">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-stack-lg">
+<!-- Stat Card 1 -->
+<div class="glass-card glass-hover p-stack-lg rounded-lg flex flex-col gap-2 group">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-electric-cyan transition-colors">USER ENGAGEMENT</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-white">350+</span>
+<span class="font-body-md text-body-md text-lime pb-2">visits/day</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-stack-sm">
+<div class="h-full bg-electric-cyan w-3/4"></div>
+</div>
+</div>
+<!-- Stat Card 2 -->
+<div class="glass-card glass-hover p-stack-lg rounded-lg flex flex-col gap-2 group">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-electric-cyan transition-colors">CONTENT SCALE</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-white">100+</span>
+<span class="font-body-md text-body-md text-violet pb-2">listings</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-stack-sm">
+<div class="h-full bg-violet w-1/2"></div>
+</div>
+</div>
+<!-- Stat Card 3 -->
+<div class="glass-card glass-hover p-stack-lg rounded-lg flex flex-col gap-2 group">
+<span class="font-label-caps text-label-caps text-on-surface-variant group-hover:text-electric-cyan transition-colors">ORGANIC GROWTH</span>
+<div class="flex items-end gap-2">
+<span class="font-headline-lg text-headline-lg text-white">$0</span>
+<span class="font-body-md text-body-md text-electric-cyan pb-2">ad spend</span>
+</div>
+<div class="w-full h-1 bg-white/5 rounded-full overflow-hidden mt-stack-sm">
+<div class="h-full bg-lime w-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Technical Specs / Bento Grid Concept -->
+<section class="max-w-[1280px] mx-auto px-margin-mobile md:px-margin-desktop mb-[128px]">
+<div class="grid grid-cols-1 md:grid-cols-12 gap-stack-lg">
+<div class="md:col-span-8 glass-card p-stack-lg rounded-lg overflow-hidden relative min-h-[400px]">
+<div class="relative z-10 h-full flex flex-col justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-electric-cyan block mb-4">SYSTEM ARCHITECTURE</span>
+<h2 class="font-headline-md text-headline-md text-white max-w-md">Engineered for sub-second load times and cultural depth.</h2>
+</div>
+<div class="grid grid-cols-2 gap-stack-md mt-stack-lg">
+<div class="space-y-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant">FRONT-END</p>
+<p class="font-body-md text-white">Next.js 14 / TypeScript</p>
+</div>
+<div class="space-y-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant">STYLING</p>
+<p class="font-body-md text-white">Tailwind / Framer Motion</p>
+</div>
+</div>
+</div>
+<!-- Abstract Background Graphic -->
+<div class="absolute right-0 bottom-0 w-1/2 h-full opacity-10 pointer-events-none">
+<div class="w-full h-full border-l border-t border-glass-border translate-x-10 translate-y-10"></div>
+<div class="w-full h-full border-l border-t border-glass-border translate-x-20 translate-y-20"></div>
+<div class="w-full h-full border-l border-t border-glass-border translate-x-30 translate-y-30"></div>
+</div>
+</div>
+<div class="md:col-span-4 glass-card p-stack-lg rounded-lg flex flex-col justify-between group overflow-hidden">
+<img alt="Studio Interior" class="absolute inset-0 w-full h-full object-cover opacity-20 grayscale group-hover:grayscale-0 group-hover:scale-110 transition-all duration-700" data-alt="A macro close-up of high-end camera equipment and studio glass in a dark, atmospheric creative space. The lighting is dominated by deep blues and vibrant cyans, reflecting the electric-cyan aesthetic of the studio. The mood is precise, technical, and artistic, echoing the high-performance engineering values of a professional digital agency." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBkIH_hu9qmUxIOMBUM_L2DmsVueL_qLALIRKLRcD_1b9279NyOoV9E_LGO1GwVHZvvGkpcMgsCcRu9l59M3LniJXWB7_bFzOg604QY7ytb89FhztHqvRr_Gj3z1MYvUrbI4mV96n8nVunDcprLaQjiH9VNvE1V1eWfK7nZmjWkbeOKlaLE5F5obYOP1-Rhx0BCG9XPZrsRDRc2zVrRf6_1Wh7BrUhLH9i31vrq2AnxlhfnEMEgbQUJq7Gcj7m2dcy-tOVsP8dmLkm6"/>
+<div class="relative z-10 h-full flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-on-surface-variant">METHODOLOGY</span>
+<div class="mt-auto">
+<h3 class="font-headline-sm text-headline-sm text-white mb-2">Editorial Precision</h3>
+<p class="font-body-sm text-on-surface-variant">Focusing on high-fidelity typography and grid structures to elevate cultural content.</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Footer Shared Component Implementation) -->
+<footer class="w-full py-stack-lg px-margin-mobile md:px-margin-desktop flex flex-col md:flex-row justify-between items-center gap-stack-md bg-canvas border-t border-glass-border relative z-10">
+<div class="font-headline-sm text-headline-sm text-on-surface">
+            AETHER_STUDIO
+        </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left">
+            © 2024 AETHER DIGITAL STUDIO. ENGINEERED FOR PRECISION.
+        </div>
+<div class="flex gap-stack-md">
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">LinkedIn</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">GitHub</a>
+<a class="text-on-surface-variant hover:text-on-surface transition-colors font-body-sm text-body-sm" href="#">Privacy</a>
+</div>
+</footer>
+<!-- Interactive Script -->
+<script>
+        // Subtle mouse tracking for ambient orbs
+        document.addEventListener('mousemove', (e) => {
+            const cyan = document.querySelector('.orb-cyan');
+            const violet = document.querySelector('.orb-violet');
+            
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            cyan.style.transform = `translate(${mouseX * 30}px, ${mouseY * 30}px)`;
+            violet.style.transform = `translate(${mouseX * -30}px, ${mouseY * -30}px)`;
+        });
+
+        // Entrance animations for metrics
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

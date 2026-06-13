@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURA // Memory Archive</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #05060B;
+            color: #e3e1ea;
+            overflow-x: hidden;
+        }
+        .grid-bg {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .ambient-orb {
+            position: fixed;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+            border-radius: 50%;
+        }
+        .orb-1 { width: 400px; height: 400px; background: #5cd6f2; top: -100px; right: -100px; }
+        .orb-2 { width: 500px; height: 500px; background: #572c9c; bottom: -150px; left: -150px; }
+        
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-border:hover {
+            border-color: rgba(92, 214, 242, 0.4);
+            box-shadow: 0 0 15px rgba(92, 214, 242, 0.1);
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#bcc9cd",
+                      "surface-container-high": "#282a30",
+                      "surface-container": "#1e1f26",
+                      "secondary-fixed": "#ebdcff",
+                      "border-glass": "rgba(255, 255, 255, 0.08)",
+                      "on-surface": "#e3e1ea",
+                      "on-primary-fixed-variant": "#004e5c",
+                      "surface-bright": "#383940",
+                      "secondary-container": "#572c9c",
+                      "fill-glass": "rgba(255, 255, 255, 0.04)",
+                      "primary": "#d4f5ff",
+                      "on-primary-fixed": "#001f26",
+                      "on-secondary": "#3f0b84",
+                      "status-lime": "#A3E635",
+                      "on-tertiary-fixed-variant": "#334f00",
+                      "inverse-surface": "#e3e1ea",
+                      "secondary": "#d4bbff",
+                      "surface-dim": "#121319",
+                      "on-tertiary-fixed": "#121f00",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#98da27",
+                      "secondary-fixed-dim": "#d4bbff",
+                      "on-secondary-container": "#c6a5ff",
+                      "surface-variant": "#33343b",
+                      "error-container": "#93000a",
+                      "on-background": "#e3e1ea",
+                      "outline": "#879397",
+                      "inverse-on-surface": "#2f3037",
+                      "primary-fixed": "#aaedff",
+                      "surface-tint": "#5cd6f2",
+                      "background": "#121319",
+                      "outline-variant": "#3d494c",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#260058",
+                      "primary-fixed-dim": "#5cd6f2",
+                      "bg-panel": "#0D1018",
+                      "surface-container-lowest": "#0d0e14",
+                      "surface-container-highest": "#33343b",
+                      "on-tertiary": "#213600",
+                      "on-secondary-fixed-variant": "#572c9c",
+                      "on-tertiary-container": "#426500",
+                      "primary-container": "#6be3ff",
+                      "bg-deep": "#05060B",
+                      "tertiary": "#d0ff8a",
+                      "surface-container-low": "#1a1b21",
+                      "inverse-primary": "#006879",
+                      "tertiary-fixed": "#b2f746",
+                      "on-primary-container": "#006475",
+                      "on-primary": "#003640",
+                      "tertiary-container": "#a4e736",
+                      "surface": "#121319"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "grid-line": "64px",
+                      "base-unit": "4px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "label-mono": ["JetBrains Mono"],
+                      "headline-md": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "stats-xl": ["JetBrains Mono"],
+                      "display-xl": ["Space Grotesk"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"]
+              },
+              "fontSize": {
+                      "label-mono": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                      "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "headline-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "700"}],
+                      "stats-xl": ["32px", {"lineHeight": "1", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                      "display-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "1.5", "letterSpacing": "0em", "fontWeight": "400"}],
+                      "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-on-surface">
+<!-- Background Infrastructure -->
+<div class="fixed inset-0 grid-bg pointer-events-none opacity-20"></div>
+<div class="ambient-orb orb-1"></div>
+<div class="ambient-orb orb-2"></div>
+<!-- TopNavBar Implementation -->
+<nav class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-fill-glass backdrop-blur-md border-b border-border-glass">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">AURA</span>
+</div>
+<div class="flex items-center gap-6">
+<div class="hidden md:flex items-center bg-surface-container-low border border-border-glass px-3 py-1.5 rounded-lg">
+<span class="material-symbols-outlined text-on-surface-variant text-sm mr-2">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-label-mono text-sm w-48 text-on-surface p-0" placeholder="Search archive..." type="text"/>
+</div>
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer active:scale-95">notifications</button>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary transition-all cursor-pointer active:scale-95">settings</button>
+<img alt="User profile" class="w-8 h-8 rounded-full border border-primary/20" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYtzk2wAHq7tS7cTSkY7ZVdywGXmHnlHlHbgIU1IFMOW3IjrJs_TIzd3A1e17xvEu-P-oLqsGFEaw5UarOFX0O1vE-G6Fua_GwTUdDkDKUk1HRY1dlaJrzyAU-71Spl3-w8y_lPdOfy_Jfu30O9On4tE88JcJhp0vXP61yt94HrWQs3225ej2cuYvWduKQcRJOgH3onQxjzUJpOfwdU0lVipauP71-ZE3NhyUVL7nOqaSiGteey_B0XmZ3E1bs50B5Mr38ll54dh0e"/>
+</div>
+</div>
+</nav>
+<!-- SideNavBar Implementation -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col pt-20 pb-16 bg-surface-container-low border-r border-border-glass hidden md:flex z-40">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;">terminal</span>
+</div>
+<div>
+<div class="font-headline-md text-sm text-primary font-bold">AURA v1.0</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">Local Intelligence</div>
+</div>
+</div>
+<button class="w-full mt-6 py-2 bg-primary-container text-on-primary-container font-headline-md text-sm rounded-lg hover:brightness-110 transition-all active:scale-95">
+                New Session
+            </button>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">terminal</span>
+<span class="font-label-mono text-label-mono uppercase">Terminal</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 bg-secondary-container text-on-secondary-container rounded-lg group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">database</span>
+<span class="font-label-mono text-label-mono uppercase">Memory</span>
+</a>
+<a class="flex items-center gap-3 px-4 py-3 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:text-primary transition-colors">hub</span>
+<span class="font-label-mono text-label-mono uppercase">Nexus</span>
+</a>
+</nav>
+<div class="px-4 mt-auto pt-4 border-t border-border-glass/50 space-y-1">
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface text-sm font-label-mono" href="#">
+<span class="material-symbols-outlined text-base">description</span> Docs
+            </a>
+<a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:text-on-surface text-sm font-label-mono" href="#">
+<span class="material-symbols-outlined text-base">help_outline</span> Help
+            </a>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="md:pl-64 pt-16 pb-12 min-h-screen">
+<div class="max-w-[1200px] mx-auto px-gutter py-10">
+<!-- Header Section -->
+<header class="mb-12">
+<div class="flex items-center gap-2 text-status-lime font-label-mono text-[12px] uppercase mb-2">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-lime opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-status-lime"></span>
+</span>
+                    Archive Synchronized
+                </div>
+<h1 class="font-display-xl text-headline-lg md:text-display-xl text-on-surface mb-4">Memory Archive</h1>
+<p class="font-body-lg text-on-surface-variant max-w-2xl">
+                    Access permanent neural traces stored in local memory. Traces include synaptic summaries, key insights, and interaction metadata.
+                </p>
+</header>
+<!-- Filter HUD -->
+<div class="glass-panel rounded-xl p-4 mb-8 flex flex-wrap items-center justify-between gap-4 border border-border-glass">
+<div class="flex items-center gap-4">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">Sort by:</span>
+<select class="bg-surface-container-low border border-border-glass text-label-mono text-[12px] px-3 py-1 rounded focus:ring-primary/20">
+<option>Recent Activity</option>
+<option>Synthesized Density</option>
+<option>Priority Bits</option>
+</select>
+</div>
+<div class="flex gap-2">
+<span class="bg-primary/10 border border-primary/30 text-primary text-[10px] font-label-mono px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer">
+<div class="w-1 h-1 bg-primary rounded-full"></div> Cognition
+                    </span>
+<span class="bg-status-lime/10 border border-status-lime/30 text-status-lime text-[10px] font-label-mono px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer">
+<div class="w-1 h-1 bg-status-lime rounded-full"></div> Memory
+                    </span>
+<span class="bg-secondary/10 border border-secondary/30 text-secondary text-[10px] font-label-mono px-3 py-1 rounded-full flex items-center gap-1 cursor-pointer">
+<div class="w-1 h-1 bg-secondary rounded-full"></div> System
+                    </span>
+</div>
+</div>
+<!-- Neural Trace Feed (Chronological Bento) -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-6">
+<!-- Trace Card 1: Large Featured -->
+<div class="md:col-span-8 group cursor-pointer">
+<div class="glass-panel rounded-2xl p-8 h-full border border-border-glass glow-border transition-all flex flex-col">
+<div class="flex justify-between items-start mb-6">
+<div class="font-label-mono text-[12px] text-on-surface-variant">
+                                [ TRACE_ID: 9942-X ] <span class="mx-2 opacity-30">//</span> <span class="text-primary">2 HOURS AGO</span>
+</div>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary transition-colors">more_vert</span>
+</div>
+<h3 class="font-headline-md text-headline-md mb-4 group-hover:text-primary transition-colors">Strategic Planning: Project "Neon Sky"</h3>
+<p class="font-body-md text-on-surface-variant mb-8 flex-1">
+                            Analyzed multi-threaded dependencies for the upcoming digital installation. Key insights identified in spatial audio routing and real-time shader optimizations. Recommendation: Pivot to Vulkan for increased overhead buffer.
+                        </p>
+<div class="flex flex-wrap gap-3 mt-auto">
+<span class="font-label-mono text-[11px] bg-primary/5 border border-primary/20 text-primary px-3 py-1 rounded uppercase">Cognition</span>
+<span class="font-label-mono text-[11px] bg-white/5 border border-white/10 text-on-surface px-3 py-1 rounded uppercase">Strategy</span>
+<span class="font-label-mono text-[11px] bg-white/5 border border-white/10 text-on-surface px-3 py-1 rounded uppercase">Optimization</span>
+</div>
+</div>
+</div>
+<!-- Trace Card 2: Small Stats -->
+<div class="md:col-span-4 group">
+<div class="glass-panel rounded-2xl p-6 border border-border-glass glow-border transition-all flex flex-col justify-center items-center text-center">
+<div class="w-16 h-16 rounded-full bg-status-lime/10 flex items-center justify-center mb-4 border border-status-lime/20">
+<span class="material-symbols-outlined text-status-lime text-3xl">insights</span>
+</div>
+<div class="font-stats-xl text-stats-xl text-on-surface mb-1">84%</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest mb-4">Synaptic Cohesion</div>
+<p class="text-xs text-on-surface-variant font-body-md">Your recent interactions show high correlation with "Creative Engineering" clusters.</p>
+</div>
+</div>
+<!-- Trace Card 3: Standard -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="glass-panel rounded-2xl p-6 border border-border-glass glow-border transition-all">
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-4 uppercase tracking-tighter">
+                            Yesterday <span class="mx-1">/</span> 14:32 PST
+                        </div>
+<h4 class="font-headline-md text-lg mb-3">API Integration Debugging</h4>
+<p class="font-body-md text-sm text-on-surface-variant line-clamp-3 mb-6">
+                            Troubleshooting OAuth2 callback flow in the staging environment. Captured token refresh latency issues.
+                        </p>
+<div class="flex gap-2">
+<span class="font-label-mono text-[10px] bg-secondary/10 border border-secondary/20 text-secondary px-2 py-0.5 rounded uppercase">Memory</span>
+</div>
+</div>
+</div>
+<!-- Trace Card 4: Standard -->
+<div class="md:col-span-4 group cursor-pointer">
+<div class="glass-panel rounded-2xl p-6 border border-border-glass glow-border transition-all">
+<div class="font-label-mono text-[11px] text-on-surface-variant mb-4 uppercase tracking-tighter">
+                            Yesterday <span class="mx-1">/</span> 09:11 PST
+                        </div>
+<h4 class="font-headline-md text-lg mb-3">UI Components Design</h4>
+<p class="font-body-md text-sm text-on-surface-variant line-clamp-3 mb-6">
+                            Defining the glassmorphism parameters for the core library. Focus on backdrop-blur and 1px borders.
+                        </p>
+<div class="flex gap-2">
+<span class="font-label-mono text-[10px] bg-primary/10 border border-primary/20 text-primary px-2 py-0.5 rounded uppercase">Cognition</span>
+</div>
+</div>
+</div>
+<!-- Trace Card 5: Visual Insight -->
+<div class="md:col-span-4 relative group overflow-hidden rounded-2xl border border-border-glass cursor-pointer h-[240px]">
+<img class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="A macro photograph of an abstract, iridescent technological surface with organic, fluid-like metallic patterns. The lighting is low-key with glowing cyan and violet highlights reflecting off the dark obsidian material, creating a futuristic, holographic depth that matches a dark sci-fi design system." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDwCyz_VA7gdvrNuHi7M8cYHOQSoT8pcXqkkmfIViI80q1JJXD8SNCPeDNjBQI_Z_0CTAZ57qT8PbyGwaBKbj02CxauO-gO1FwJKEiafxIiPo21lCN4y03abfynn4egGsW_bo_AvV1__pDoIRyir2yMjumL-ZXnUqynuBi6HEiutexn-DVoxq0HatUYXlPbGdM6Ow08qQu9KQB3TmVmeazxsAW09Ncwf5StVZEhSGaYwlGaCsXpVAZX2gdewqLL7-KU_rdNFOxLc6UG"/>
+<div class="absolute inset-0 bg-gradient-to-t from-bg-deep via-transparent to-transparent opacity-80"></div>
+<div class="absolute bottom-4 left-4 right-4">
+<div class="font-label-mono text-[10px] text-primary uppercase mb-1">Visual Trace</div>
+<div class="font-headline-md text-sm text-on-surface">System Aesthetic Parameters</div>
+</div>
+</div>
+<!-- Trace Card 6: Timeline Divider style -->
+<div class="md:col-span-12 py-4 flex items-center gap-4">
+<div class="h-[1px] flex-1 bg-border-glass"></div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-[0.2em]">November 18, 2024</div>
+<div class="h-[1px] flex-1 bg-border-glass"></div>
+</div>
+<!-- Trace Card 7: Archive Entry -->
+<div class="md:col-span-6 group cursor-pointer">
+<div class="glass-panel rounded-2xl p-6 border border-border-glass glow-border transition-all">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded bg-surface-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">history_edu</span>
+</div>
+<div class="font-label-mono text-[11px] text-on-surface-variant uppercase">Archive Synapse: ID_4402</div>
+</div>
+<h4 class="font-headline-md text-lg mb-2">Architectural Review: Micro-services</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Complete audit of internal service communication protocols. Latency bottlenecks identified in the notification queue cluster.</p>
+</div>
+</div>
+<!-- Trace Card 8: Archive Entry -->
+<div class="md:col-span-6 group cursor-pointer">
+<div class="glass-panel rounded-2xl p-6 border border-border-glass glow-border transition-all">
+<div class="flex items-center gap-3 mb-4">
+<div class="p-2 rounded bg-surface-variant/30">
+<span class="material-symbols-outlined text-on-surface-variant text-sm">auto_awesome</span>
+</div>
+<div class="font-label-mono text-[11px] text-on-surface-variant uppercase">Insight Generation: Creative</div>
+</div>
+<h4 class="font-headline-md text-lg mb-2">Project Inspiration: Bio-digital interfaces</h4>
+<p class="font-body-md text-sm text-on-surface-variant">Exploration of synthetic biology aesthetic and its application to UI motion curves. Inspired by slow fungal growth patterns.</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Implementation -->
+<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-gutter py-2 h-10 bg-surface-dim border-t border-border-glass">
+<div class="font-label-mono text-label-mono uppercase text-status-lime">
+            SYSTEM STATUS: OPTIMAL // ENCRYPTED
+        </div>
+<div class="hidden md:flex items-center gap-6">
+<span class="font-label-mono text-label-mono text-on-surface-variant">Uptime: 99.9%</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">Latency: 12ms</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant">v1.0.4-stable</span>
+</div>
+</footer>
+<!-- Micro-interaction JS -->
+<script>
+        // Subtle ambient movement for orbs
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const orb1 = document.querySelector('.orb-1');
+            const orb2 = document.querySelector('.orb-2');
+            
+            orb1.style.transform = `translate(${x * 40}px, ${y * 40}px)`;
+            orb2.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+        });
+
+        // Add "active" pulse on trace card click
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mousedown', () => {
+                card.style.transform = 'scale(0.99)';
+            });
+            card.addEventListener('mouseup', () => {
+                card.style.transform = 'scale(1)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'scale(1)';
+            });
+        });
+    </script>
+</body></html>

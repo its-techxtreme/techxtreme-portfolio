@@ -7,7 +7,7 @@ const stats = [
   { end: 350, suffix: "+", label: "Monthly organic visits (flagship directory)", highlight: false },
   { end: 2600, suffix: "+", label: "Active markets tracked (AI platform)", highlight: true },
   { value: "24/7", label: "Async delivery · Documented handover", highlight: false },
-  { value: "5", label: "Production-grade builds in portfolio", highlight: false },
+  { value: "7", label: "Production-grade builds in portfolio", highlight: false },
 ] as const;
 
 export function HorizonStrip() {

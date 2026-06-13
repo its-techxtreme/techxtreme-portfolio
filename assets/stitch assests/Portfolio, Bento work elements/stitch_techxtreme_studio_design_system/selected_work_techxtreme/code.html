@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary-container": "#22d3ee",
+                        "on-secondary": "#381385",
+                        "outline": "#859397",
+                        "surface-variant": "#353436",
+                        "on-tertiary-container": "#395800",
+                        "secondary-fixed": "#e8ddff",
+                        "inverse-on-surface": "#313031",
+                        "surface-bright": "#3a393a",
+                        "electric-cyan": "#22d3ee",
+                        "surface-container": "#201f21",
+                        "on-primary-fixed-variant": "#004e5a",
+                        "tertiary-container": "#93d420",
+                        "on-secondary-fixed-variant": "#4f319c",
+                        "tertiary-fixed-dim": "#98da27",
+                        "secondary-container": "#4f319c",
+                        "surface-tint": "#2fd9f4",
+                        "violet-accent": "#a78bfa",
+                        "on-primary-container": "#005763",
+                        "inverse-primary": "#006877",
+                        "on-error-container": "#ffdad6",
+                        "background": "#131314",
+                        "on-primary": "#00363e",
+                        "on-primary-fixed": "#001f25",
+                        "lime-status": "#a3e635",
+                        "tertiary": "#adf140",
+                        "primary-fixed-dim": "#2fd9f4",
+                        "secondary-fixed-dim": "#cebdff",
+                        "surface": "#131314",
+                        "on-surface": "#e5e2e3",
+                        "on-tertiary-fixed-variant": "#334f00",
+                        "surface-container-highest": "#353436",
+                        "canvas": "#070708",
+                        "on-tertiary": "#213600",
+                        "primary": "#8aebff",
+                        "inverse-surface": "#e5e2e3",
+                        "surface-dim": "#131314",
+                        "tertiary-fixed": "#b2f746",
+                        "on-secondary-container": "#bea8ff",
+                        "glass-fill": "rgba(255, 255, 255, 0.04)",
+                        "outline-variant": "#3c494c",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface-container-low": "#1c1b1d",
+                        "on-error": "#690005",
+                        "glass-border": "rgba(255, 255, 255, 0.08)",
+                        "error-container": "#93000a",
+                        "primary-fixed": "#a2eeff",
+                        "secondary": "#cebdff",
+                        "on-secondary-fixed": "#21005e",
+                        "on-surface-variant": "#bbc9cd",
+                        "on-background": "#e5e2e3",
+                        "on-tertiary-fixed": "#121f00",
+                        "error": "#ffb4ab",
+                        "surface-container-high": "#2a2a2b"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "gutter": "24px",
+                        "grid-size": "64px",
+                        "margin-mobile": "16px",
+                        "unit": "4px"
+                    },
+                    "fontFamily": {
+                        "label-sm": ["Manrope"],
+                        "label-md": ["Manrope"],
+                        "headline-lg-mobile": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-lg": ["Space Grotesk"],
+                        "body-md": ["Manrope"],
+                        "body-lg": ["Manrope"],
+                        "headline-xl": ["Space Grotesk"]
+                    },
+                    "fontSize": {
+                        "label-sm": ["12px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "label-md": ["14px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-lg-mobile": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "0em", "fontWeight": "400"}],
+                        "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #070708;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .ambient-orb {
+            position: fixed;
+            filter: blur(120px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 9999px;
+        }
+        .orb-cyan { width: 500px; height: 500px; background: #22d3ee; top: -100px; left: -100px; }
+        .orb-violet { width: 400px; height: 400px; background: #a78bfa; bottom: 10%; right: 5%; }
+        
+        .gradient-text {
+            background: linear-gradient(to right, #22d3ee, #a78bfa, #f472b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .glass-card:hover {
+            transform: translateY(-8px);
+            background: rgba(255, 255, 255, 0.08);
+            border-color: #22d3ee;
+        }
+        .pill {
+            padding: 4px 12px;
+            border-radius: 9999px;
+            font-family: 'Manrope';
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body class="text-on-surface antialiased overflow-x-hidden min-h-screen">
+<div class="ambient-orb orb-cyan"></div>
+<div class="ambient-orb orb-violet"></div>
+<!-- Navigation (From Shared Components) -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 dark:bg-surface/80 backdrop-blur-xl border-b border-glass-border">
+<div class="flex justify-between items-center px-margin-desktop h-16 w-full max-w-7xl mx-auto">
+<div class="font-headline-md text-headline-md font-bold tracking-tighter text-on-surface dark:text-on-surface">
+                TECHXTREME
+            </div>
+<nav class="hidden md:flex gap-8 items-center">
+<a class="font-label-md text-label-md text-electric-cyan border-b-2 border-electric-cyan pb-1 transition-transform active:scale-95" href="#">Work</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="#">Studio</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="#">Lab</a>
+<a class="font-label-md text-label-md text-on-surface-variant dark:text-on-surface-variant hover:text-electric-cyan transition-colors duration-300" href="#">Contact</a>
+<button class="ml-4 px-6 py-2 bg-electric-cyan text-on-primary rounded-lg font-label-md text-label-md font-bold hover:scale-105 transition-transform">
+                    Hire Us
+                </button>
+</nav>
+</div>
+</header>
+<main class="pt-32 pb-24 px-margin-desktop max-w-7xl mx-auto">
+<!-- Hero Section -->
+<div class="mb-16">
+<div class="flex items-center gap-4 mb-4">
+<div class="h-[1px] w-8 bg-electric-cyan"></div>
+<span class="font-mono text-electric-cyan tracking-widest text-[14px] uppercase font-bold">SELECTED WORK</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-white mb-2">
+                Shipped products.
+                <span class="gradient-text">*Real screenshots.</span>
+</h2>
+<p class="font-body-lg text-body-lg text-[#71717a] max-w-2xl">
+                A collection of precision-engineered digital products and brand identities crafted for high-growth tech startups and creative institutions.
+            </p>
+</div>
+<!-- Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-12 gap-gutter auto-rows-[320px]">
+<!-- Card 1: Museum Directory -->
+<div class="md:col-span-7 md:row-span-2 glass-card rounded-[28px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBAV0OzsgsdG1rJwhAXKX9eoG3bjSadxnANQoLGoT0LjP1SUiY_FV6yzUdRnOi4_2DY5z8t_T_bL0Ph3dr5ZQBBOQH3p7eSzB6Y400vwnfCpRbUywJP9dF3s6rfDPsbJddYVXXQn7SaCCwr-djt72uL01gAD6GjMH_GxJGPEFEJWu4-SU8yuxJcEnWXPR2NzJvCR0hSlRUVhSsPjRCnXLbF7AN4ZLPEoo_fnm1SKfdVbvUWrRfz8q7TQHxrdqU5blF5aYwszASfQdTV')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<!-- Content Overlay -->
+<div class="absolute top-6 left-6 flex gap-2">
+<span class="pill bg-lime-status/20 text-lime-status border border-lime-status/30">LIVE</span>
+<span class="pill bg-electric-cyan/20 text-electric-cyan border border-electric-cyan/30">CLIENT WORK</span>
+</div>
+<div class="absolute top-6 right-6">
+<button class="w-12 h-12 rounded-full border border-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-electric-cyan hover:text-black transition-colors">
+<span class="material-symbols-outlined">north_east</span>
+</button>
+</div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-md text-headline-md text-white mb-1">London Museums Directory</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">Archiving cultural heritage through high-fidelity UI.</p>
+</div>
+</div>
+<!-- Card 2: Trading Dashboard -->
+<div class="md:col-span-5 md:row-span-2 glass-card rounded-[28px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center transition-transform duration-700 group-hover:scale-110" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD4HfOr5Wwtuz8jhfXI-5swWZoY4yHMDe219vRiC56hf4mvLxVp1sotWo39YEa7Sq3lRbgRSkd7CyVYqthH1rr3SdJ_v6HtrdMw2V07uEHxbRbX8t0eh2HLJoGblR-Cy97e19s6zJ6SK-4lRyitQ--V3wgAnu7giMjxOFwT8CjkufZ3avm55-aQsqbaxJJ62vjvZrXT_xDkqfprBo5XJBwWa8f97MEuCAyoyxMJ7TddTlH0QCQ_4-OaKMIHe2Rp4LlgDLP6cthqezJA')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+<div class="absolute top-6 left-6 flex gap-2">
+<span class="pill bg-surface-container-highest text-on-surface-variant border border-glass-border">PRIVATE</span>
+<span class="pill bg-violet-accent/20 text-violet-accent border border-violet-accent/30">6 AI MODELS</span>
+</div>
+<div class="absolute top-6 right-6">
+<button class="w-12 h-12 rounded-full border border-white/20 backdrop-blur-md flex items-center justify-center text-white hover:bg-electric-cyan hover:text-black transition-colors">
+<span class="material-symbols-outlined">lock</span>
+</button>
+</div>
+<div class="absolute bottom-8 left-8">
+<h3 class="font-headline-md text-headline-md text-white">Quantum Trading Interface</h3>
+</div>
+</div>
+<!-- Card 3: VA Service -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-[28px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-100 transition-opacity" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDm1SIiaHOA7G-vudM7awFBFtLOl3WE37wj6Sr27CTRkDsMP-UM0IUkRJCjztvB4koKPBtqarDxYMHUHLn-cgwiir8VV42GZxCaHqRB0SZKooCJQVhNyP2gnQDFmEZj_mN714E3m4zzP_wEJYnRFeMyLIpjP614194MgAEnXVkgovks3-sxfqGdJjA9HT3Bt6PC7BNw_iCENIOSAS7vIIfm1WXgdyZin9I18aBonrdyJDvBe96RHns60afBODiEVtbyV3j7Xqqsoukx')"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="pill bg-white/10 text-white border border-white/20">WEBSITE</span>
+<button class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-electric-cyan group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+</button>
+</div>
+<h4 class="font-label-md text-label-md text-white">Virtalent VA Platform</h4>
+</div>
+</div>
+<!-- Card 4: Neural Network -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-[28px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-100 transition-opacity" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBTxVItJ-0T5q86jtH1aFiDc2uMnHPsgGEv-OfBM08XaR30lrCqyE34kySC77bUIkjv_fHHYZ37AQjQBnJoGxpO__qHAE7-5M-qSYlvLOzVcnen2N3MDk49V-sPWaO0ZnBiqhU_ivutkgZlThpuMOXlvPmSu1J5fs_prvOegpGmMEKiFI908ddnP9FNHTvPqg5M3Euu8EklSq6zf0XXZALEbeJVWHTQEORtacgjDc_kudnXj5DmC6hrhctFj-WB4-a-ZOKuUQUc6PUF')"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="pill bg-white/10 text-white border border-white/20">VISUALIZATION</span>
+<button class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-electric-cyan group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+</button>
+</div>
+<h4 class="font-label-md text-label-md text-white">Neural Mesh Engine</h4>
+</div>
+</div>
+<!-- Card 5: EdTech Logo -->
+<div class="md:col-span-4 md:row-span-1 glass-card rounded-[28px] overflow-hidden relative group">
+<div class="absolute inset-0 bg-cover bg-center opacity-60 group-hover:opacity-100 transition-opacity" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBf5-VKY4_aecFphwTXCe9G05jVzpsRaPxJsYnDE1tNCreAIB-cwlWxbpKQfBd6kXCwoxRp52d7rh2Bp7Qr9T_69QaVRjBtdBPoUtnVc_hiV-vv8P94JTZjfEIa9oMQTvFS0JwNTywDkw-Gn0pQabtCRmzcUk9RpAirsgvag4BlmZxPFkwqMEpz6QnR9-gUn8wimbsmxNoMPxVyU7aIyN4CyGMDBgTpnHfsPi0ihKoGc3oWJfoVcjpJNuElgi31DAhNgkZ1w2LlKLpq')"></div>
+<div class="absolute inset-0 bg-black/40"></div>
+<div class="absolute inset-0 p-6 flex flex-col justify-between">
+<div class="flex justify-between items-start">
+<span class="pill bg-white/10 text-white border border-white/20">IDENTITY</span>
+<button class="w-8 h-8 rounded-full border border-white/20 flex items-center justify-center text-white group-hover:bg-electric-cyan group-hover:text-black transition-colors">
+<span class="material-symbols-outlined text-[18px]">arrow_outward</span>
+</button>
+</div>
+<h4 class="font-label-md text-label-md text-white">Lumina Education Branding</h4>
+</div>
+</div>
+</div>
+<!-- External Links -->
+<div class="mt-12 flex flex-wrap gap-4">
+<a class="glass-card px-6 py-3 rounded-full flex items-center gap-3 hover:border-lime-status transition-colors group" href="https://londonmuseums.co.uk">
+<div class="w-2 h-2 rounded-full bg-lime-status shadow-[0_0_8px_rgba(163,230,53,0.6)]"></div>
+<span class="font-label-md text-label-md text-on-surface group-hover:text-white">londonmuseums.co.uk</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">link</span>
+</a>
+<a class="glass-card px-6 py-3 rounded-full flex items-center gap-3 hover:border-lime-status transition-colors group" href="https://virtalent.com">
+<div class="w-2 h-2 rounded-full bg-lime-status shadow-[0_0_8px_rgba(163,230,53,0.6)]"></div>
+<span class="font-label-md text-label-md text-on-surface group-hover:text-white">virtalent.com</span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">link</span>
+</a>
+</div>
+</main>
+<!-- Footer (From Shared Components) -->
+<footer class="w-full border-t border-glass-border mt-32">
+<div class="flex flex-col md:flex-row justify-between items-center px-margin-desktop py-12 w-full max-w-7xl mx-auto">
+<div class="font-label-md text-label-md font-bold text-on-surface mb-6 md:mb-0">
+                TECHXTREME
+            </div>
+<div class="flex gap-8 mb-6 md:mb-0">
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-white transition-colors" href="#">Twitter</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-white transition-colors" href="#">GitHub</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-white transition-colors" href="#">LinkedIn</a>
+<a class="font-label-sm text-label-sm text-on-surface-variant hover:text-white transition-colors" href="#">Privacy</a>
+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">
+                © 2024 TECHXTREME. ALL RIGHTS RESERVED.
+            </div>
+</div>
+</footer>
+<script>
+        // Atmospheric effect: follow mouse with a subtle orb
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX / window.innerWidth;
+            const y = e.clientY / window.innerHeight;
+            
+            const orbCyan = document.querySelector('.orb-cyan');
+            const orbViolet = document.querySelector('.orb-violet');
+            
+            orbCyan.style.transform = `translate(${x * 50}px, ${y * 50}px)`;
+            orbViolet.style.transform = `translate(${x * -30}px, ${y * -30}px)`;
+        });
+
+        // Intersection observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.classList.add('transition-all', 'duration-700', 'opacity-0', 'translate-y-10');
+            observer.observe(card);
+        });
+    </script>
+</body></html>

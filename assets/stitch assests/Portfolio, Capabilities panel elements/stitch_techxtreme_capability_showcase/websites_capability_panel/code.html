@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Techxtreme | High-Precision Capabilities</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=Manrope:wght@300;400;500;600;700&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface-container-high": "#2a2a2b",
+                        "surface-container-highest": "#353436",
+                        "grid-line": "rgba(255, 255, 255, 0.05)",
+                        "status-lime": "#a3e635",
+                        "secondary-container": "#4f319c",
+                        "surface-variant": "#353436",
+                        "surface-container-lowest": "#0e0e0f",
+                        "error": "#ffb4ab",
+                        "primary": "#8aebff",
+                        "outline": "#859397",
+                        "on-secondary-container": "#bea8ff",
+                        "outline-variant": "#3c494c",
+                        "on-error-container": "#ffdad6",
+                        "inverse-on-surface": "#313031",
+                        "surface": "#131314",
+                        "on-primary": "#00363e",
+                        "secondary": "#cebdff",
+                        "on-primary-container": "#005763",
+                        "on-tertiary-container": "#6e4600",
+                        "on-surface": "#e5e2e3",
+                        "on-secondary-fixed": "#21005e",
+                        "surface-bright": "#3a393a",
+                        "on-tertiary-fixed": "#2a1800",
+                        "border-glass": "rgba(255, 255, 255, 0.08)",
+                        "on-primary-fixed": "#001f25",
+                        "surface-tint": "#2fd9f4",
+                        "on-background": "#e5e2e3",
+                        "secondary-fixed": "#e8ddff",
+                        "tertiary-fixed-dim": "#ffb957",
+                        "fill-glass": "rgba(255, 255, 255, 0.04)",
+                        "on-secondary-fixed-variant": "#4f319c",
+                        "inverse-primary": "#006877",
+                        "primary-fixed-dim": "#2fd9f4",
+                        "surface-container-low": "#1c1b1d",
+                        "primary-container": "#22d3ee",
+                        "tertiary-container": "#ffb13b",
+                        "secondary-fixed-dim": "#cebdff",
+                        "inverse-surface": "#e5e2e3",
+                        "background": "#070708",
+                        "on-tertiary": "#462b00",
+                        "primary-fixed": "#a2eeff",
+                        "surface-container": "#201f21",
+                        "on-surface-variant": "#bbc9cd",
+                        "tertiary-fixed": "#ffddb5",
+                        "tertiary": "#ffd6a3",
+                        "error-container": "#93000a",
+                        "on-tertiary-fixed-variant": "#643f00",
+                        "surface-dim": "#131314",
+                        "on-primary-fixed-variant": "#004e5a",
+                        "on-error": "#690005",
+                        "on-secondary": "#381385"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "gutter": "24px",
+                        "grid-unit": "64px",
+                        "margin-mobile": "16px",
+                        "base": "8px",
+                        "margin-desktop": "48px"
+                    },
+                    "fontFamily": {
+                        "label-mono": ["Manrope"],
+                        "headline-lg": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-sm": ["Space Grotesk"],
+                        "body-lg": ["Manrope"],
+                        "headline-xl-mobile": ["Space Grotesk"],
+                        "body-sm": ["Manrope"],
+                        "body-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "label-mono": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.05em", "fontWeight": "600"}],
+                        "headline-lg": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-md": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.03em", "fontWeight": "600"}],
+                        "headline-xl": ["72px", {"lineHeight": "1.0", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "headline-sm": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "letterSpacing": "-0.01em", "fontWeight": "400"}],
+                        "headline-xl-mobile": ["40px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-sm": ["14px", {"lineHeight": "1.5", "letterSpacing": "0", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "letterSpacing": "0", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #070708;
+            background-image: 
+                linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+        }
+        .ambient-orb {
+            position: absolute;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.15;
+        }
+        .orb-cyan { background: #8aebff; top: -200px; right: -100px; }
+        .orb-violet { background: #4f319c; bottom: -200px; left: -100px; }
+        .active-pill-glow {
+            box-shadow: 0 0 15px rgba(138, 235, 255, 0.3);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col font-body-md text-on-surface overflow-x-hidden">
+<!-- Header Navigation Shell -->
+<header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-xl border-b border-border-glass">
+<nav class="flex justify-between items-center w-full px-gutter h-16 max-w-7xl mx-auto">
+<div class="text-headline-sm font-headline-sm font-bold text-on-surface tracking-tighter">
+                Techxtreme
+            </div>
+<div class="hidden md:flex gap-base*6 items-center">
+<a class="font-label-mono text-label-mono text-primary border-b-2 border-primary pb-1" href="#">Capabilities</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Work</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">About</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors duration-200" href="#">Contact</a>
+</div>
+<button class="bg-primary px-base*4 py-base text-on-primary font-label-mono text-label-mono rounded hover:opacity-80 active:scale-95 transition-all">
+                Start Project
+            </button>
+</nav>
+</header>
+<main class="flex-grow flex items-center justify-center p-gutter pt-32 pb-20 relative">
+<!-- Ambient Backgrounds -->
+<div class="ambient-orb orb-cyan"></div>
+<div class="ambient-orb orb-violet"></div>
+<!-- Capability Panel Container -->
+<div class="glass-panel w-full max-w-[1200px] min-h-[600px] rounded-xl overflow-hidden flex flex-col">
+<!-- Tab Bar Header -->
+<div class="px-gutter pt-base*6 pb-base*4 flex items-center justify-start gap-base*4 border-b border-border-glass">
+<div class="bg-on-surface px-base*5 py-base*2 rounded-full active-pill-glow">
+<span class="font-label-mono text-label-mono text-surface">Websites</span>
+</div>
+<div class="px-base*5 py-base*2 rounded-full cursor-not-allowed">
+<span class="font-label-mono text-label-mono text-on-surface-variant opacity-40">AI Systems</span>
+</div>
+<div class="px-base*5 py-base*2 rounded-full cursor-not-allowed">
+<span class="font-label-mono text-label-mono text-on-surface-variant opacity-40">Automation</span>
+</div>
+</div>
+<!-- Content Area Split -->
+<div class="flex-grow grid grid-cols-1 md:grid-cols-2">
+<!-- Left: Software Interface Mockup -->
+<div class="p-gutter flex items-center justify-center bg-surface-container-lowest/50 border-r border-border-glass">
+<div class="w-full aspect-[4/3] rounded-xl overflow-hidden border border-border-glass shadow-2xl relative group">
+<!-- Window Controls (Linear Style) -->
+<div class="absolute top-0 left-0 w-full h-8 flex items-center gap-base px-base*3 bg-surface-container-high/80 backdrop-blur-md z-10 border-b border-border-glass">
+<div class="w-2.5 h-2.5 rounded-full bg-error/20 border border-error/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-primary/20 border border-primary/40"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-status-lime/20 border border-status-lime/40"></div>
+</div>
+<img alt="Museum Directory Portfolio Screenshot" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB418DQexEMj2j4zLolJEJC7uIPlq8Gr9ulUnPch1BsimidIenHVhEpD9E06g0-2y5G7z2A66y4SManW33x1qKuuExJF4Nhi8AX-2wp4Iih_M6BhmSNh46Ljdx4mq72X86pAqSCpYQv-mwcJchBVGJ_N9a7s84AalBoxv4uuG-2_oXuV2JcPQz7jGEB5pvXfoSlz6fSpRmTSMZddfvGJk9vtxbY9PdnG23EK5yntnecjjjgva_g57LjAIaqfh6x0bVAdAGL8CEAYW8"/>
+<div class="absolute inset-0 pointer-events-none border-inset border-border-glass"></div>
+</div>
+</div>
+<!-- Right: High-Performance Stack -->
+<div class="flex flex-col justify-center">
+<!-- List Item 1 -->
+<div class="p-gutter border-b border-border-glass hover:bg-fill-glass transition-colors group">
+<div class="flex items-center gap-base*3 mb-base">
+<span class="material-symbols-outlined text-primary text-headline-sm">search_check</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Niche directories that rank</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md ml-base*9">
+                            High-performance web applications built for SEO and speed. Custom engineered metadata structures and ultra-fast indexing.
+                        </p>
+</div>
+<!-- List Item 2 -->
+<div class="p-gutter border-b border-border-glass hover:bg-fill-glass transition-colors group">
+<div class="flex items-center gap-base*3 mb-base">
+<span class="material-symbols-outlined text-primary text-headline-sm">conversion_path</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">Service &amp; lead-gen sites</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md ml-base*9">
+                            Conversion-optimized landing pages and business platforms. Engineered with focused user journeys and high-integrity data capture.
+                        </p>
+</div>
+<!-- List Item 3 -->
+<div class="p-gutter hover:bg-fill-glass transition-colors group">
+<div class="flex items-center gap-base*3 mb-base">
+<span class="material-symbols-outlined text-primary text-headline-sm">settings_input_component</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary transition-colors">WordPress at scale</h3>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md ml-base*9">
+                            Enterprise-grade CMS architecture for global traffic. Headless implementations and precision-tuned caching layers for 100/100 scores.
+                        </p>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer Navigation Shell -->
+<footer class="bg-surface-container-lowest border-t border-border-glass">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center py-base*6 px-gutter w-full gap-base*4">
+<div class="font-label-mono text-label-mono font-bold text-on-surface uppercase tracking-widest">
+                TECHXTREME
+            </div>
+<div class="font-body-sm text-body-sm text-on-surface-variant text-center">
+                © 2024 Techxtreme. Precision Engineered Digital Solutions.
+            </div>
+<div class="flex gap-base*6">
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-all duration-300" href="#">Privacy Policy</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-all duration-300" href="#">Terms of Service</a>
+<a class="font-label-mono text-label-mono text-on-surface-variant hover:text-on-surface transition-all duration-300 flex items-center gap-base" href="#">
+<span class="w-2 h-2 rounded-full bg-status-lime animate-pulse"></span>
+                    System Status
+                </a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for the cursor glow effect or subtle movement
+        document.addEventListener('mousemove', (e) => {
+            const container = document.querySelector('.glass-panel');
+            if (container) {
+                const rect = container.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                container.style.setProperty('--mouse-x', `${x}px`);
+                container.style.setProperty('--mouse-y', `${y}px`);
+            }
+        });
+    </script>
+</body></html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&amp;family=Manrope:wght@200..800&amp;family=JetBrains+Mono:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#131314",
+                        "primary-container": "#22d3ee",
+                        "on-primary-fixed": "#001f25",
+                        "surface-bright": "#3a393a",
+                        "secondary-fixed": "#e8ddff",
+                        "on-tertiary-fixed": "#121f00",
+                        "tertiary": "#adf140",
+                        "on-secondary-container": "#bea8ff",
+                        "primary-fixed": "#a2eeff",
+                        "tertiary-container": "#93d420",
+                        "on-secondary-fixed-variant": "#4f319c",
+                        "error-container": "#93000a",
+                        "on-surface": "#e5e2e3",
+                        "on-error-container": "#ffdad6",
+                        "on-secondary": "#381385",
+                        "surface-container-high": "#2a2a2b",
+                        "on-secondary-fixed": "#21005e",
+                        "on-primary": "#00363e",
+                        "surface-dim": "#131314",
+                        "on-primary-container": "#005763",
+                        "on-error": "#690005",
+                        "on-tertiary": "#213600",
+                        "surface-container-highest": "#353436",
+                        "on-surface-variant": "#bbc9cd",
+                        "surface-container": "#201f21",
+                        "error": "#ffb4ab",
+                        "on-tertiary-fixed-variant": "#334f00",
+                        "secondary": "#cebdff",
+                        "inverse-primary": "#006877",
+                        "surface-container-low": "#1c1b1d",
+                        "inverse-surface": "#e5e2e3",
+                        "inverse-on-surface": "#313031",
+                        "tertiary-fixed-dim": "#98da27",
+                        "on-background": "#e5e2e3",
+                        "secondary-fixed-dim": "#cebdff",
+                        "secondary-container": "#4f319c",
+                        "outline": "#859397",
+                        "surface-container-lowest": "#0e0e0f",
+                        "surface": "#131314",
+                        "surface-variant": "#353436",
+                        "on-tertiary-container": "#395800",
+                        "surface-tint": "#2fd9f4",
+                        "primary": "#8aebff",
+                        "outline-variant": "#3c494c",
+                        "on-primary-fixed-variant": "#004e5a",
+                        "tertiary-fixed": "#b2f746",
+                        "primary-fixed-dim": "#2fd9f4"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-desktop": "64px",
+                        "base-unit": "8px",
+                        "gutter": "24px",
+                        "grid-size": "64px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Space Grotesk"],
+                        "headline-md": ["Space Grotesk"],
+                        "code-sm": ["JetBrains Mono"],
+                        "body-lg": ["Manrope"],
+                        "display-lg-mobile": ["Space Grotesk"],
+                        "display-lg": ["Space Grotesk"],
+                        "body-md": ["Manrope"],
+                        "label-md": ["Manrope"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["48px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                        "headline-md": ["32px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                        "code-sm": ["13px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "display-lg-mobile": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "display-lg": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.04em", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                        "label-md": ["14px", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .glass-container {
+            background: rgba(28, 20, 16, 0.6);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .orange-glow {
+            background: radial-gradient(circle at top center, rgba(251, 146, 60, 0.2) 0%, transparent 70%);
+        }
+        .grid-texture {
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), 
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+    </style>
+</head>
+<body class="bg-surface-container-lowest min-h-screen flex items-center justify-center p-4">
+<!-- Showcase Canvas -->
+<div class="relative w-full max-w-[800px] h-[600px] flex flex-col items-center justify-center overflow-hidden rounded-xl bg-gradient-to-br from-[#1c1410] to-[#0f0f12] shadow-2xl">
+<!-- Ambient Background Layers -->
+<div class="absolute inset-0 grid-texture pointer-events-none"></div>
+<div class="absolute inset-0 orange-glow pointer-events-none"></div>
+<!-- Techxtreme Glass Card -->
+<div class="glass-container relative z-10 w-11/12 md:w-3/4 p-12 flex flex-col items-center text-center rounded-2xl border border-white/10 transition-transform duration-500 hover:scale-[1.01]">
+<!-- Centered Logo Section -->
+<div class="mb-10 transform transition-transform hover:scale-105 duration-700">
+<img alt="JEE Notes Wallah Logo" class="w-48 h-auto object-contain drop-shadow-[0_0_30px_rgba(251,146,60,0.3)]" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoMn52H_fQfA3-M_QqaSg-2k2_VdpaE1vk_zExHw433xztToPsTsMmCpU8grGalhw7tJMvF04LRVA5ZviGS-MYkdttnBYnCuQM4FBOF_ZX3JzgPnSxIKIRsNBi7MR080cJSGg1w_Mo_aW5Cxli6I7f5QlTgPCJTIRQFDN9hdJG_cfbaiQFksrdVO_DQUSPqs99JZAxkoaf8ieShc7vOENfgc8EJaMGG6BbGY7vSFh-rcDWOOW-FA3oU7c38qyFyOejzzJwoBvfxHuE"/>
+</div>
+<!-- Tagline -->
+<div class="space-y-4 mb-12">
+<p class="font-body-md text-on-surface uppercase tracking-[0.2em] font-semibold text-label-md">
+                    Notes for Toppers, By Toppers
+                </p>
+<div class="h-px w-24 bg-gradient-to-r from-transparent via-primary to-transparent mx-auto opacity-50"></div>
+</div>
+<!-- Monospace Feature Pills -->
+<div class="flex flex-wrap justify-center gap-4">
+<span class="px-6 py-2 rounded-full border border-white/5 bg-white/5 text-primary font-code-sm text-code-sm backdrop-blur-sm transition-all hover:bg-primary/10 hover:border-primary/20 cursor-default">
+                    EdTech
+                </span>
+<span class="px-6 py-2 rounded-full border border-white/5 bg-white/5 text-primary font-code-sm text-code-sm backdrop-blur-sm transition-all hover:bg-primary/10 hover:border-primary/20 cursor-default">
+                    Firebase
+                </span>
+<span class="px-6 py-2 rounded-full border border-white/5 bg-white/5 text-primary font-code-sm text-code-sm backdrop-blur-sm transition-all hover:bg-primary/10 hover:border-primary/20 cursor-default">
+                    Prototype
+                </span>
+</div>
+</div>
+<!-- Atmospheric Accents -->
+<div class="absolute -bottom-20 -left-20 w-64 h-64 bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute -top-20 -right-20 w-64 h-64 bg-tertiary/5 rounded-full blur-[100px]"></div>
+</div>
+<!-- Micro-interaction Script -->
+<script>
+        document.addEventListener('mousemove', (e) => {
+            const card = document.querySelector('.glass-container');
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            
+            const rotateX = (y - centerY) / 30;
+            const rotateY = (centerX - x) / 30;
+            
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            const card = document.querySelector('.glass-container');
+            card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg)`;
+        });
+    </script>
+</body></html>

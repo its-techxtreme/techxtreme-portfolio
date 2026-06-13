@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AURA // System Settings</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;700&amp;family=Manrope:wght@300;400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            background-color: #05060B;
+            color: #e3e1ea;
+            overflow-x: hidden;
+        }
+        .grid-bg {
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+            background-size: 64px 64px;
+        }
+        .glass-panel {
+            background: rgba(13, 16, 24, 0.7);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glow-cyan:focus {
+            outline: none;
+            border-color: #5cd6f2;
+            box-shadow: 0 0 8px rgba(92, 214, 242, 0.4);
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .active-pill {
+            box-shadow: 0 0 12px rgba(163, 230, 53, 0.2);
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.1); border-radius: 10px; }
+        ::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.2); }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "error": "#ffb4ab",
+                      "on-surface-variant": "#bcc9cd",
+                      "surface-container-high": "#282a30",
+                      "surface-container": "#1e1f26",
+                      "secondary-fixed": "#ebdcff",
+                      "border-glass": "rgba(255, 255, 255, 0.08)",
+                      "on-surface": "#e3e1ea",
+                      "on-primary-fixed-variant": "#004e5c",
+                      "surface-bright": "#383940",
+                      "secondary-container": "#572c9c",
+                      "fill-glass": "rgba(255, 255, 255, 0.04)",
+                      "primary": "#d4f5ff",
+                      "on-primary-fixed": "#001f26",
+                      "on-secondary": "#3f0b84",
+                      "status-lime": "#A3E635",
+                      "on-tertiary-fixed-variant": "#334f00",
+                      "inverse-surface": "#e3e1ea",
+                      "secondary": "#d4bbff",
+                      "surface-dim": "#121319",
+                      "on-tertiary-fixed": "#121f00",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#98da27",
+                      "secondary-fixed-dim": "#d4bbff",
+                      "on-secondary-container": "#c6a5ff",
+                      "surface-variant": "#33343b",
+                      "error-container": "#93000a",
+                      "on-background": "#e3e1ea",
+                      "outline": "#879397",
+                      "inverse-on-surface": "#2f3037",
+                      "primary-fixed": "#aaedff",
+                      "surface-tint": "#5cd6f2",
+                      "background": "#121319",
+                      "outline-variant": "#3d494c",
+                      "on-error-container": "#ffdad6",
+                      "on-secondary-fixed": "#260058",
+                      "primary-fixed-dim": "#5cd6f2",
+                      "bg-panel": "#0D1018",
+                      "surface-container-lowest": "#0d0e14",
+                      "surface-container-highest": "#33343b",
+                      "on-tertiary": "#213600",
+                      "on-secondary-fixed-variant": "#572c9c",
+                      "on-tertiary-container": "#426500",
+                      "primary-container": "#6be3ff",
+                      "bg-deep": "#05060B",
+                      "tertiary": "#d0ff8a",
+                      "surface-container-low": "#1a1b21",
+                      "inverse-primary": "#006879",
+                      "tertiary-fixed": "#b2f746",
+                      "on-primary-container": "#006475",
+                      "on-primary": "#003640",
+                      "tertiary-container": "#a4e736",
+                      "surface": "#121319"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "gutter": "24px",
+                      "margin-mobile": "20px",
+                      "grid-line": "64px",
+                      "base-unit": "4px",
+                      "margin-desktop": "80px"
+              },
+              "fontFamily": {
+                      "label-mono": ["JetBrains Mono"],
+                      "headline-md": ["Space Grotesk"],
+                      "headline-lg": ["Space Grotesk"],
+                      "stats-xl": ["JetBrains Mono"],
+                      "display-xl": ["Space Grotesk"],
+                      "body-md": ["Manrope"],
+                      "body-lg": ["Manrope"]
+              }
+            },
+          },
+        }
+    </script>
+</head>
+<body class="font-body-md text-body-md selection:bg-primary selection:text-on-primary">
+<!-- Grid Overlay -->
+<div class="fixed inset-0 grid-bg pointer-events-none opacity-20 z-0"></div>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-16 bg-fill-glass backdrop-blur-md border-b border-border-glass">
+<div class="flex items-center gap-4">
+<span class="font-headline-md text-headline-md font-bold tracking-tighter text-primary">AURA</span>
+<div class="hidden md:flex gap-6 ml-8">
+<a class="text-on-surface-variant hover:bg-fill-glass hover:text-primary transition-all font-label-mono text-label-mono cursor-pointer" href="#">Terminal</a>
+<a class="text-on-surface-variant hover:bg-fill-glass hover:text-primary transition-all font-label-mono text-label-mono cursor-pointer" href="#">Memory</a>
+<a class="text-on-surface-variant hover:bg-fill-glass hover:text-primary transition-all font-label-mono text-label-mono cursor-pointer" href="#">Nexus</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="relative hidden sm:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-[20px]" data-icon="search">search</span>
+<input class="bg-surface-container-lowest border border-border-glass rounded-lg pl-10 pr-4 py-1.5 text-label-mono font-label-mono focus:glow-cyan transition-all w-64" placeholder="Search system..." type="text"/>
+</div>
+<button class="material-symbols-outlined text-on-surface-variant hover:text-primary cursor-pointer active:scale-95" data-icon="notifications">notifications</button>
+<button class="material-symbols-outlined text-primary font-bold border-b-2 border-primary cursor-pointer active:scale-95 h-full px-2 flex items-center" data-icon="settings">settings</button>
+<div class="w-8 h-8 rounded-full overflow-hidden border border-border-glass bg-surface-container">
+<img alt="User profile" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC55ZnFjdMck9u6CvKUdKDOVB1w0rJWfbHKaEsscBwQecNDEJBn7V1Knu74C5J1rEmUfuRpt_5-JcgSyhc6EYZFysGFNbJwxzt1W4V2mmg7dNuUkgfWfZhjzTDbl-OKdeokGsHOedxH0olcA2cpLBLbaQHc5yNi5JBMjAlTUef6hiVEJ0201-5QIBIDwfk3tmrao76WTY_2sviI6DqeCdQPjDX2KLdiETNvIXlc8H4Bg3l4YI8TfjDgrMZRHSKBzKXvhwc01bhFH4-c"/>
+</div>
+</div>
+</header>
+<!-- SideNavBar -->
+<aside class="fixed left-0 top-0 h-full w-64 flex flex-col pt-20 pb-16 bg-surface-container-low border-r border-border-glass z-40 hidden md:flex">
+<div class="px-6 mb-8">
+<div class="flex items-center gap-3 mb-2">
+<div class="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" data-icon="memory">memory</span>
+</div>
+<div>
+<div class="font-headline-md text-headline-md text-primary leading-tight">AURA v1.0</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant uppercase tracking-widest">Local Intelligence</div>
+</div>
+</div>
+<button class="w-full mt-4 bg-primary text-on-primary font-headline-md py-2 rounded-lg hover:brightness-110 active:scale-95 transition-all text-sm">New Session</button>
+</div>
+<nav class="flex-1 px-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer duration-200 font-label-mono text-label-mono">
+<span class="material-symbols-outlined" data-icon="terminal">terminal</span>
+<span>Terminal</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer duration-200 font-label-mono text-label-mono">
+<span class="material-symbols-outlined" data-icon="database">database</span>
+<span>Memory</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer duration-200 font-label-mono text-label-mono">
+<span class="material-symbols-outlined" data-icon="hub">hub</span>
+<span>Nexus</span>
+</div>
+</nav>
+<div class="px-4 mt-auto border-t border-border-glass pt-4 space-y-1">
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer duration-200 font-label-mono text-label-mono">
+<span class="material-symbols-outlined" data-icon="description">description</span>
+<span>Docs</span>
+</div>
+<div class="flex items-center gap-3 px-3 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-lg cursor-pointer duration-200 font-label-mono text-label-mono">
+<span class="material-symbols-outlined" data-icon="help_outline">help_outline</span>
+<span>Help</span>
+</div>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="md:ml-64 pt-24 px-gutter pb-24 min-h-screen relative z-10">
+<!-- Page Header -->
+<div class="max-w-6xl mx-auto mb-12">
+<div class="flex items-end justify-between mb-2">
+<div>
+<div class="font-label-mono text-status-lime uppercase text-[12px] tracking-[0.2em] mb-2">// SYSTEM CONFIGURATION</div>
+<h1 class="font-display-xl text-display-xl text-primary tracking-tight">Core Settings</h1>
+</div>
+<div class="flex gap-3">
+<button class="bg-fill-glass border border-border-glass px-6 py-2 rounded-lg font-label-mono text-label-mono hover:bg-surface-variant transition-all">Export JSON</button>
+<button class="bg-primary text-on-primary px-6 py-2 rounded-lg font-headline-md font-bold hover:brightness-110 active:scale-95 transition-all">Save Changes</button>
+</div>
+</div>
+<div class="h-px w-full bg-gradient-to-r from-border-glass via-primary/20 to-transparent"></div>
+</div>
+<!-- Bento Grid Layout -->
+<div class="max-w-6xl mx-auto grid grid-cols-12 gap-6">
+<!-- Intelligence Section (Wide) -->
+<section class="col-span-12 lg:col-span-8 glass-panel rounded-xl p-8 overflow-hidden relative group">
+<div class="absolute top-0 right-0 p-4 opacity-10 pointer-events-none">
+<span class="material-symbols-outlined text-[120px]" data-icon="psychology">psychology</span>
+</div>
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="bolt">bolt</span>
+<h2 class="font-headline-lg text-headline-md text-on-surface">Intelligence</h2>
+</div>
+<div class="grid md:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div>
+<label class="block font-label-mono text-[12px] text-on-surface-variant uppercase mb-2">Active Model</label>
+<select class="w-full bg-surface-container-lowest border border-border-glass rounded-lg px-4 py-2.5 font-label-mono text-primary focus:glow-cyan appearance-none">
+<option>Llama-3-8B-Instruct (Local)</option>
+<option>Mistral-7B-v0.2 (Local)</option>
+<option>AURA-Neural-Custom (Quantum)</option>
+</select>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="font-label-mono text-[12px] text-on-surface-variant uppercase">Temperature</label>
+<span class="text-primary font-label-mono">0.72</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+<div>
+<div class="flex justify-between items-center mb-2">
+<label class="font-label-mono text-[12px] text-on-surface-variant uppercase">Max Tokens</label>
+<span class="text-primary font-label-mono">4096</span>
+</div>
+<input class="w-full h-1 bg-surface-variant rounded-lg appearance-none cursor-pointer accent-primary" type="range"/>
+</div>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-lowest/50 p-4 rounded-lg border border-border-glass">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-mono text-[11px] text-on-surface-variant uppercase">Hardware Accel</span>
+<div class="w-8 h-4 bg-status-lime rounded-full relative cursor-pointer">
+<div class="absolute right-0.5 top-0.5 w-3 h-3 bg-white rounded-full"></div>
+</div>
+</div>
+<p class="text-[13px] text-on-surface-variant font-body-md">Utilizing Apple Neural Engine &amp; GPU (M2 Max Cluster).</p>
+</div>
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span class="text-xs font-label-mono text-on-surface-variant">System Latency: 12ms</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-status-lime"></span>
+<span class="text-xs font-label-mono text-on-surface-variant">Memory Usage: 4.2GB / 12GB Reserved</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Status Card (Small) -->
+<section class="col-span-12 lg:col-span-4 glass-panel rounded-xl p-8 flex flex-col justify-between border-l-4 border-l-status-lime">
+<div>
+<h3 class="font-label-mono text-status-lime text-[11px] tracking-widest uppercase mb-4">Neural Status</h3>
+<div class="text-[48px] font-headline-lg leading-none mb-2 text-on-surface">Optimal</div>
+<p class="font-body-md text-on-surface-variant text-sm">All local brain segments are synchronized and encrypted at AES-256 level.</p>
+</div>
+<div class="mt-6 pt-6 border-t border-border-glass">
+<div class="flex justify-between items-center">
+<span class="text-xs font-label-mono uppercase text-on-surface-variant">Last Re-Index</span>
+<span class="text-xs font-label-mono text-primary">14 MIN AGO</span>
+</div>
+</div>
+</section>
+<!-- Visuals Section -->
+<section class="col-span-12 lg:col-span-5 glass-panel rounded-xl p-8">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+<h2 class="font-headline-lg text-headline-md text-on-surface">Visuals</h2>
+</div>
+<div class="space-y-6">
+<div class="grid grid-cols-2 gap-4">
+<div class="p-4 bg-surface-container-lowest border-2 border-primary rounded-lg cursor-pointer">
+<div class="w-full h-12 bg-bg-deep mb-3 rounded border border-border-glass flex items-center justify-center">
+<div class="w-2/3 h-1 bg-primary/20 rounded"></div>
+</div>
+<div class="text-center font-label-mono text-xs text-primary">Deep Command</div>
+</div>
+<div class="p-4 bg-surface-container-lowest border border-border-glass rounded-lg cursor-pointer opacity-50 hover:opacity-100 transition-opacity">
+<div class="w-full h-12 bg-white mb-3 rounded border border-border-glass flex items-center justify-center">
+<div class="w-2/3 h-1 bg-black/20 rounded"></div>
+</div>
+<div class="text-center font-label-mono text-xs text-on-surface-variant">Luminous (WIP)</div>
+</div>
+</div>
+<div class="flex items-center justify-between py-2 border-b border-border-glass">
+<span class="font-label-mono text-sm">Blur Intensity</span>
+<div class="flex gap-1">
+<div class="w-6 h-6 rounded-full border border-border-glass flex items-center justify-center text-[10px] font-label-mono cursor-pointer">Off</div>
+<div class="w-6 h-6 rounded-full border border-primary bg-primary text-on-primary flex items-center justify-center text-[10px] font-label-mono cursor-pointer">24px</div>
+<div class="w-6 h-6 rounded-full border border-border-glass flex items-center justify-center text-[10px] font-label-mono cursor-pointer">48px</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-label-mono text-sm">UI Sounds</span>
+<div class="w-12 h-6 bg-surface-variant rounded-full relative cursor-pointer">
+<div class="absolute left-1 top-1 w-4 h-4 bg-on-surface-variant rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+<section class="col-span-12 lg:col-span-7 glass-panel rounded-xl p-8 relative overflow-hidden">
+<div class="flex items-center gap-3 mb-8">
+<span class="material-symbols-outlined text-primary" data-icon="security">security</span>
+<h2 class="font-headline-lg text-headline-md text-on-surface">Local Brain Security</h2>
+</div>
+<div class="space-y-4">
+<div class="flex items-start gap-4 p-4 rounded-lg bg-fill-glass border border-border-glass hover:bg-surface-variant/30 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-secondary" data-icon="lock">lock</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<h4 class="font-label-mono text-sm font-bold">Encrypted Memory Access</h4>
+<span class="bg-status-lime/10 text-status-lime text-[10px] px-2 py-0.5 rounded border border-status-lime/30 font-label-mono">ACTIVE</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Prevents unauthorized indexing of your local data by external processes.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-fill-glass border border-border-glass hover:bg-surface-variant/30 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-surface-variant flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="cloud_off">cloud_off</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<h4 class="font-label-mono text-sm">No-Cloud Policy</h4>
+<span class="bg-on-surface-variant/10 text-on-surface-variant text-[10px] px-2 py-0.5 rounded border border-border-glass font-label-mono">ENFORCED</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Telemetry and training data are strictly confined to this hardware instance.</p>
+</div>
+</div>
+<div class="flex items-start gap-4 p-4 rounded-lg bg-fill-glass border border-border-glass hover:bg-surface-variant/30 transition-all cursor-pointer">
+<div class="w-10 h-10 rounded-full bg-error-container/20 flex items-center justify-center flex-shrink-0">
+<span class="material-symbols-outlined text-error" data-icon="history">history</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between items-center mb-1">
+<h4 class="font-label-mono text-sm">Self-Destruct Sequence</h4>
+<span class="text-error font-label-mono text-[10px] uppercase">Disabled</span>
+</div>
+<p class="text-[13px] text-on-surface-variant">Wipe all local knowledge bases if authentication fails 5 times.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- System Visualization -->
+<div class="max-w-6xl mx-auto mt-12 glass-panel rounded-xl p-8 border-t-2 border-t-primary/30">
+<div class="flex items-center justify-between mb-8">
+<h3 class="font-label-mono text-on-surface uppercase text-sm tracking-widest">Topology Monitor</h3>
+<div class="flex gap-6 text-[10px] font-label-mono text-on-surface-variant">
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> STORAGE</div>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-status-lime"></span> LOGIC</div>
+<div class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span> INPUT</div>
+</div>
+</div>
+<div class="h-48 w-full relative flex items-center justify-center overflow-hidden">
+<!-- Abstract visual representation -->
+<div class="absolute inset-0 opacity-20 flex items-center justify-center">
+<img class="w-full h-full object-cover grayscale brightness-50" data-alt="A sophisticated abstract technological background with glowing lines and interconnected nodes representing a neural network or complex software architecture. The aesthetic is futuristic and technical, using a monochrome palette with subtle deep blue and neon cyan accents, matching a professional command center UI." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBEfKIsKYueiwcFpyxPL933PU86MPLsQJzL1UJe3Uk6vgV5DLanQj03kUt60XPyrpAJp1bZDZBC_eF-A0JrV-p3GbjQWk4Fuzn84fVIUJ21oEA0QCKL3A6-Bc1pwrHO3RMUuo-OzgbL_WTwsDLo7JzWnldwXjXoccs8q0-nv2M7zKVGFdZGwjM1P_zHx1RkK-i_nR9e_rZ9TOaUMC5RnkxOpm4yXT5mJCBFS3Mz4TLYqo7mxIx5p_JM7M1d9AVq2jTJPBkLM2YlL33t"/>
+</div>
+<div class="relative z-10 grid grid-cols-4 gap-12 w-full max-w-4xl text-center">
+<div>
+<div class="text-[32px] font-stats-xl text-primary">824<span class="text-lg">GB</span></div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">INDEXED DATA</div>
+</div>
+<div>
+<div class="text-[32px] font-stats-xl text-status-lime">24<span class="text-lg">ms</span></div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">INFERENCE SPEED</div>
+</div>
+<div>
+<div class="text-[32px] font-stats-xl text-secondary">100<span class="text-lg">%</span></div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">LOCAL COMPLIANCE</div>
+</div>
+<div>
+<div class="text-[32px] font-stats-xl text-on-surface">1.0.4</div>
+<div class="font-label-mono text-[10px] text-on-surface-variant">VERSION HASH</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="fixed bottom-0 w-full z-40 flex justify-between items-center px-gutter py-2 h-10 bg-surface-dim border-t border-border-glass">
+<div class="font-label-mono text-label-mono text-status-lime uppercase">SYSTEM STATUS: OPTIMAL // ENCRYPTED</div>
+<div class="flex gap-8">
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors cursor-default">Uptime: 99.9%</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors cursor-default">Latency: 12ms</span>
+<span class="font-label-mono text-label-mono text-on-surface-variant hover:text-primary transition-colors cursor-default">v1.0.4-stable</span>
+</div>
+</footer>
+<script>
+        // Micro-interactions for interactive elements
+        document.querySelectorAll('.glass-panel').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.2)';
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            });
+        });
+
+        // Simple Toggle interaction
+        const toggles = document.querySelectorAll('.w-12.h-6, .w-8.h-4');
+        toggles.forEach(toggle => {
+            toggle.addEventListener('click', () => {
+                const circle = toggle.querySelector('div');
+                if (circle.classList.contains('left-1') || circle.classList.contains('left-0.5')) {
+                    circle.classList.remove('left-1', 'left-0.5');
+                    circle.classList.add('right-1', 'right-0.5');
+                    toggle.classList.replace('bg-surface-variant', 'bg-status-lime');
+                } else {
+                    circle.classList.remove('right-1', 'right-0.5');
+                    circle.classList.add('left-1', 'left-0.5');
+                    toggle.classList.replace('bg-status-lime', 'bg-surface-variant');
+                }
+            });
+        });
+    </script>
+</body></html>
