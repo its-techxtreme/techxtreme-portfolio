@@ -28,27 +28,27 @@
     --sage-green: #7B9B8C;
     --dusty-peach: #E8C4A0;
     --light-blue: #A6C8E1;
-    --off-white: #F8F9FA;
+    --off-white: #87CEEB;
     --warm-dark-text: #2d3335;
   }
 
   html.light {
-    --theme-bg: #f8f9fa;
-    --theme-bg-2: #ffffff;
-    --theme-bg-3: #eef1f0;
-    --theme-line: rgba(123, 155, 140, 0.22);
-    --theme-muted: #4a5f56;
-    --theme-accent: #5f8a7a;
-    --theme-accent-2: #7b9b8c;
+    --theme-bg: #87ceeb;
+    --theme-bg-2: #9ed8f2;
+    --theme-bg-3: #6eb8d9;
+    --theme-line: rgba(45, 100, 140, 0.28);
+    --theme-muted: #1e4a63;
+    --theme-accent: #2b7a9e;
+    --theme-accent-2: #4a9ec4;
     --theme-hot: #c97b8f;
-    --theme-lime: #6b9b4a;
-    --theme-text: #2d3335;
-    --theme-text-soft: #4a5f56;
-    --theme-surface-hover: rgba(123, 155, 140, 0.08);
-    --theme-surface-active: rgba(123, 155, 140, 0.12);
-    --theme-shadow: rgba(123, 155, 140, 0.12);
-    --theme-glass: rgba(255, 255, 255, 0.72);
-    --theme-glass-card: rgba(255, 255, 255, 0.85);
+    --theme-lime: #4a8f3a;
+    --theme-text: #0f2d3d;
+    --theme-text-soft: #1e4a63;
+    --theme-surface-hover: rgba(45, 100, 140, 0.14);
+    --theme-surface-active: rgba(45, 100, 140, 0.2);
+    --theme-shadow: rgba(45, 100, 140, 0.2);
+    --theme-glass: rgba(135, 206, 235, 0.72);
+    --theme-glass-card: rgba(158, 216, 242, 0.82);
   }
   
   html {
@@ -71,6 +71,12 @@
 
   html.light body {
     font-family: "Inter", system-ui, sans-serif;
+    background-color: var(--theme-bg);
+  }
+
+  html.light #root {
+    min-height: 100%;
+    background-color: var(--theme-bg);
   }
   
   ::selection {
@@ -88,7 +94,7 @@
   }
   
   html.light .text-gradient {
-    background: linear-gradient(135deg, var(--sage-green), var(--dusty-peach), var(--light-blue));
+    background: linear-gradient(135deg, #1a5f7a, #2b7a9e, #4a9ec4);
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -103,9 +109,10 @@
   }
   
   html.light .grid-bg {
+    background-color: var(--theme-bg);
     background-image:
-      linear-gradient(rgba(123, 155, 140, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(123, 155, 140, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(45, 100, 140, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(45, 100, 140, 0.08) 1px, transparent 1px);
   }
   
   .hero-scan {
@@ -131,7 +138,7 @@
   html.light .glass-card:hover {
     transform: translateY(-2px);
     box-shadow: 0 12px 32px var(--theme-shadow);
-    border-color: rgba(123, 155, 140, 0.35);
+    border-color: rgba(45, 100, 140, 0.35);
   }
   
   .outline-text {
@@ -140,7 +147,7 @@
   }
   
   html.light .outline-text {
-    -webkit-text-stroke: 1px rgba(45, 51, 53, 0.28);
+    -webkit-text-stroke: 1px rgba(30, 51, 64, 0.28);
     color: transparent;
   }
 

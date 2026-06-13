@@ -139,7 +139,7 @@ export function HeroVisual() {
                 "absolute cursor-pointer appearance-none border-0 bg-transparent p-0 text-left outline-none transition-[z-index] duration-300",
                 c.className,
                 isActive && "z-[70]",
-                isActive && "focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-accent dark:focus-visible:ring-offset-bg light:focus-visible:ring-[#7B9B8C] light:focus-visible:ring-offset-[#f8f9fa]"
+                isActive && "focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-accent dark:focus-visible:ring-offset-bg light:focus-visible:ring-light-accent light:focus-visible:ring-offset-light-bg"
               )}
               style={{ zIndex: z }}
               initial={reduced ? false : { opacity: 0, y: 30, scale: 0.95 }}
@@ -176,10 +176,10 @@ export function HeroVisual() {
                   <div
                     className={clsx(
                       "overflow-hidden rounded-2xl border shadow-2xl ring-1 transition duration-300",
-                      "dark:bg-bg-2 light:bg-white",
+                      "dark:bg-bg-2 light:bg-light-bg-2",
                       isActive
-                        ? "dark:border-accent/40 dark:ring-accent/30 dark:shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)] light:border-[#7B9B8C]/40 light:ring-[#7B9B8C]/30 light:shadow-[0_0_40px_-8px_rgba(123,155,140,0.35)]"
-                        : "dark:border-white/10 dark:ring-white/5 light:border-[#7B9B8C]/20 light:ring-[#7B9B8C]/10"
+                        ? "dark:border-accent/40 dark:ring-accent/30 dark:shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)] light:border-light-accent/40 light:ring-light-accent/30 light:shadow-[0_0_40px_-8px_rgba(45,100,140,0.35)]"
+                        : "dark:border-white/10 dark:ring-white/5 light:border-light-line light:ring-light-accent/10"
                     )}
                   >
                     <img
@@ -194,8 +194,8 @@ export function HeroVisual() {
                   className={clsx(
                     "absolute -bottom-1 left-2 font-mono text-[0.6rem] uppercase tracking-widest transition-colors",
                     isActive 
-                      ? "dark:text-accent light:text-[#7B9B8C]" 
-                      : "dark:text-muted light:text-[#3b594c]"
+                      ? "dark:text-accent light:text-light-accent" 
+                      : "dark:text-muted light:text-light-muted"
                   )}
                 >
                   {c.label}
@@ -219,7 +219,7 @@ export function HeroVisual() {
                 >
                       <Link
                         to={`/work/${c.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1.5 text-xs font-bold transition hover:-translate-y-0.5 sm:px-4 sm:py-2 dark:from-accent dark:to-cyan-600 dark:text-bg dark:shadow-[0_6px_20px_rgba(34,211,238,0.35)] light:from-[#7B9B8C] light:to-[#A6C8E1] light:text-white light:shadow-[0_6px_20px_rgba(123,155,140,0.35)]"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1.5 text-xs font-bold transition hover:-translate-y-0.5 sm:px-4 sm:py-2 dark:from-accent dark:to-cyan-600 dark:text-bg dark:shadow-[0_6px_20px_rgba(34,211,238,0.35)] light:from-light-accent light:to-light-accent-2 light:text-white light:shadow-[0_6px_20px_rgba(45,100,140,0.35)]"
                       >
                         View project →
                       </Link>
@@ -228,7 +228,7 @@ export function HeroVisual() {
                           href={c.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border backdrop-blur transition sm:px-3.5 sm:py-2 px-2.5 py-1.5 text-xs font-semibold dark:border-line dark:bg-bg/90 dark:text-zinc-100 dark:hover:border-accent dark:hover:text-accent light:border-[#7B9B8C]/30 light:bg-white/90 light:text-[#2d3335] light:hover:border-[#7B9B8C] light:hover:text-[#7B9B8C]"
+                          className="inline-flex items-center gap-1 rounded-full border backdrop-blur transition sm:px-3.5 sm:py-2 px-2.5 py-1.5 text-xs font-semibold dark:border-line dark:bg-bg/90 dark:text-zinc-100 dark:hover:border-accent dark:hover:text-accent light:border-light-line light:bg-light-bg-2/90 light:text-light-primary light:hover:border-light-accent light:hover:text-light-accent"
                         >
                           Live site ↗
                         </a>
@@ -241,9 +241,9 @@ export function HeroVisual() {
           );
         })}
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 dark:ring-white/[0.06] light:ring-[#7B9B8C]/[0.08]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 dark:ring-white/[0.06] light:ring-light-accent/[0.12]" aria-hidden />
       {active !== null && (
-        <p className="pointer-events-none absolute -bottom-2 left-0 right-0 text-center font-mono text-[0.58rem] uppercase tracking-widest opacity-75 sm:-bottom-1 sm:text-[0.62rem] dark:text-muted light:text-[#3b594c]">
+        <p className="pointer-events-none absolute -bottom-2 left-0 right-0 text-center font-mono text-[0.58rem] uppercase tracking-widest opacity-75 sm:-bottom-1 sm:text-[0.62rem] dark:text-muted light:text-light-muted">
           Click outside to close · Esc to exit
         </p>
       )}

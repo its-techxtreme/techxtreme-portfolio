@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { useRef, useState } from "react";
 import clsx from "clsx";
 import { assetUrl } from "../../lib/assets";
+import { useTheme } from "../../contexts/ThemeContext";
 
 type Props = {
   image: string;
@@ -10,27 +11,42 @@ type Props = {
   className?: string;
 };
 
-const IMG_STYLE = { filter: "blur(6px) saturate(1.15)" };
+const IMG_STYLE_DARK = { filter: "blur(6px) saturate(1.15)" };
+const IMG_STYLE_LIGHT = { filter: "blur(3px) saturate(1.3) brightness(1.08)" };
 
-/** Readable typography on bright / busy panel backgrounds */
-const CONTENT_CLASS =
-  "relative z-10 " +
-  "[&_h1]:!text-white [&_h2]:!text-white [&_h3]:!text-white " +
-  "[&_h1]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] [&_h2]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] " +
-  "[&_h3]:drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)] " +
-  "[&_p]:!text-zinc-100 [&_p]:drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)] " +
-  "[&_p.font-mono]:!text-cyan-200 " +
-  "[&_li]:text-zinc-100 [&_li]:drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)] " +
-  "[&_.text-gradient]:from-white [&_.text-gradient]:via-cyan-200 [&_.text-gradient]:to-cyan-300 " +
-  "[&_.text-gradient]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)] " +
-  "[&_span.text-accent]:text-cyan-200 [&_span.text-accent]:drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)] " +
-  "[&_.font-mono]:text-cyan-200 [&_.font-mono]:drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]";
+/** Typography tuned per theme so copy stays readable without crushing the artwork */
+const CONTENT_CLASS = clsx(
+  "relative z-10",
+  "dark:[&_h1]:!text-white dark:[&_h2]:!text-white dark:[&_h3]:!text-white",
+  "dark:[&_h1]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] dark:[&_h2]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]",
+  "dark:[&_h3]:drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]",
+  "dark:[&_p]:!text-zinc-100 dark:[&_p]:drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)]",
+  "dark:[&_p.font-mono]:!text-cyan-200",
+  "dark:[&_li]:text-zinc-100 dark:[&_li]:drop-shadow-[0_1px_8px_rgba(0,0,0,0.9)]",
+  "dark:[&_.text-gradient]:from-white dark:[&_.text-gradient]:via-cyan-200 dark:[&_.text-gradient]:to-cyan-300",
+  "dark:[&_.text-gradient]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]",
+  "dark:[&_span.text-accent]:text-cyan-200 dark:[&_span.text-accent]:drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)]",
+  "dark:[&_.font-mono]:text-cyan-200 dark:[&_.font-mono]:drop-shadow-[0_1px_8px_rgba(0,0,0,0.95)]",
+  "light:[&_h1]:!text-light-primary light:[&_h2]:!text-light-primary light:[&_h3]:!text-light-primary",
+  "light:[&_h1]:drop-shadow-[0_1px_6px_rgba(255,255,255,0.85)] light:[&_h2]:drop-shadow-[0_1px_6px_rgba(255,255,255,0.85)]",
+  "light:[&_h3]:drop-shadow-[0_1px_4px_rgba(255,255,255,0.8)]",
+  "light:[&_p]:!text-light-muted light:[&_p]:drop-shadow-[0_1px_4px_rgba(255,255,255,0.75)]",
+  "light:[&_p.font-mono]:!text-light-accent",
+  "light:[&_li]:text-light-muted",
+  "light:[&_.text-gradient]:from-light-accent light:[&_.text-gradient]:via-light-accent-2 light:[&_.text-gradient]:to-[#6EB8D9]",
+  "light:[&_.text-gradient]:drop-shadow-[0_1px_6px_rgba(255,255,255,0.8)]",
+  "light:[&_span.text-accent]:text-light-accent",
+  "light:[&_.font-mono]:text-light-accent",
+  "light:[&_.section-label]:text-light-accent"
+);
 
 export function ParallaxCapsule({ image, children, className }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const reduced = useReducedMotion();
+  const { theme } = useTheme();
   const [imgOk, setImgOk] = useState(true);
   const src = assetUrl(image);
+  const imgStyle = theme === "light" ? IMG_STYLE_LIGHT : IMG_STYLE_DARK;
 
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -54,8 +70,8 @@ export function ParallaxCapsule({ image, children, className }: Props) {
             <img
               src={src}
               alt=""
-              className="absolute inset-0 h-full w-full object-cover"
-              style={IMG_STYLE}
+              className="absolute inset-0 h-full w-full object-cover dark:opacity-100 light:opacity-95"
+              style={imgStyle}
             />
           ) : (
             <motion.div
@@ -66,8 +82,8 @@ export function ParallaxCapsule({ image, children, className }: Props) {
                 src={src}
                 alt=""
                 onError={() => setImgOk(false)}
-                className="h-full w-full object-cover"
-                style={IMG_STYLE}
+                className="h-full w-full object-cover dark:opacity-100 light:opacity-95"
+                style={imgStyle}
               />
             </motion.div>
           )
@@ -75,17 +91,29 @@ export function ParallaxCapsule({ image, children, className }: Props) {
           <div className="absolute inset-0 bg-bg-2" />
         )}
 
-        <div className="absolute inset-0 bg-[#070708]/25" />
-        {/* Vignette behind copy — art stays visible at edges */}
+        {/* Dark mode: heavy scrim for contrast */}
+        <div className="absolute inset-0 hidden dark:block bg-[#070708]/25" />
         <div
-          className="absolute inset-0"
+          className="absolute inset-0 hidden dark:block"
           style={{
             background:
               "radial-gradient(ellipse 92% 82% at 50% 42%, rgba(7,7,8,0.88) 0%, rgba(7,7,8,0.55) 52%, transparent 100%)",
           }}
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#070708]/65 via-[#070708]/20 to-[#070708]/30" />
-        <div className="absolute inset-0 ring-1 ring-inset ring-white/[0.08]" />
+        <div className="absolute inset-0 hidden bg-gradient-to-t dark:block dark:from-[#070708]/65 dark:via-[#070708]/20 dark:to-[#070708]/30" />
+
+        {/* Light mode: minimal scrim — graphics stay visible */}
+        <div className="absolute inset-0 hidden light:block bg-white/10" />
+        <div
+          className="absolute inset-0 hidden light:block"
+          style={{
+            background:
+              "radial-gradient(ellipse 90% 75% at 50% 40%, rgba(255,255,255,0.28) 0%, rgba(255,255,255,0.08) 55%, transparent 100%)",
+          }}
+        />
+        <div className="absolute inset-0 hidden bg-gradient-to-t light:block light:from-white/35 light:via-white/10 light:to-transparent" />
+
+        <div className="absolute inset-0 ring-1 ring-inset dark:ring-white/[0.08] light:ring-light-accent/25" />
       </div>
 
       <div className={CONTENT_CLASS}>{children}</div>

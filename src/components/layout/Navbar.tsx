@@ -39,7 +39,7 @@ export function Navbar() {
       <motion.header
         className={clsx(
           "fixed left-1/2 top-4 z-[9000] flex w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 items-center gap-1 rounded-full glass px-2 py-1.5 md:w-auto",
-          "dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_4px_20px_rgba(123,155,140,0.1)]",
+          "dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_4px_20px_rgba(45,100,140,0.18)]",
           hidden && !menuOpen && "-translate-y-[140%] opacity-0"
         )}
         initial={false}
