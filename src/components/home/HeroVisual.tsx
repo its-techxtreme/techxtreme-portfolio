@@ -1,5 +1,5 @@
 import { AnimatePresence, motion, useReducedMotion, useSpring, useTransform, useMotionValue } from "framer-motion";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
 import clsx from "clsx";
 import { assetUrl } from "../../lib/assets";
@@ -21,7 +21,7 @@ const cards: HeroCard[] = [
     slug: "london-museums",
     src: "/assets/projects/londonmuseums-home.png",
     label: "London Museums",
-    className: "left-[0%] top-[6%] w-[38%] rotate-[-6deg] sm:left-[2%] sm:w-[42%]",
+    className: "left-[2%] top-[8%] w-[36%] rotate-[-4deg] sm:left-[2%] sm:w-[40%] md:w-[42%]",
     glow: "rgba(34,211,238,0.25)",
     baseZ: 20,
     liveUrl: "https://londonmuseums.co.uk",
@@ -30,7 +30,7 @@ const cards: HeroCard[] = [
     slug: "virtalent",
     src: "/assets/projects/virtalent-hero.png",
     label: "Virtalent",
-    className: "right-[0%] top-[0%] w-[40%] rotate-[5deg] sm:w-[44%]",
+    className: "right-[1%] top-[2%] w-[38%] rotate-[3deg] sm:w-[42%] md:w-[44%]",
     glow: "rgba(163,230,53,0.2)",
     baseZ: 30,
     liveUrl: "https://virtalent.com",
@@ -39,7 +39,7 @@ const cards: HeroCard[] = [
     slug: "aura",
     src: "/assets/projects/aura-dashboard-hero.png",
     label: "Project Aura",
-    className: "left-[10%] top-[34%] w-[52%] rotate-[-2deg] sm:left-[18%] sm:w-[58%]",
+    className: "left-[8%] top-[36%] w-[48%] rotate-[-1deg] sm:left-[16%] sm:w-[54%] md:w-[58%]",
     glow: "rgba(34,211,238,0.35)",
     baseZ: 35,
   },
@@ -47,7 +47,7 @@ const cards: HeroCard[] = [
     slug: "study-notes",
     src: "/assets/jee/home.png",
     label: "JEE Notes Wallah",
-    className: "right-[2%] top-[58%] w-[30%] rotate-[6deg] sm:right-[4%] sm:top-[56%] sm:w-[32%]",
+    className: "right-[3%] top-[58%] w-[28%] rotate-[4deg] sm:right-[4%] sm:top-[56%] sm:w-[30%] md:w-[32%]",
     glow: "rgba(251,146,60,0.35)",
     baseZ: 38,
     phone: true,
@@ -57,12 +57,13 @@ const cards: HeroCard[] = [
 export function HeroVisual() {
   const reduced = useReducedMotion();
   const [active, setActive] = useState<number | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const mx = useMotionValue(0.5);
   const my = useMotionValue(0.5);
   const sx = useSpring(mx, { stiffness: 50, damping: 30 });
   const sy = useSpring(my, { stiffness: 50, damping: 30 });
-  const parallaxX = useTransform(sx, [0, 1], [-18, 18]);
-  const parallaxY = useTransform(sy, [0, 1], [-12, 12]);
+  const parallaxX = useTransform(sx, [0, 1], [-12, 12]);
+  const parallaxY = useTransform(sy, [0, 1], [-8, 8]);
 
   useEffect(() => {
     if (reduced) return;
@@ -74,11 +75,34 @@ export function HeroVisual() {
     return () => window.removeEventListener("mousemove", onMove);
   }, [mx, my, reduced]);
 
+  // Close hologram when clicking outside or pressing Escape
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (active !== null && containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setActive(null);
+      }
+    };
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setActive(null);
+      }
+    };
+
+    if (active !== null) {
+      document.addEventListener("mousedown", handleClickOutside);
+      document.addEventListener("keydown", handleKeyDown);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+        document.removeEventListener("keydown", handleKeyDown);
+      };
+    }
+  }, [active]);
+
   return (
     <div
-      className="relative mx-auto mt-10 h-[min(480px,88vw)] w-full max-w-[400px] sm:mt-14 sm:h-[min(560px,72vw)] sm:max-w-[560px] lg:mx-0 lg:mt-0 lg:h-[min(640px,56vh)] lg:max-w-none"
-      onClick={() => setActive(null)}
-      onKeyDown={(e) => e.key === "Escape" && setActive(null)}
+      ref={containerRef}
+      className="relative mx-auto mt-8 h-[min(420px,80vw)] w-full max-w-[380px] sm:mt-12 sm:h-[min(520px,65vw)] sm:max-w-[520px] lg:mx-0 lg:mt-0 lg:h-[min(600px,52vh)] lg:max-w-none"
     >
       <div
         className="pointer-events-none absolute inset-0 rounded-[2rem] opacity-60"
@@ -107,6 +131,10 @@ export function HeroVisual() {
                 e.stopPropagation();
                 setActive(isActive ? null : i);
               }}
+              onTouchStart={(e) => {
+                // Improve touch responsiveness on mobile
+                e.stopPropagation();
+              }}
               className={clsx(
                 "absolute cursor-pointer appearance-none border-0 bg-transparent p-0 text-left outline-none transition-[z-index] duration-300",
                 c.className,
@@ -114,14 +142,20 @@ export function HeroVisual() {
                 isActive && "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               )}
               style={{ zIndex: z }}
-              initial={reduced ? false : { opacity: 0, y: 40, scale: 0.92 }}
+              initial={reduced ? false : { opacity: 0, y: 30, scale: 0.95 }}
               animate={{
-                opacity: isDimmed ? 0.45 : 1,
+                opacity: isDimmed ? 0.4 : 1,
                 y: 0,
-                scale: isActive ? 1.1 : isDimmed ? 0.94 : 1,
+                scale: isActive ? 1.08 : isDimmed ? 0.96 : 1,
               }}
-              transition={{ delay: 0.35 + i * 0.12, duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
-              whileHover={active === null && !reduced ? { scale: 1.03 } : undefined}
+              transition={{ 
+                delay: 0.3 + i * 0.1, 
+                duration: 0.6, 
+                ease: [0.16, 1, 0.3, 1],
+                scale: { type: "spring", stiffness: 300, damping: 25 }
+              }}
+              whileHover={active === null && !reduced ? { scale: 1.02 } : undefined}
+              whileTap={{ scale: 0.98 }}
             >
               <motion.div
                 animate={reduced || isActive || active !== null ? undefined : { y: [0, -10, 0] }}
@@ -166,17 +200,23 @@ export function HeroVisual() {
 
                 <AnimatePresence>
                   {isActive && (
-                    <motion.div
-                      initial={{ opacity: 0, y: 8 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: 6 }}
-                      transition={{ duration: 0.25 }}
-                      className="absolute bottom-6 left-1/2 z-20 flex -translate-x-1/2 flex-wrap items-center justify-center gap-2 px-2"
-                      onClick={(e) => e.stopPropagation()}
-                    >
+                <motion.div
+                  initial={{ opacity: 0, y: 12, scale: 0.9 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: 8, scale: 0.95 }}
+                  transition={{ 
+                    duration: 0.3,
+                    type: "spring",
+                    stiffness: 400,
+                    damping: 25
+                  }}
+                  className="absolute bottom-4 left-1/2 z-20 flex -translate-x-1/2 flex-wrap items-center justify-center gap-2 px-2 sm:bottom-6"
+                  onClick={(e) => e.stopPropagation()}
+                  onTouchStart={(e) => e.stopPropagation()}
+                >
                       <Link
                         to={`/work/${c.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-accent to-cyan-600 px-4 py-2 text-xs font-bold text-bg shadow-[0_8px_24px_rgba(34,211,238,0.35)] transition hover:-translate-y-0.5"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-accent to-cyan-600 px-3 py-1.5 text-xs font-bold text-bg shadow-[0_6px_20px_rgba(34,211,238,0.35)] transition hover:-translate-y-0.5 sm:px-4 sm:py-2"
                       >
                         View project →
                       </Link>
@@ -185,7 +225,7 @@ export function HeroVisual() {
                           href={c.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1 rounded-full border border-line bg-bg/90 px-3.5 py-2 text-xs font-semibold text-zinc-100 backdrop-blur transition hover:border-accent hover:text-accent"
+                          className="inline-flex items-center gap-1 rounded-full border border-line bg-bg/90 px-2.5 py-1.5 text-xs font-semibold text-zinc-100 backdrop-blur transition hover:border-accent hover:text-accent dark:border-line dark:bg-bg/90 dark:text-zinc-100 light:border-light-line light:bg-light-bg/90 light:text-slate-900 sm:px-3.5 sm:py-2"
                         >
                           Live site ↗
                         </a>
@@ -198,10 +238,10 @@ export function HeroVisual() {
           );
         })}
       </motion.div>
-      <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-white/[0.06]" aria-hidden />
+      <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 ring-white/[0.06] dark:ring-white/[0.06] light:ring-black/[0.06]" aria-hidden />
       {active !== null && (
-        <p className="pointer-events-none absolute -bottom-1 left-0 right-0 text-center font-mono text-[0.62rem] uppercase tracking-widest text-muted">
-          Click outside to reset · Esc to close
+        <p className="pointer-events-none absolute -bottom-2 left-0 right-0 text-center font-mono text-[0.58rem] uppercase tracking-widest text-muted opacity-75 dark:text-muted light:text-light-muted sm:-bottom-1 sm:text-[0.62rem]">
+          Click outside to close · Esc to exit
         </p>
       )}
     </div>
