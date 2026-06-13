@@ -24,12 +24,48 @@ const faqs = [
   },
 ];
 
+const countries = [
+  "India",
+  "United States",
+  "United Kingdom",
+  "Canada",
+  "Australia",
+  "Germany",
+  "France",
+  "Netherlands",
+  "Singapore",
+  "United Arab Emirates",
+  "Other",
+] as const;
+
+const budgetUsd = [
+  "Under $300",
+  "$300 – $500",
+  "$500 – $1,000",
+  "$1,000 – $5,000",
+  "$5,000+",
+] as const;
+
+const budgetInr = [
+  "Under ₹10,000",
+  "₹10,000 – ₹20,000",
+  "₹20,000 – ₹30,000",
+  "₹30,000 – ₹50,000",
+  "₹50,000+",
+] as const;
+
+const fieldClass =
+  "rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent light:text-light-primary";
+
 export function Contact() {
   const [params] = useSearchParams();
   const sent = params.get("sent") === "1";
   const [openFaq, setOpenFaq] = useState(0);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
+  const [country, setCountry] = useState<string>("United States");
+  const isIndia = country === "India";
+  const budgetOptions = isIndia ? budgetInr : budgetUsd;
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(EMAIL);
@@ -116,7 +152,7 @@ export function Contact() {
                 name="name"
                 required
                 placeholder="Your name"
-                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+                className={fieldClass}
               />
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
@@ -126,15 +162,12 @@ export function Contact() {
                 name="email"
                 required
                 placeholder="you@company.com"
-                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+                className={fieldClass}
               />
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
               Project type
-              <select
-                name="type"
-                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
-              >
+              <select name="type" className={fieldClass}>
                 <option>Website / Landing page</option>
                 <option>Directory / SEO site</option>
                 <option>AI dashboard / automation</option>
@@ -143,16 +176,33 @@ export function Contact() {
               </select>
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
-              Budget range
+              Country
               <select
-                name="budget"
-                className="rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+                name="country"
+                required
+                value={country}
+                onChange={(e) => setCountry(e.target.value)}
+                className={fieldClass}
               >
-                <option>Under $300</option>
-                <option>$300 – $500</option>
-                <option>$500 – $1,000</option>
-                <option>$1,000 – $5,000</option>
-                <option>$5,000+</option>
+                {countries.map((c) => (
+                  <option key={c} value={c}>
+                    {c}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Budget range {isIndia ? "(INR)" : "(USD)"}
+              <select
+                key={country}
+                name="budget"
+                className={fieldClass}
+              >
+                {budgetOptions.map((b) => (
+                  <option key={b} value={b}>
+                    {b}
+                  </option>
+                ))}
               </select>
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
@@ -162,7 +212,7 @@ export function Contact() {
                 required
                 rows={5}
                 placeholder="Tell me about your project, timeline, and goals…"
-                className="resize-y rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent"
+                className={`resize-y ${fieldClass}`}
               />
             </label>
             {error && <p className="text-sm text-hot">{error}</p>}
