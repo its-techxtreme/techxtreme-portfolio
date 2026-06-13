@@ -17,9 +17,12 @@ export function Layout() {
   }, [pathname]);
 
   // Render sophisticated light mode UI when theme is light
+  console.log("Layout render - useLightUI:", useLightUI, "pathname:", pathname);
   if (useLightUI && pathname === "/") {
+    console.log("Rendering LightModeLayout");
     return <LightModeLayout />;
   }
+  console.log("Rendering regular dark mode layout");
 
   // Render original dark mode React UI
   return (

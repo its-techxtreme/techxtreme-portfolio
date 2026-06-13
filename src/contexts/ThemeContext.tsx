@@ -30,21 +30,28 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const useLightUI = theme === "light";
 
   useEffect(() => {
+    console.log("Theme useEffect triggered, theme:", theme);
     // Apply theme to document
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
       document.documentElement.classList.remove("light");
+      console.log("Applied dark mode classes");
     } else {
       document.documentElement.classList.add("light");
       document.documentElement.classList.remove("dark");
+      console.log("Applied light mode classes");
     }
     
     // Save to localStorage
     localStorage.setItem("theme", theme);
+    console.log("Theme saved to localStorage:", theme);
   }, [theme]);
 
   const toggleTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    console.log("Theme toggle clicked, current theme:", theme);
+    const newTheme = theme === "dark" ? "light" : "dark";
+    console.log("Setting new theme:", newTheme);
+    setTheme(newTheme);
   };
 
   return (
