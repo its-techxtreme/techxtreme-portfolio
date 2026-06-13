@@ -14,23 +14,17 @@ type Props = {
 const IMG_STYLE_DARK = { filter: "blur(6px) saturate(1.15)" };
 const IMG_STYLE_LIGHT = { filter: "blur(4px) saturate(1.2)" };
 
+/** Panel text: dark-mode colors on both themes (panels use dark scrims). No glow. */
 const CONTENT_CLASS = clsx(
   "relative z-10",
-  "dark:[&_h1]:!text-white dark:[&_h2]:!text-white dark:[&_h3]:!text-white",
-  "dark:[&_h1]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)] dark:[&_h2]:drop-shadow-[0_2px_16px_rgba(0,0,0,0.95)]",
-  "dark:[&_h3]:drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]",
-  "dark:[&_p]:!text-zinc-100 dark:[&_p]:drop-shadow-[0_1px_10px_rgba(0,0,0,0.95)]",
-  "dark:[&_p.font-mono]:!text-cyan-200",
-  "dark:[&_.text-gradient]:from-white dark:[&_.text-gradient]:via-cyan-200 dark:[&_.text-gradient]:to-cyan-300",
-  "dark:[&_.text-gradient]:drop-shadow-[0_2px_14px_rgba(0,0,0,0.95)]",
-  "dark:[&_span.text-accent]:text-cyan-200",
-  "dark:[&_.font-mono]:text-cyan-200",
-  "light:[&_h1]:!text-[#0f2433] light:[&_h2]:!text-[#0f2433] light:[&_h3]:!text-[#0f2433]",
-  "light:[&_h1]:font-bold light:[&_h2]:font-bold",
-  "light:[&_p]:!text-[#1e4a63] light:[&_p.font-mono]:!text-[#2b6f8f]",
-  "light:[&_.text-gradient]:from-[#1a5f7a] light:[&_.text-gradient]:via-[#2b6f8f] light:[&_.text-gradient]:to-[#4a9ec4]",
-  "light:[&_span.text-accent]:text-[#2b6f8f]",
-  "light:[&_.font-mono]:text-[#2b6f8f]"
+  "[&_h1]:!text-white [&_h2]:!text-white [&_h3]:!text-white",
+  "[&_p]:!text-zinc-100",
+  "[&_p.font-mono]:!text-cyan-200",
+  "[&_li]:text-zinc-100",
+  "[&_.text-gradient]:from-white [&_.text-gradient]:via-cyan-200 [&_.text-gradient]:to-cyan-300",
+  "[&_span.text-accent]:text-cyan-200",
+  "[&_.font-mono]:text-cyan-200",
+  "[&_p.text-accent]:text-cyan-200"
 );
 
 export function ParallaxCapsule({ image, children, className }: Props) {
