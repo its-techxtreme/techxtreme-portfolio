@@ -51,8 +51,9 @@ export function ServicesTabs() {
             className={clsx(
               "rounded-full border px-5 py-2.5 text-sm font-semibold transition",
               active === t.id
-                ? "border-zinc-100 bg-zinc-100 text-bg"
-                : "border-line text-muted hover:border-zinc-400 hover:text-zinc-100"
+                ? "border-accent bg-accent text-bg dark:border-accent dark:bg-accent dark:text-bg light:border-[#2b6f8f] light:bg-[#2b6f8f] light:text-white"
+                : "border-line text-muted hover:border-accent/40 hover:text-zinc-100 dark:border-line dark:text-muted dark:hover:border-accent dark:hover:text-zinc-100 light:border-light-line light:bg-white light:text-light-primary light:hover:border-light-accent light:hover:bg-[#faf6f0] light:hover:text-light-accent",
+              "focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent light:focus-visible:outline-[#2b6f8f]"
             )}
           >
             {t.label}
@@ -69,11 +70,14 @@ export function ServicesTabs() {
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.4 }}
         >
-          <img src={panel.image} alt="" className="rounded-2xl border border-line" />
+          <img src={panel.image} alt="" className="rounded-2xl border border-line light:bg-white" />
           <ul className="flex flex-col gap-4">
             {panel.items.map((item) => (
-              <li key={item.title} className="rounded-2xl border border-line p-5 transition hover:border-accent/30">
-                <strong className="block font-semibold">{item.title}</strong>
+              <li
+                key={item.title}
+                className="rounded-2xl border border-line p-5 transition dark:hover:border-accent/30 light:bg-white light:hover:border-light-accent/40 light:hover:bg-[#faf6f0]"
+              >
+                <strong className="block font-semibold text-zinc-100 light:text-light-primary">{item.title}</strong>
                 <span className="mt-1 block text-sm text-muted">{item.desc}</span>
               </li>
             ))}

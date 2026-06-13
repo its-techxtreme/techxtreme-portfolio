@@ -34,21 +34,24 @@
 
   html.light {
     --theme-bg: #e8f6fc;
-    --theme-bg-2: #f3fafe;
-    --theme-bg-3: #d4ecf8;
+    --theme-bg-2: #ffffff;
+    --theme-bg-3: #faf6f0;
+    --theme-peach: #f5e6d3;
+    --theme-cream: #faf6f0;
+    --theme-card-fade: #0f2433;
     --theme-line: rgba(100, 150, 185, 0.22);
     --theme-muted: #3a6078;
-    --theme-accent: #3d8aad;
-    --theme-accent-2: #6aafd0;
+    --theme-accent: #2b6f8f;
+    --theme-accent-2: #4a9ec4;
     --theme-hot: #c97b8f;
     --theme-lime: #4a8f3a;
-    --theme-text: #1a3344;
+    --theme-text: #0f2433;
     --theme-text-soft: #3a6078;
     --theme-surface-hover: rgba(100, 160, 200, 0.1);
     --theme-surface-active: rgba(100, 160, 200, 0.16);
     --theme-shadow: rgba(100, 150, 185, 0.12);
-    --theme-glass: rgba(243, 250, 254, 0.82);
-    --theme-glass-card: rgba(248, 252, 255, 0.9);
+    --theme-glass: rgba(255, 255, 255, 0.88);
+    --theme-glass-card: rgba(255, 255, 255, 0.92);
   }
   
   html {
@@ -165,7 +168,7 @@
   }
 
   html.light .skill-chip {
-    background: var(--theme-bg-2);
+    background: var(--theme-cream);
     color: var(--theme-text);
     border-color: var(--theme-line);
     box-shadow: 0 4px 16px var(--theme-shadow);
@@ -174,6 +177,7 @@
   html.light .skill-chip:hover {
     border-color: var(--theme-accent);
     color: var(--theme-accent);
+    background: #ffffff;
     box-shadow: 0 8px 24px var(--theme-shadow);
   }
 }

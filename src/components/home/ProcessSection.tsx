@@ -31,14 +31,14 @@ export function ProcessSection() {
         {steps.map((s, i) => (
           <Reveal key={s.step} delay={i * 0.08}>
             <div
-              className={`group relative isolate flex min-h-[240px] flex-col justify-end overflow-hidden rounded-card border bg-bg-2 p-6 transition duration-300 sm:min-h-[280px] sm:p-7 ${
+              className={`group relative isolate flex min-h-[240px] flex-col justify-end overflow-hidden rounded-card border bg-bg-2 p-6 transition duration-300 sm:min-h-[280px] sm:p-7 light:bg-white light:shadow-[0_4px_24px_rgba(100,150,185,0.1)] ${
                 s.active
-                  ? "border-accent/40 shadow-[0_0_30px_-8px_rgba(34,211,238,0.2)]"
-                  : "border-line hover:border-accent/25"
+                  ? "border-accent/40 shadow-[0_0_30px_-8px_rgba(34,211,238,0.2)] light:border-light-accent/50 light:shadow-[0_4px_28px_rgba(43,111,143,0.18)]"
+                  : "border-line hover:border-accent/25 light:hover:border-light-accent/30"
               }`}
             >
               <span
-                className="pointer-events-none absolute right-2 top-0 z-0 select-none font-display text-[4.5rem] font-bold leading-none text-white/[0.05] sm:right-3 sm:text-[5.5rem]"
+                className="pointer-events-none absolute right-2 top-0 z-0 select-none font-display text-[4.5rem] font-bold leading-none text-white/[0.05] sm:right-3 sm:text-[5.5rem] dark:text-white/[0.05] light:text-[#2b6f8f]/[0.12]"
                 aria-hidden
               >
                 {s.step}

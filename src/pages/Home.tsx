@@ -117,8 +117,8 @@ export function Home() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {testimonials.map((t, i) => (
             <Reveal key={t.name} delay={i * 0.1}>
-              <blockquote className="rounded-card border border-line bg-bg-2 p-6 transition hover:-translate-y-1.5 hover:border-accent/25 sm:p-8">
-                <p className="leading-relaxed text-zinc-300">&ldquo;{t.quote}&rdquo;</p>
+              <blockquote className="rounded-card border border-line bg-bg-2 p-6 transition hover:-translate-y-1.5 hover:border-accent/25 sm:p-8 light:bg-white light:shadow-[0_4px_20px_rgba(100,150,185,0.08)] light:hover:border-light-accent/30 light:hover:bg-[#faf6f0]">
+                <p className="leading-relaxed text-zinc-300 light:text-light-primary">&ldquo;{t.quote}&rdquo;</p>
                 <footer className="mt-6 text-sm text-muted">
                   <strong className="block text-accent">{t.name}</strong>
                   {t.role}

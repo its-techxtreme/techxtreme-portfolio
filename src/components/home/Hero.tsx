@@ -33,7 +33,7 @@ export function Hero() {
       <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_minmax(320px,1fr)] lg:gap-16">
         <div className="flex flex-col justify-center">
           <motion.div
-            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 font-mono text-[0.7rem] text-muted backdrop-blur-md"
+            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 font-mono text-[0.7rem] text-muted backdrop-blur-md light:bg-white light:border-light-line light:shadow-[0_2px_12px_rgba(100,150,185,0.08)]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
