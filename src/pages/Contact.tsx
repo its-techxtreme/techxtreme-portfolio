@@ -91,8 +91,11 @@ const budgetInr = [
   "₹50,000+",
 ] as const;
 
-const fieldClass =
-  "rounded-xl border border-line bg-bg px-4 py-3 text-zinc-100 outline-none focus:border-accent light:text-light-primary";
+const DEFAULT_BUDGET_INR = "₹20,000 – ₹30,000";
+
+function defaultBudgetForCountry(c: string) {
+  return c === "India" ? DEFAULT_BUDGET_INR : budgetUsd[0];
+}
 
 export function Contact() {
   const [params] = useSearchParams();
@@ -103,11 +106,13 @@ export function Contact() {
   const [country, setCountry] = useState<string>("India");
   const [phoneCode, setPhoneCode] = useState("+91");
   const [phoneNumber, setPhoneNumber] = useState("");
+  const [budget, setBudget] = useState(DEFAULT_BUDGET_INR);
   const isIndia = country === "India";
   const budgetOptions = isIndia ? budgetInr : budgetUsd;
 
   const handleCountryChange = (next: string) => {
     setCountry(next);
+    setBudget(defaultBudgetForCountry(next));
     const dial = countryDialCodes[next as (typeof countries)[number]];
     if (dial) setPhoneCode(dial);
   };
@@ -116,7 +121,10 @@ export function Contact() {
     const normalized = normalizeDialCode(value);
     setPhoneCode(normalized);
     const matched = countryFromDialCode(normalized, country);
-    if (matched) setCountry(matched);
+    if (matched) {
+      setCountry(matched);
+      setBudget(defaultBudgetForCountry(matched));
+    }
   };
 
   const copyEmail = async () => {
@@ -272,8 +280,9 @@ export function Contact() {
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
               Budget range {isIndia ? "(INR)" : "(USD)"}
               <select
-                key={country}
                 name="budget"
+                value={budget}
+                onChange={(e) => setBudget(e.target.value)}
                 className={fieldClass}
               >
                 {budgetOptions.map((b) => (
