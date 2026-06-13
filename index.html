@@ -1,7 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="light">
   <head>
     <meta charset="UTF-8" />
+    <script>
+      (function () {
+        var t = localStorage.getItem("theme");
+        document.documentElement.classList.remove("light", "dark");
+        document.documentElement.classList.add(t === "dark" ? "dark" : "light");
+      })();
+    </script>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>TX</text></svg>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Techxtreme — Remote studio building high-converting websites, directories, and AI platforms for founders worldwide." />

@@ -13,12 +13,10 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [theme, setTheme] = useState<Theme>(() => {
     const stored = localStorage.getItem("theme") as Theme | null;
-    let initial: Theme = "dark";
+    let initial: Theme = "light";
 
     if (stored && (stored === "light" || stored === "dark")) {
       initial = stored;
-    } else if (typeof window !== "undefined" && window.matchMedia) {
-      initial = window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
     }
 
     if (initial === "dark") {
