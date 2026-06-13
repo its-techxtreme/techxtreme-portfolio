@@ -16,18 +16,21 @@ export default {
         hot: "#f472b6",
         lime: "#a3e635",
         
-        // Light mode colors
-        "light-bg": "#ffffff",
-        "light-bg-2": "#f8fafc",
-        "light-bg-3": "#f1f5f9",
-        "light-line": "rgba(0,0,0,0.08)",
-        "light-muted": "#64748b",
-        "light-accent": "#0891b2",
-        "light-accent-2": "#06b6d4",
+        // Light mode colors (ui-ux-pro-max professional palette)
+        "light-bg": "#FAFAFA",        // Professional light background
+        "light-bg-2": "#F5F5F7",      // Glass card backgrounds
+        "light-bg-3": "#FFFFFF",      // Pure white for modals
+        "light-line": "rgba(24,24,27,0.12)",  // Visible borders in light mode
+        "light-muted": "#475569",     // Minimum contrast for muted text
+        "light-accent": "#2563EB",    // Professional blue CTA
+        "light-accent-2": "#3B82F6",  // Secondary blue
+        "light-primary": "#18181B",   // Dark text/elements
+        "light-secondary": "#3F3F46", // Dark gray elements
       },
       fontFamily: {
-        sans: ["Manrope", "system-ui", "sans-serif"],
-        display: ["Space Grotesk", "system-ui", "sans-serif"],
+        sans: ["Space Grotesk", "system-ui", "sans-serif"],  // ui-ux-pro-max body font
+        display: ["Archivo", "system-ui", "sans-serif"],     // ui-ux-pro-max heading font
+        body: ["Space Grotesk", "system-ui", "sans-serif"],  // Explicit body font
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {

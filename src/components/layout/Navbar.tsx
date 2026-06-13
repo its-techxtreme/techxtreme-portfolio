@@ -38,7 +38,8 @@ export function Navbar() {
     <>
       <motion.header
         className={clsx(
-          "fixed left-1/2 top-4 z-[9000] flex w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 items-center gap-1 rounded-full border border-line glass px-2 py-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.5)] dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_20px_60px_rgba(0,0,0,0.15)] md:w-auto",
+          "fixed left-1/2 top-4 z-[9000] flex w-[calc(100%-2rem)] max-w-3xl -translate-x-1/2 items-center gap-1 rounded-full glass px-2 py-1.5 shadow-[0_20px_60px_rgba(0,0,0,0.5)] md:w-auto",
+          "dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_10px_25px_rgba(0,0,0,0.15)]",
           hidden && !menuOpen && "-translate-y-[140%] opacity-0"
         )}
         initial={false}

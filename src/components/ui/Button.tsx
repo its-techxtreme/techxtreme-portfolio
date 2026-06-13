@@ -6,9 +6,13 @@ type Variant = "primary" | "ghost";
 
 const styles: Record<Variant, string> = {
   primary:
-    "bg-gradient-to-br from-accent to-cyan-600 text-bg shadow-[0_12px_40px_rgba(34,211,238,0.25)] hover:-translate-y-0.5",
+    "bg-gradient-to-br from-accent to-cyan-600 text-bg shadow-[0_12px_40px_rgba(34,211,238,0.25)] hover:-translate-y-0.5 " +
+    "dark:from-accent dark:to-cyan-600 dark:text-bg " +
+    "light:from-light-accent light:to-light-accent-2 light:text-white light:shadow-[0_12px_40px_rgba(37,99,235,0.25)]",
   ghost:
-    "border border-line bg-transparent text-zinc-100 hover:border-accent hover:text-accent",
+    "border border-line bg-transparent text-zinc-100 hover:border-accent hover:text-accent " +
+    "dark:border-line dark:text-zinc-100 dark:hover:border-accent dark:hover:text-accent " +
+    "light:border-light-line light:text-light-primary light:hover:border-light-accent light:hover:text-light-accent",
 };
 
 interface BaseProps {

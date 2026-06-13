@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -65,7 +67,7 @@
   }
   
   html.light .glass {
-    @apply border border-light-line bg-black/[0.04] backdrop-blur-xl;
+    @apply border border-light-line bg-white/80 backdrop-blur-xl shadow-md;
   }
   
   .glass-card {
@@ -73,7 +75,7 @@
   }
   
   html.light .glass-card {
-    @apply border border-light-line bg-black/[0.06] backdrop-blur-2xl;
+    @apply border border-light-line bg-white/90 backdrop-blur-2xl shadow-lg;
   }
   
   .outline-text {

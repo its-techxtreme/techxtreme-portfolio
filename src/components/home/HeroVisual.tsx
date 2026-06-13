@@ -139,7 +139,7 @@ export function HeroVisual() {
                 "absolute cursor-pointer appearance-none border-0 bg-transparent p-0 text-left outline-none transition-[z-index] duration-300",
                 c.className,
                 isActive && "z-[70]",
-                isActive && "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+                isActive && "focus-visible:ring-2 focus-visible:ring-offset-2 dark:focus-visible:ring-accent dark:focus-visible:ring-offset-bg light:focus-visible:ring-light-accent light:focus-visible:ring-offset-light-bg"
               )}
               style={{ zIndex: z }}
               initial={reduced ? false : { opacity: 0, y: 30, scale: 0.95 }}
@@ -175,10 +175,11 @@ export function HeroVisual() {
                 ) : (
                   <div
                     className={clsx(
-                      "overflow-hidden rounded-2xl border bg-bg-2 shadow-2xl ring-1 transition duration-300",
+                      "overflow-hidden rounded-2xl border shadow-2xl ring-1 transition duration-300",
+                      "dark:bg-bg-2 light:bg-light-bg-3",
                       isActive
-                        ? "border-accent/40 ring-accent/30 shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)]"
-                        : "border-white/10 ring-white/5"
+                        ? "border-accent/40 ring-accent/30 shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)] dark:border-accent/40 dark:ring-accent/30 light:border-light-accent/40 light:ring-light-accent/30 light:shadow-[0_0_40px_-8px_rgba(37,99,235,0.35)]"
+                        : "border-white/10 ring-white/5 dark:border-white/10 dark:ring-white/5 light:border-black/10 light:ring-black/5"
                     )}
                   >
                     <img
@@ -192,7 +193,9 @@ export function HeroVisual() {
                 <span
                   className={clsx(
                     "absolute -bottom-1 left-2 font-mono text-[0.6rem] uppercase tracking-widest transition-colors",
-                    isActive ? "text-accent" : "text-muted"
+                    isActive 
+                      ? "text-accent dark:text-accent light:text-light-accent" 
+                      : "text-muted dark:text-muted light:text-light-muted"
                   )}
                 >
                   {c.label}
@@ -216,7 +219,7 @@ export function HeroVisual() {
                 >
                       <Link
                         to={`/work/${c.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br from-accent to-cyan-600 px-3 py-1.5 text-xs font-bold text-bg shadow-[0_6px_20px_rgba(34,211,238,0.35)] transition hover:-translate-y-0.5 sm:px-4 sm:py-2"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1.5 text-xs font-bold transition hover:-translate-y-0.5 sm:px-4 sm:py-2 dark:from-accent dark:to-cyan-600 dark:text-bg dark:shadow-[0_6px_20px_rgba(34,211,238,0.35)] light:from-light-accent light:to-light-accent-2 light:text-white light:shadow-[0_6px_20px_rgba(37,99,235,0.35)]"
                       >
                         View project →
                       </Link>
