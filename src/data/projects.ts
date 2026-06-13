@@ -178,6 +178,8 @@ export const projects: Project[] = [
     gallery: [
       "/assets/projects/panache-hero.png",
       "/assets/projects/panache-services.png",
+      "/assets/projects/panache-contact.png",
+      "/assets/projects/panache-portfolio.png",
     ],
     deliverables: [
       "Premium Next.js website with sophisticated design system",
@@ -210,6 +212,8 @@ export const projects: Project[] = [
     gallery: [
       "/assets/projects/clientverse-scans.png",
       "/assets/projects/clientverse-settings.png",
+      "/assets/projects/clientverse-leads.png",
+      "/assets/projects/clientverse-profile.png",
     ],
     techScope: [
       "Reddit API integration with rate limiting and error handling",
