@@ -38,6 +38,43 @@ const countries = [
   "Other",
 ] as const;
 
+const countryDialCodes: Record<(typeof countries)[number], string> = {
+  India: "+91",
+  "United States": "+1",
+  "United Kingdom": "+44",
+  Canada: "+1",
+  Australia: "+61",
+  Germany: "+49",
+  France: "+33",
+  Netherlands: "+31",
+  Singapore: "+65",
+  "United Arab Emirates": "+971",
+  Other: "",
+};
+
+function normalizeDialCode(value: string) {
+  const trimmed = value.trim();
+  if (!trimmed) return "";
+  return trimmed.startsWith("+") ? trimmed : `+${trimmed}`;
+}
+
+function countryFromDialCode(code: string, current: string): string | null {
+  const normalized = normalizeDialCode(code);
+  if (!normalized) return null;
+
+  const exact = (Object.entries(countryDialCodes) as [string, string][]).filter(
+    ([, dial]) => dial === normalized
+  );
+
+  if (exact.length === 1) return exact[0][0];
+  if (exact.length > 1) {
+    if (current === "Canada" || current === "United States") return current;
+    return "United States";
+  }
+
+  return null;
+}
+
 const budgetUsd = [
   "Under $300",
   "$300 – $500",
@@ -63,9 +100,24 @@ export function Contact() {
   const [openFaq, setOpenFaq] = useState(0);
   const [copied, setCopied] = useState(false);
   const [error, setError] = useState("");
-  const [country, setCountry] = useState<string>("United States");
+  const [country, setCountry] = useState<string>("India");
+  const [phoneCode, setPhoneCode] = useState("+91");
+  const [phoneNumber, setPhoneNumber] = useState("");
   const isIndia = country === "India";
   const budgetOptions = isIndia ? budgetInr : budgetUsd;
+
+  const handleCountryChange = (next: string) => {
+    setCountry(next);
+    const dial = countryDialCodes[next as (typeof countries)[number]];
+    if (dial) setPhoneCode(dial);
+  };
+
+  const handlePhoneCodeChange = (value: string) => {
+    const normalized = normalizeDialCode(value);
+    setPhoneCode(normalized);
+    const matched = countryFromDialCode(normalized, country);
+    if (matched) setCountry(matched);
+  };
 
   const copyEmail = async () => {
     await navigator.clipboard.writeText(EMAIL);
@@ -166,6 +218,32 @@ export function Contact() {
               />
             </label>
             <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
+              Phone number
+              <div className="flex gap-2">
+                <input
+                  type="tel"
+                  value={phoneCode}
+                  onChange={(e) => handlePhoneCodeChange(e.target.value)}
+                  placeholder="+91"
+                  aria-label="Country code"
+                  className={`${fieldClass} w-[5.5rem] shrink-0`}
+                />
+                <input
+                  type="tel"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value)}
+                  placeholder="Your phone number"
+                  aria-label="Phone number"
+                  className={`${fieldClass} min-w-0 flex-1`}
+                />
+              </div>
+              <input
+                type="hidden"
+                name="phone"
+                value={phoneNumber.trim() ? `${phoneCode} ${phoneNumber.trim()}` : ""}
+              />
+            </label>
+            <label className="flex flex-col gap-2 text-sm font-semibold text-muted">
               Project type
               <select name="type" className={fieldClass}>
                 <option>Website / Landing page</option>
@@ -181,7 +259,7 @@ export function Contact() {
                 name="country"
                 required
                 value={country}
-                onChange={(e) => setCountry(e.target.value)}
+                onChange={(e) => handleCountryChange(e.target.value)}
                 className={fieldClass}
               >
                 {countries.map((c) => (
