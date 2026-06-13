@@ -6,6 +6,7 @@ interface ThemeContextType {
   theme: Theme;
   setTheme: (theme: Theme) => void;
   toggleTheme: () => void;
+  useLightUI: boolean;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -24,6 +25,9 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     
     return "dark";
   });
+
+  // Light UI uses completely different UI components (Stitch-generated)
+  const useLightUI = theme === "light";
 
   useEffect(() => {
     // Apply theme to document
@@ -44,7 +48,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   return (
-    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme }}>
+    <ThemeContext.Provider value={{ theme, setTheme, toggleTheme, useLightUI }}>
       {children}
     </ThemeContext.Provider>
   );
