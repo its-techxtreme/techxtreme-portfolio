@@ -1,0 +1,110 @@
+{
+  "project": {
+    "id": "projects/4415172154410214252",
+    "title": "Techxtreme Portfolio Light Mode",
+    "description": "Premium light mode design system and components for Techxtreme Portfolio"
+  },
+  "designSystem": {
+    "id": "assets/16309963069266663719",
+    "name": "Premium Light Mode - Techxtreme Portfolio",
+    "theme": {
+      "colorMode": "LIGHT",
+      "primaryColor": "#7B9B8C",
+      "secondaryColor": "#E8C4A0",
+      "tertiaryColor": "#A6C8E1",
+      "neutralColor": "#F8F9FA",
+      "headlineFont": "SORA",
+      "bodyFont": "INTER",
+      "labelFont": "MANROPE",
+      "roundness": "ROUND_TWELVE",
+      "colorVariant": "TONAL_SPOT"
+    },
+    "principles": {
+      "colors": "Sophisticated, muted colors inspired by natural elements - sage green, dusty peach, light blue, off-white",
+      "shadows": "NO harsh black shadows - use primary color (#7B9B8C) at 10-15% opacity for shadows",
+      "glassmorphism": "Subtle frosted glass effects with light backgrounds, translucent overlays with warm undertones",
+      "typography": "Sora for headlines (modern, geometric), Inter for body text (highly legible), Manrope for labels (rounded, friendly)"
+    }
+  },
+  "screens": [
+    {
+      "id": "2f66fab71afb4171a388810ca5c1cd3b",
+      "title": "Premium Navigation Bar",
+      "description": "Sophisticated glassmorphism navigation with frosted glass effect, centered TECHXTREME logo, horizontal menu with smooth hover animations",
+      "deviceType": "DESKTOP",
+      "files": {
+        "screenshot": "navigation-screenshot.png",
+        "html": "navigation-html.html"
+      },
+      "features": [
+        "Glassmorphism effect with translucent background",
+        "Smooth hover states with gentle transitions", 
+        "Premium typography hierarchy",
+        "Subtle border highlights and depth shadows",
+        "Modern, minimalist aesthetic"
+      ]
+    },
+    {
+      "id": "624179959dcc47a69749528b41e03d53",
+      "title": "Premium Hero Section",
+      "description": "Large hero area with glassmorphism card overlays, professional headshot, animated background, and sophisticated glass containers",
+      "deviceType": "DESKTOP", 
+      "files": {
+        "html": "hero-html.html"
+      },
+      "features": [
+        "Immersive ambient WebGL shader background",
+        "Glassmorphism core content container",
+        "Floating professional headshot with glass frame",
+        "Agency-level typography with clear hierarchy",
+        "Subtle animations and 3D layering effects"
+      ]
+    },
+    {
+      "id": "4e4e3d0eeeb34c2690c5fa7df0d22a2a",
+      "title": "Portfolio Gallery Cards",
+      "description": "Grid of premium glassmorphism project cards with hover effects, tech stack badges, and sophisticated animations",
+      "deviceType": "DESKTOP",
+      "files": {
+        "screenshot": "portfolio-gallery-screenshot.png",
+        "html": "portfolio-gallery-html.html"
+      },
+      "features": [
+        "High-fidelity glassmorphism card design",
+        "Smooth scale transforms on hover",
+        "Sage-tinted shadows instead of black",
+        "Tech stack badges with glass effects",
+        "Visual hierarchy with project thumbnails"
+      ]
+    }
+  ],
+  "colorPalette": {
+    "primary": {
+      "sage_green": "#7B9B8C",
+      "sage_container": "#c8ead9",
+      "sage_dim": "#3b594c"
+    },
+    "secondary": {
+      "dusty_peach": "#E8C4A0", 
+      "peach_container": "#ffddbb",
+      "peach_dim": "#684e32"
+    },
+    "tertiary": {
+      "light_blue": "#A6C8E1",
+      "blue_container": "#b9dcf5", 
+      "blue_dim": "#36576c"
+    },
+    "neutral": {
+      "off_white": "#F8F9FA",
+      "surface": "#f8f9fa",
+      "surface_container": "#ebeef0",
+      "warm_dark_text": "#2d3335"
+    }
+  },
+  "implementation": {
+    "shadowStrategy": "Use primary color (#7B9B8C) at 10-15% opacity instead of black shadows",
+    "glassmorphism": "backdrop-blur-xl with bg-white/10-40 and translucent borders",
+    "animations": "Smooth transitions with gentle scale transforms and elevation changes",
+    "typography": "Sora for headlines, Inter for body, Manrope for UI labels"
+  }
+}

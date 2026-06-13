@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>TECHXTREME | High-Fidelity Navigation</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;700;800&amp;family=Inter:wght@400;500&amp;family=Manrope:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#476558",
+                        "secondary-fixed": "#ffddbb",
+                        "on-primary-fixed": "#274539",
+                        "surface-container": "#ebeef0",
+                        "on-surface-variant": "#5a6062",
+                        "on-secondary": "#fff7f3",
+                        "surface-container-high": "#e5e9eb",
+                        "secondary-container": "#ffddbb",
+                        "on-tertiary-fixed-variant": "#37586d",
+                        "outline-variant": "#adb3b5",
+                        "on-tertiary-container": "#2d4f64",
+                        "tertiary-container": "#b9dcf5",
+                        "on-primary-container": "#3a584b",
+                        "surface": "#f8f9fa",
+                        "on-surface": "#2d3335",
+                        "on-background": "#2d3335",
+                        "secondary-dim": "#684e32",
+                        "surface-tint": "#476558",
+                        "surface-container-highest": "#dee3e6",
+                        "secondary": "#755a3d",
+                        "on-secondary-fixed": "#523b20",
+                        "surface-dim": "#d5dbdd",
+                        "tertiary-fixed": "#b9dcf5",
+                        "outline": "#767c7e",
+                        "on-primary": "#e5fff1",
+                        "on-error": "#fff7f6",
+                        "inverse-surface": "#0c0f10",
+                        "error": "#a83836",
+                        "surface-variant": "#dee3e6",
+                        "on-primary-fixed-variant": "#436255",
+                        "background": "#f8f9fa",
+                        "error-dim": "#67040d",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#c8ead9",
+                        "tertiary-dim": "#36576c",
+                        "on-secondary-fixed-variant": "#715639",
+                        "surface-bright": "#f8f9fa",
+                        "primary-dim": "#3b594c",
+                        "secondary-fixed-dim": "#f3cea9",
+                        "error-container": "#fa746f",
+                        "on-secondary-container": "#674d31",
+                        "surface-container-low": "#f1f4f5",
+                        "tertiary-fixed-dim": "#accee7",
+                        "inverse-on-surface": "#9b9d9e",
+                        "primary-fixed-dim": "#badccb",
+                        "tertiary": "#426379",
+                        "on-tertiary-fixed": "#183b50",
+                        "on-tertiary": "#f5f9ff",
+                        "inverse-primary": "#d6f9e7",
+                        "on-error-container": "#6e0a12",
+                        "primary-container": "#c8ead9"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Sora"],
+                        "display": ["Sora"],
+                        "body": ["Inter"],
+                        "label": ["Manrope"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        .nav-link-underline {
+            position: relative;
+        }
+        
+        .nav-link-underline::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: #476558;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateX(-50%);
+        }
+        
+        .nav-link-underline:hover::after {
+            width: 100%;
+        }
+
+        .glass-nav {
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<!-- Top Navigation Bar -->
+<!-- Executing Shared Component: TopNavBar -->
+<header class="fixed top-0 w-full z-50 glass-nav border-b border-primary/10 shadow-[0_8px_30px_rgb(71,101,88,0.05)]">
+<nav class="max-w-screen-2xl mx-auto h-20 px-8 flex justify-between items-center relative">
+<!-- Left Navigation Group (Semantic Map) -->
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body text-label-sm uppercase tracking-widest text-primary border-b-2 border-primary pb-1 transition-all duration-300" href="#">
+                    Home
+                </a>
+<a class="font-body text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 nav-link-underline" href="#">
+                    About
+                </a>
+<a class="font-body text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 nav-link-underline" href="#">
+                    Portfolio
+                </a>
+</div>
+<!-- Centered Brand Identity (Strict JSON Alignment) -->
+<div class="absolute left-1/2 -translate-x-1/2 flex items-center">
+<a class="font-display text-2xl font-black tracking-tighter text-on-surface flex items-center gap-2 group" href="/">
+<span class="w-8 h-8 bg-primary rounded-lg flex items-center justify-center text-on-primary group-hover:rotate-12 transition-transform duration-500">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">bolt</span>
+</span>
+                    TECHXTREME
+                </a>
+</div>
+<!-- Right Navigation Group & Action -->
+<div class="flex items-center gap-8">
+<div class="hidden md:flex items-center gap-8">
+<a class="font-body text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 nav-link-underline" href="#">
+                        Services
+                    </a>
+<a class="font-body text-label-sm uppercase tracking-widest text-on-surface-variant hover:text-primary transition-colors duration-300 nav-link-underline" href="#">
+                        Contact
+                    </a>
+</div>
+<!-- CTA Action -->
+<button class="bg-primary text-on-primary font-label text-sm font-semibold px-6 py-2.5 rounded-full shadow-lg shadow-primary/20 hover:bg-primary-dim hover:scale-[1.02] active:scale-95 transition-all duration-300">
+                    Get Started
+                </button>
+<!-- Mobile Menu Trigger -->
+<button aria-label="Menu" class="md:hidden p-2 text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</nav>
+</header>
+<!-- Placeholder Content to Demonstrate Sticky/Glass Effect -->
+<main class="pt-20">
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-surface-container-lowest">
+
+<div class="relative z-10 max-w-4xl px-8 text-center">
+<span class="font-label text-primary font-bold tracking-[0.2em] uppercase text-xs mb-6 block" data-aos="fade-up">Next Gen Digital Excellence</span>
+<h1 class="font-headline text-6xl md:text-8xl font-black text-on-surface tracking-tight mb-8 leading-[0.9]">
+                    Crafting <span class="text-primary italic">Extreme</span> Experiences.
+                </h1>
+<p class="font-body text-xl text-on-surface-variant max-w-2xl mx-auto mb-12">
+                    We push the boundaries of technology and design to build digital products that define industries and captivate users.
+                </p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<button class="px-8 py-4 bg-primary text-on-primary rounded-xl font-bold hover:shadow-2xl hover:shadow-primary/30 transition-all">View Our Work</button>
+<button class="px-8 py-4 bg-surface-container-high text-on-surface-variant rounded-xl font-bold hover:bg-surface-container-highest transition-all border border-outline-variant/10">The Agency</button>
+</div>
+</div>
+<!-- Decorative Elements -->
+<div class="absolute bottom-12 left-1/2 -translate-x-1/2 animate-bounce">
+<span class="material-symbols-outlined text-primary text-3xl">expand_more</span>
+</div>
+</section>
+<!-- Bento Grid Preview -->
+<section class="py-24 px-8 max-w-screen-2xl mx-auto">
+<div class="grid grid-cols-1 md:grid-cols-4 grid-rows-2 gap-6 h-[800px]">
+<div class="md:col-span-2 md:row-span-2 bg-primary-container/30 rounded-3xl overflow-hidden relative group">
+<img class="absolute inset-0 w-full h-full object-cover mix-blend-overlay group-hover:scale-110 transition-transform duration-700" data-alt="A sophisticated modern office space with minimalist furniture and sage green accents. The lighting is soft and natural, pouring through large floor-to-ceiling windows. The aesthetic is professional, calm, and high-end, featuring clean lines and a premium atmosphere." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwirInv91GyG_CBoymNsMw0rt5eoFmTSYJ0NwdQKEriDG6zJbUmmA5eaa2TpF36-Dp5p-sV-3wtZStb9-R6eRwn1MS4xQy_kYjH5_mJbjCdIgAIE4CuuDo_ih0b5z7m0FQzYHoDqGEQtFpozqxlqgPvJwFkmEUZ8vEpbbB4zxxrsMc7k7tnf3FmapsOcDeIOoBg9PnzEkf5lHVYuvY6FIzoPyLFTv9uvF5QyriPkqPMFQT7Q2semwNXChXrRS4CctVAaLb7X9oRlI"/>
+<div class="absolute bottom-8 left-8 p-6 bg-surface/90 backdrop-blur-md rounded-2xl border border-primary/10 max-w-xs">
+<h3 class="font-headline text-2xl font-bold text-primary">Strategic Design</h3>
+<p class="text-on-surface-variant mt-2">Designing with purpose and precision.</p>
+</div>
+</div>
+<div class="md:col-span-2 bg-secondary-container/20 rounded-3xl p-10 flex flex-col justify-center border border-secondary-fixed">
+<span class="font-label text-secondary font-bold uppercase text-xs tracking-widest mb-4">Innovation</span>
+<h3 class="font-headline text-4xl font-bold text-on-secondary-container leading-tight">Beyond the Digital Frontier.</h3>
+</div>
+<div class="bg-tertiary-container/20 rounded-3xl p-8 border border-tertiary-fixed">
+<span class="material-symbols-outlined text-tertiary text-4xl mb-4" style="font-variation-settings: 'FILL' 1;">speed</span>
+<h4 class="font-headline text-xl font-bold text-on-tertiary-container">Performance</h4>
+<p class="text-sm text-on-tertiary-fixed-variant mt-2">Zero-latency architectures for global scale.</p>
+</div>
+<div class="bg-surface-container-high rounded-3xl p-8 border border-outline-variant/10 relative overflow-hidden">
+<div class="absolute -right-4 -bottom-4 opacity-10 rotate-12">
+<span class="material-symbols-outlined text-[120px]">brush</span>
+</div>
+<h4 class="font-headline text-xl font-bold text-on-surface relative z-10">Artistry</h4>
+<p class="text-sm text-on-surface-variant mt-2 relative z-10">Pixel-perfect execution in every frame.</p>
+</div>
+</div>
+</section>
+</main>
+<!-- Executing Shared Component: Footer -->
+<footer class="w-full py-12 bg-surface-container-lowest border-t border-outline-variant/20">
+<div class="max-w-screen-2xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex items-center gap-4">
+<span class="font-display font-bold text-primary tracking-tighter">TECHXTREME</span>
+<span class="hidden md:block h-4 w-px bg-outline-variant/30"></span>
+<p class="font-body text-sm text-on-surface-variant">© 2024 TECHXTREME. Crafted with precision.</p>
+</div>
+<div class="flex gap-8">
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4" href="#">Privacy Policy</a>
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4" href="#">Terms of Service</a>
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4" href="#">LinkedIn</a>
+<a class="font-body text-sm text-on-surface-variant hover:text-primary transition-colors hover:underline decoration-primary/30 underline-offset-4" href="#">Dribbble</a>
+</div>
+</div>
+</footer>
+<script>
+        // Micro-interaction for header scroll state
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 20) {
+                header.classList.add('py-2');
+                header.classList.replace('h-20', 'h-16');
+                header.classList.add('shadow-xl');
+            } else {
+                header.classList.remove('py-2');
+                header.classList.replace('h-16', 'h-20');
+                header.classList.remove('shadow-xl');
+            }
+        });
+
+        // Simple Mobile Menu Toggle Simulation
+        const menuBtn = document.querySelector('button[aria-label="Menu"]');
+        menuBtn.addEventListener('click', () => {
+            alert('Mobile menu navigation triggered. In a full build, this would slide in a premium full-screen overlay.');
+        });
+    </script>
+</body></html>

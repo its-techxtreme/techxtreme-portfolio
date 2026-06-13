@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html class="scroll-smooth" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Techxtreme | Premium Full-Stack Development</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&amp;family=Inter:wght@400;500&amp;family=Manrope:wght@500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "tertiary": "#426379",
+                    "on-tertiary": "#f5f9ff",
+                    "on-surface": "#2d3335",
+                    "outline": "#767c7e",
+                    "on-secondary": "#fff7f3",
+                    "on-tertiary-container": "#2d4f64",
+                    "on-surface-variant": "#5a6062",
+                    "primary": "#476558",
+                    "error-dim": "#67040d",
+                    "secondary-fixed-dim": "#f3cea9",
+                    "surface": "#f8f9fa",
+                    "on-secondary-fixed-variant": "#715639",
+                    "tertiary-dim": "#36576c",
+                    "error": "#a83836",
+                    "surface-bright": "#f8f9fa",
+                    "surface-container-high": "#e5e9eb",
+                    "secondary": "#755a3d",
+                    "on-primary": "#e5fff1",
+                    "secondary-container": "#ffddbb",
+                    "tertiary-fixed": "#b9dcf5",
+                    "tertiary-fixed-dim": "#accee7",
+                    "surface-container-low": "#f1f4f5",
+                    "surface-dim": "#d5dbdd",
+                    "on-secondary-container": "#674d31",
+                    "secondary-fixed": "#ffddbb",
+                    "surface-variant": "#dee3e6",
+                    "on-primary-container": "#3a584b",
+                    "error-container": "#fa746f",
+                    "secondary-dim": "#684e32",
+                    "primary-fixed-dim": "#badccb",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#ebeef0",
+                    "on-tertiary-fixed": "#183b50",
+                    "inverse-on-surface": "#9b9d9e",
+                    "outline-variant": "#adb3b5",
+                    "on-primary-fixed-variant": "#436255",
+                    "on-error-container": "#6e0a12",
+                    "surface-container-highest": "#dee3e6",
+                    "primary-fixed": "#c8ead9",
+                    "tertiary-container": "#b9dcf5",
+                    "on-error": "#fff7f6",
+                    "on-tertiary-fixed-variant": "#37586d",
+                    "surface-tint": "#476558",
+                    "primary-dim": "#3b594c",
+                    "background": "#f8f9fa",
+                    "on-background": "#2d3335",
+                    "on-secondary-fixed": "#523b20",
+                    "primary-container": "#c8ead9",
+                    "inverse-primary": "#d6f9e7",
+                    "inverse-surface": "#0c0f10",
+                    "on-primary-fixed": "#274539"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Sora"],
+                    "display": ["Sora"],
+                    "body": ["Inter"],
+                    "label": ["Manrope"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes float-delayed {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(15px) rotate(-1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        .animate-float {
+            animation: float 8s ease-in-out infinite;
+        }
+
+        .animate-float-delayed {
+            animation: float-delayed 10s ease-in-out infinite;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #2d3335 0%, #476558 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden">
+<!-- Top Navigation -->
+<nav class="fixed top-0 w-full z-50 bg-surface/70 backdrop-blur-md border-b border-primary/10 shadow-sm shadow-primary/5">
+<div class="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
+<div class="font-headline font-bold text-xl text-on-surface">Techxtreme</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="font-body text-label-md text-primary border-b-2 border-primary pb-1" href="#">Home</a>
+<a class="font-body text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/5 rounded-lg px-2" href="#">About</a>
+<a class="font-body text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/5 rounded-lg px-2" href="#">Portfolio</a>
+<a class="font-body text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/5 rounded-lg px-2" href="#">Services</a>
+<a class="font-body text-label-md text-on-surface-variant hover:text-primary transition-colors hover:bg-primary/5 rounded-lg px-2" href="#">Contact</a>
+</div>
+<button class="transition-all duration-300 ease-in-out hover:scale-105 bg-primary text-on-primary px-6 py-2 rounded-full font-label font-semibold text-sm">
+                Get Started
+            </button>
+</div>
+</nav>
+<!-- Hero Section -->
+<main class="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+<!-- Ambient Background Shader -->
+<div class="absolute inset-0 z-0">
+<!-- STITCH_SHADER_START:ANIMATION_4 class="absolute inset-0 w-full h-full opacity-60" -->
+<div class="absolute inset-0 w-full h-full opacity-60" style="display:block;">
+<canvas id="shader-canvas-ANIMATION_4" style="display:block;width:100%;height:100%"></canvas>
+<script>
+(function() {
+  const canvas = document.getElementById('shader-canvas-ANIMATION_4');
+
+  // Sync the WebGL drawing-buffer size with the CSS-driven layout size.
+  // This fires on initial layout and whenever the element is resized.
+  function syncSize() {
+    const w = canvas.clientWidth  || 1280;
+    const h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) {
+      canvas.width  = w;
+      canvas.height = h;
+    }
+  }
+  if (typeof ResizeObserver !== 'undefined') {
+    new ResizeObserver(syncSize).observe(canvas);
+  }
+  syncSize();
+
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() {
+  v_texCoord = a_position * 0.5 + 0.5;
+  gl_Position = vec4(a_position, 0.0, 1.0);
+}`;
+  const fs = `precision highp float;
+varying vec2 v_texCoord;
+uniform float u_time;
+uniform vec2 u_resolution;
+
+void main() {
+    vec2 uv = v_texCoord;
+    
+    // Create soft, moving gradients using the design system's palette
+    // Primary: #7B9B8C (soft sage/teal)
+    vec3 color1 = vec3(0.482, 0.608, 0.549); // #7B9B8C
+    vec3 color2 = vec3(0.95, 0.97, 0.96);    // Off-white/Surface
+    vec3 color3 = vec3(0.85, 0.90, 0.88);    // Soft accent
+    
+    float noise = sin(uv.x * 3.0 + u_time * 0.5) * cos(uv.y * 2.0 - u_time * 0.3);
+    float pulse = sin(u_time * 0.2) * 0.5 + 0.5;
+    
+    vec3 finalColor = mix(color2, color1, uv.x * pulse + noise * 0.1);
+    finalColor = mix(finalColor, color3, uv.y * (1.0 - pulse));
+    
+    gl_FragColor = vec4(finalColor * 0.98, 1.0);
+}`;
+  function cs(type, src) {
+    const s = gl.createShader(type);
+    gl.shaderSource(s, src);
+    gl.compileShader(s);
+    return s;
+  }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog);
+  gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const pos = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(pos);
+  gl.vertexAttribPointer(pos, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+
+  // u_mouse is in pixel coordinates matching u_resolution (ShaderToy convention).
+  // Shaders that need normalized coords should use: u_mouse / u_resolution.
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width;
+      mouse.y = ny * canvas.height;
+    }
+  });
+
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+</div>
+<!-- STITCH_SHADER_END:ANIMATION_4 -->
+<!-- Overlay Gradients to integrate shader -->
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-background/20 to-background"></div>
+</div>
+<div class="container mx-auto px-6 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+<!-- Central Content Card -->
+<div class="lg:col-span-8 lg:col-start-1">
+<div class="glass-card p-10 md:p-16 rounded-[2.5rem] shadow-2xl shadow-primary/10 animate-float relative overflow-hidden group">
+<!-- Subtle Glow -->
+<div class="absolute -top-24 -left-24 w-64 h-64 bg-primary/20 rounded-full blur-[80px] pointer-events-none group-hover:bg-primary/30 transition-colors duration-700"></div>
+<div class="relative z-10 space-y-8 max-w-2xl">
+<div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary font-label text-xs font-bold tracking-wider uppercase">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                            Future-Proof Engineering
+                        </div>
+<h1 class="font-headline font-extrabold text-5xl md:text-7xl leading-[1.1] hero-gradient-text tracking-tight">
+                            Premium Full-Stack Development Solutions
+                        </h1>
+<p class="font-body text-lg md:text-xl text-on-surface-variant leading-relaxed opacity-90">
+                            Transforming ambitious businesses through cutting-edge technology and human-centric design. We build digital ecosystems that scale.
+                        </p>
+<div class="flex flex-col sm:flex-row items-center gap-5 pt-4">
+<button class="w-full sm:w-auto px-8 py-4 bg-primary text-on-primary rounded-2xl font-headline font-semibold text-lg shadow-xl shadow-primary/20 hover:shadow-primary/40 hover:-translate-y-1 transition-all duration-300">
+                                Start Your Project
+                            </button>
+<button class="w-full sm:w-auto px-8 py-4 glass-card border-outline/30 text-on-surface rounded-2xl font-headline font-semibold text-lg hover:bg-white/40 hover:-translate-y-1 transition-all duration-300">
+                                View Portfolio
+                            </button>
+</div>
+<!-- Stats Row -->
+<div class="grid grid-cols-3 gap-8 pt-10 border-t border-white/20">
+<div>
+<p class="font-headline font-bold text-2xl text-on-surface">150+</p>
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Shipped</p>
+</div>
+<div>
+<p class="font-headline font-bold text-2xl text-on-surface">99.9%</p>
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Uptime</p>
+</div>
+<div>
+<p class="font-headline font-bold text-2xl text-on-surface">12+</p>
+<p class="font-label text-xs text-on-surface-variant uppercase tracking-widest">Awards</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Floating Headshot Card -->
+<div class="lg:col-span-4 hidden lg:block relative">
+<div class="animate-float-delayed">
+<div class="glass-card p-4 rounded-[2rem] shadow-2xl rotate-3 hover:rotate-0 transition-transform duration-500">
+<div class="aspect-square rounded-2xl overflow-hidden relative mb-4">
+<img alt="Founding Developer" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJSqapbJUp_ZU3kyYE3NtVF63zgIA7DY6eFNp8_xBporFtdVxhphXYOQDFrU7wAmJVscaFe9Th0aNimV6xgp2OJ-hofKqO0XCHphGlbvpuf1iwf0JbOB__7flKrc_8ys_8HBHrkz8ngvoF3cFr_yVa84SN7cjlA4Hc7cA4lsbKJxpn5LdN7oH3C1p6DefPJCkTRfLIOkdSiqmuWaHf_ELtFOPxPOztpqNU2EewgQZ9Q3ma_Xfoyei7FIRzFddYEmaKl-hBJTk0PjU"/>
+<div class="absolute inset-0 bg-gradient-to-t from-primary/40 to-transparent"></div>
+</div>
+<div class="px-2 pb-2">
+<h3 class="font-headline font-bold text-xl text-on-surface">Alex River</h3>
+<p class="font-body text-sm text-on-surface-variant">Lead Solutions Architect</p>
+</div>
+</div>
+<!-- Decorative small cards -->
+<div class="absolute -top-12 -right-8 glass-card p-4 rounded-2xl shadow-lg -rotate-12 animate-pulse">
+<span class="material-symbols-outlined text-primary text-3xl">terminal</span>
+</div>
+<div class="absolute -bottom-8 -left-12 glass-card p-4 rounded-2xl shadow-lg rotate-12">
+<span class="material-symbols-outlined text-tertiary text-3xl">deployed_code</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Scroll Indicator -->
+<div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-50">
+<span class="font-label text-[10px] uppercase tracking-[0.2em] text-on-surface">Discover More</span>
+<div class="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"></div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 bg-surface-container-lowest border-t border-outline-variant/30">
+<div class="flex flex-col md:flex-row justify-between items-center px-8 max-w-7xl mx-auto gap-4">
+<div class="font-headline font-semibold text-on-surface">Techxtreme</div>
+<p class="font-body text-label-sm text-on-surface-variant opacity-80">© 2024 Techxtreme. All rights reserved.</p>
+<div class="flex gap-6">
+<a class="font-body text-label-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline decoration-primary/30" href="#">LinkedIn</a>
+<a class="font-body text-label-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline decoration-primary/30" href="#">GitHub</a>
+<a class="font-body text-label-sm text-on-surface-variant hover:text-primary transition-opacity hover:underline decoration-primary/30" href="#">Twitter</a>
+</div>
+</div>
+</footer>
+<script>
+        // Smooth reveal on scroll for glass cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('opacity-100', 'translate-y-0');
+                        entry.target.classList.remove('opacity-0', 'translate-y-10');
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.glass-card').forEach(card => {
+                card.classList.add('transition-all', 'duration-1000', 'ease-out');
+            });
+        });
+    </script>
+</body></html>

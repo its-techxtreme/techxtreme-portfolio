@@ -16,21 +16,25 @@ export default {
         hot: "#f472b6",
         lime: "#a3e635",
         
-        // Light mode colors (ui-ux-pro-max professional palette)
-        "light-bg": "#FAFAFA",        // Professional light background
-        "light-bg-2": "#F5F5F7",      // Glass card backgrounds
-        "light-bg-3": "#FFFFFF",      // Pure white for modals
-        "light-line": "rgba(24,24,27,0.12)",  // Visible borders in light mode
-        "light-muted": "#475569",     // Minimum contrast for muted text
-        "light-accent": "#2563EB",    // Professional blue CTA
-        "light-accent-2": "#3B82F6",  // Secondary blue
-        "light-primary": "#18181B",   // Dark text/elements
-        "light-secondary": "#3F3F46", // Dark gray elements
+        // Light mode colors (Sophisticated Stitch design system)
+        "light-bg": "#F8F9FA",        // Off-white background
+        "light-bg-2": "#EBEEF0",      // Surface container
+        "light-bg-3": "#F8F9FA",      // Surface
+        "light-line": "rgba(123, 155, 140, 0.2)",  // Sage green borders
+        "light-muted": "#3B594C",     // Sage dim for muted text
+        "light-accent": "#7B9B8C",    // Sage green primary
+        "light-accent-2": "#C8EAD9",  // Sage container
+        "light-primary": "#2D3335",   // Warm dark text
+        "light-secondary": "#E8C4A0",  // Dusty peach secondary
+        "light-blue": "#A6C8E1",     // Light blue tertiary
+        "light-peach": "#E8C4A0",    // Dusty peach
+        "light-peach-container": "#FFDDBB", // Peach container
       },
       fontFamily: {
-        sans: ["Space Grotesk", "system-ui", "sans-serif"],  // ui-ux-pro-max body font
-        display: ["Archivo", "system-ui", "sans-serif"],     // ui-ux-pro-max heading font
-        body: ["Space Grotesk", "system-ui", "sans-serif"],  // Explicit body font
+        sans: ["Inter", "system-ui", "sans-serif"],      // Stitch body font
+        display: ["Sora", "system-ui", "sans-serif"],    // Stitch heading font
+        body: ["Inter", "system-ui", "sans-serif"],      // Explicit body font
+        ui: ["Manrope", "system-ui", "sans-serif"],      // UI elements font
         mono: ["JetBrains Mono", "monospace"],
       },
       borderRadius: {

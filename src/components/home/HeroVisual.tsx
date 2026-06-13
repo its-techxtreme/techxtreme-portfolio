@@ -178,8 +178,8 @@ export function HeroVisual() {
                       "overflow-hidden rounded-2xl border shadow-2xl ring-1 transition duration-300",
                       "dark:bg-bg-2 light:bg-light-bg-3",
                       isActive
-                        ? "border-accent/40 ring-accent/30 shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)] dark:border-accent/40 dark:ring-accent/30 light:border-light-accent/40 light:ring-light-accent/30 light:shadow-[0_0_40px_-8px_rgba(37,99,235,0.35)]"
-                        : "border-white/10 ring-white/5 dark:border-white/10 dark:ring-white/5 light:border-black/10 light:ring-black/5"
+                        ? "border-accent/40 ring-accent/30 shadow-[0_0_40px_-8px_rgba(34,211,238,0.35)] dark:border-accent/40 dark:ring-accent/30 light:border-light-accent/40 light:ring-light-accent/30 light:shadow-[0_0_40px_-8px_rgba(123,155,140,0.35)]"
+                        : "border-white/10 ring-white/5 dark:border-white/10 dark:ring-white/5 light:border-light-line light:ring-light-accent/10"
                     )}
                   >
                     <img
@@ -219,7 +219,7 @@ export function HeroVisual() {
                 >
                       <Link
                         to={`/work/${c.slug}`}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1.5 text-xs font-bold transition hover:-translate-y-0.5 sm:px-4 sm:py-2 dark:from-accent dark:to-cyan-600 dark:text-bg dark:shadow-[0_6px_20px_rgba(34,211,238,0.35)] light:from-light-accent light:to-light-accent-2 light:text-white light:shadow-[0_6px_20px_rgba(37,99,235,0.35)]"
+                        className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-br px-3 py-1.5 text-xs font-bold transition hover:-translate-y-0.5 sm:px-4 sm:py-2 dark:from-accent dark:to-cyan-600 dark:text-bg dark:shadow-[0_6px_20px_rgba(34,211,238,0.35)] light:from-light-accent light:to-light-accent-2 light:text-white light:shadow-[0_6px_20px_rgba(123,155,140,0.35)]"
                       >
                         View project →
                       </Link>
