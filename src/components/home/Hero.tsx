@@ -33,7 +33,7 @@ export function Hero() {
       <div className="relative grid items-center gap-10 lg:grid-cols-[1fr_minmax(320px,1fr)] lg:gap-16">
         <div className="flex flex-col justify-center">
           <motion.div
-            className="mb-8 inline-flex w-fit items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 font-mono text-[0.7rem] text-muted backdrop-blur-md light:bg-white light:border-light-line light:shadow-[0_2px_12px_rgba(100,150,185,0.08)]"
+            className="mb-6 inline-flex w-fit max-w-full items-center gap-2 rounded-full border border-line bg-white/[0.03] px-3 py-1.5 font-mono text-[0.68rem] text-muted backdrop-blur-md sm:mb-8 sm:px-4 sm:py-2 sm:text-[0.7rem] light:bg-white light:border-light-line light:shadow-[0_2px_12px_rgba(100,150,185,0.08)]"
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
@@ -42,7 +42,7 @@ export function Hero() {
             Accepting new client work · Limited slots
           </motion.div>
 
-          <h1 className="font-display text-[clamp(3rem,10vw,7rem)] font-bold leading-[0.92] tracking-[-0.05em] lg:text-[clamp(3.5rem,6vw,6.5rem)]">
+          <h1 className="font-display text-[clamp(2.25rem,8vw,7rem)] font-bold leading-[0.95] tracking-[-0.04em] sm:leading-[0.92] sm:tracking-[-0.05em] lg:text-[clamp(3.5rem,6vw,6.5rem)]">
             {words.map((line, li) => (
               <span key={li} className="block overflow-hidden">
                 {line.map((word, wi) => (

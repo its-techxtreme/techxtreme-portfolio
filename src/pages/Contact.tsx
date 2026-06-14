@@ -149,7 +149,7 @@ export function Contact() {
   };
 
   return (
-    <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
+    <main className="page-shell">
       <Reveal>
         <SectionLabel>Contact</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
@@ -162,10 +162,10 @@ export function Contact() {
         </p>
       </Reveal>
 
-      <div className="mt-16 grid gap-12 lg:grid-cols-2">
+      <div className="mt-12 grid gap-8 lg:mt-16 lg:grid-cols-2 lg:gap-12">
         <Reveal>
           <p className="text-muted">Prefer email? Reach me directly:</p>
-          <a href={`mailto:${EMAIL}`} className="mt-4 block font-display text-2xl text-accent">
+          <a href={`mailto:${EMAIL}`} className="mt-4 block break-all font-display text-lg text-accent sm:text-xl md:text-2xl">
             {EMAIL}
           </a>
           <Button variant="ghost" className="mt-4 !px-4 !py-2 text-sm" onClick={copyEmail}>
@@ -200,7 +200,7 @@ export function Contact() {
             action={FORM_ACTION}
             method="POST"
             onSubmit={onSubmit}
-            className="glass-card flex flex-col gap-4 rounded-card border border-line p-8"
+            className="glass-card flex flex-col gap-4 rounded-card border border-line p-4 sm:p-6 md:p-8"
           >
             <input type="hidden" name="_subject" value="New project inquiry — Techxtreme" />
             <input type="hidden" name="_captcha" value="false" />

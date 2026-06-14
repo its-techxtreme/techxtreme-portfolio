@@ -70,7 +70,7 @@ export function ServicesTabs() {
           exit={{ opacity: 0, y: -12 }}
           transition={{ duration: 0.4 }}
         >
-          <img src={panel.image} alt="" className="rounded-2xl border border-line light:bg-white" />
+          <img src={panel.image} alt="" className="max-h-[280px] w-full rounded-2xl border border-line object-cover object-top sm:max-h-none light:bg-white" />
           <ul className="flex flex-col gap-4">
             {panel.items.map((item) => (
               <li

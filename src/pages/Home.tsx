@@ -69,7 +69,7 @@ export function Home() {
               href={p.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-line bg-white/[0.03] px-4 py-2 text-sm font-semibold text-muted transition hover:-translate-y-0.5 hover:border-accent hover:text-accent"
+              className="inline-flex max-w-full items-center gap-2 break-all rounded-full border border-line bg-white/[0.03] px-3 py-2 text-xs font-semibold text-muted transition hover:-translate-y-0.5 hover:border-accent hover:text-accent sm:max-w-none sm:break-normal sm:px-4 sm:text-sm"
             >
               <span className="h-1.5 w-1.5 rounded-full bg-lime shadow-[0_0_8px_#a3e635]" />
               {p.liveUrl!.replace("https://", "")}

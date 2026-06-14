@@ -13,7 +13,11 @@ type Props = {
   compact?: boolean;
 };
 
-const widths = { sm: "w-[200px]", md: "w-[260px]", lg: "w-[300px]" };
+const widths = {
+  sm: "w-[min(200px,72vw)]",
+  md: "w-[min(240px,78vw)]",
+  lg: "w-[min(280px,42vw)]",
+};
 
 /** Screen inset so app header clears the dynamic island */
 function PhoneScreen({
@@ -104,7 +108,7 @@ export function PhoneMockup({ src, alt, label, className, size = "md", compact }
         />
       </div>
       {label && (
-        <figcaption className="mt-4 font-mono text-[0.65rem] uppercase tracking-[0.18em] text-muted">
+        <figcaption className="mt-3 max-w-[min(240px,78vw)] text-center font-mono text-[0.7rem] uppercase tracking-[0.14em] text-muted sm:mt-4 sm:text-xs">
           {label}
         </figcaption>
       )}

@@ -1,4 +1,4 @@
-import { Link, Navigate, useParams } from "react-router-dom";
+import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import clsx from "clsx";
 import { getProject, projects } from "../data/projects";
 import { SkillsMarquee } from "../components/jee/SkillsMarquee";
@@ -17,6 +17,7 @@ function tagClass(tag: string) {
 
 export function ProjectDetail() {
   const { slug } = useParams();
+  const navigate = useNavigate();
   const project = slug ? getProject(slug) : undefined;
   if (!project) return <Navigate to="/work" replace />;
 
@@ -26,22 +27,39 @@ export function ProjectDetail() {
     project.slug !== "study-notes";
 
   return (
-    <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
-      <div className="grid gap-12 lg:grid-cols-[220px_1fr]">
-        <aside className="lg:sticky lg:top-28 lg:self-start">
+    <main className="page-shell">
+      <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
+        <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <Link to="/work" className="text-sm text-muted hover:text-accent">
             ← All work
           </Link>
-          <nav className="mt-6 flex flex-wrap gap-2 lg:flex-col lg:gap-1">
+
+          <label htmlFor="project-switcher" className="mt-4 block text-xs font-semibold uppercase tracking-wide text-muted lg:hidden">
+            Jump to project
+          </label>
+          <select
+            id="project-switcher"
+            value={project.slug}
+            onChange={(e) => navigate(`/work/${e.target.value}`)}
+            className="mt-2 w-full rounded-xl border border-line bg-bg-2 px-4 py-3 text-sm font-semibold text-zinc-100 outline-none focus:border-accent lg:hidden light:text-light-primary"
+          >
+            {projects.map((p) => (
+              <option key={p.slug} value={p.slug}>
+                {p.title.replace("Project ", "").replace(" Directory", "")}
+              </option>
+            ))}
+          </select>
+
+          <nav className="mt-6 hidden flex-col gap-1 lg:flex">
             {projects.map((p) => (
               <Link
                 key={p.slug}
                 to={`/work/${p.slug}`}
                 className={clsx(
-                  "rounded-full border px-4 py-2 text-sm transition lg:rounded-none lg:border-0 lg:border-l-2 lg:px-4 lg:py-2",
+                  "rounded-none border-0 border-l-2 px-4 py-2 text-sm transition",
                   p.slug === project.slug
-                    ? "border-accent text-accent lg:border-l-accent"
-                    : "border-line text-muted hover:text-accent lg:border-l-transparent"
+                    ? "border-l-accent text-accent"
+                    : "border-l-transparent text-muted hover:text-accent"
                 )}
               >
                 {p.title.replace("Project ", "").replace(" Directory", "")}
@@ -50,14 +68,14 @@ export function ProjectDetail() {
           </nav>
         </aside>
 
-        <article>
+        <article className="min-w-0">
           <Reveal>
             <div className="flex flex-wrap gap-2">
               {project.tags.map((t) => (
                 <span
                   key={t}
                   className={clsx(
-                    "rounded-full border px-3 py-1 font-mono text-[0.68rem] uppercase tracking-wide",
+                    "rounded-full border px-3 py-1 font-mono text-[0.7rem] uppercase tracking-wide sm:text-xs",
                     tagClass(t)
                   )}
                 >
@@ -65,16 +83,16 @@ export function ProjectDetail() {
                 </span>
               ))}
             </div>
-            <h1 className="mt-6 font-display text-[clamp(2.5rem,5vw,4rem)] font-bold tracking-tight">
+            <h1 className="mt-4 font-display text-[clamp(2rem,8vw,4rem)] font-bold tracking-tight sm:mt-6">
               {project.title}
             </h1>
-            <p className="mt-4 max-w-2xl text-lg text-muted">{project.description}</p>
+            <p className="mt-4 max-w-2xl text-base text-muted sm:text-lg">{project.description}</p>
             {project.liveUrl && (
               <a
                 href={project.liveUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-block text-accent hover:underline"
+                className="mt-2 inline-block break-all text-sm text-accent hover:underline sm:text-base"
               >
                 {project.liveUrl.replace("https://", "")} ↗
               </a>
@@ -82,14 +100,14 @@ export function ProjectDetail() {
           </Reveal>
 
           <Reveal className="mt-8">
-            <h2 className="font-display text-xl font-bold text-zinc-200">The project</h2>
+            <h2 className="font-display text-xl font-bold text-zinc-200 light:text-light-primary">The project</h2>
             <CaseStudyBlocks paragraphs={project.caseStudy} />
           </Reveal>
 
           {project.stats && (
             <Reveal className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
               {project.stats.map((s) => (
-                <div key={s.label} className="glass-card rounded-2xl border border-line p-6">
+                <div key={s.label} className="glass-card rounded-2xl border border-line p-4 sm:p-6">
                   <strong className="font-display text-3xl font-bold text-gradient">{s.value}</strong>
                   <span className="mt-1 block text-sm text-muted">{s.label}</span>
                 </div>
@@ -118,7 +136,7 @@ export function ProjectDetail() {
               <Reveal className="mt-10">
                 <SkillsMarquee />
               </Reveal>
-              <Reveal className="relative mt-10 overflow-hidden rounded-card border border-orange-500/20 bg-gradient-to-br from-[#1c1410] to-bg-2 p-8 md:p-12">
+              <Reveal className="relative mt-10 overflow-hidden rounded-card border border-orange-500/20 bg-gradient-to-br from-[#1c1410] to-bg-2 p-6 sm:p-8 md:p-12">
                 <div
                   className="pointer-events-none absolute inset-0 opacity-60"
                   style={{

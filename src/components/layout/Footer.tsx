@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 export function Footer() {
   const year = new Date().getFullYear();
   return (
-    <footer className="relative z-10 mx-auto flex max-w-site flex-wrap items-center justify-between gap-6 border-t border-line px-6 py-12 md:px-12">
+    <footer className="page-shell !pt-0 flex flex-col gap-5 border-t border-line py-10 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between sm:gap-6 sm:py-12">
       <span className="rounded-lg bg-accent px-3 py-1.5 font-display text-xs font-bold text-bg">
         TX
       </span>
-      <div className="flex gap-6">
-        <Link to="/work" className="text-sm text-muted hover:text-accent">
+      <div className="flex flex-wrap gap-x-6 gap-y-2">
+        <Link to="/work" className="inline-flex min-h-11 items-center text-sm text-muted hover:text-accent">
           Work
         </Link>
-        <Link to="/about" className="text-sm text-muted hover:text-accent">
+        <Link to="/about" className="inline-flex min-h-11 items-center text-sm text-muted hover:text-accent">
           About
         </Link>
-        <Link to="/contact" className="text-sm text-muted hover:text-accent">
+        <Link to="/contact" className="inline-flex min-h-11 items-center text-sm text-muted hover:text-accent">
           Contact
         </Link>
       </div>

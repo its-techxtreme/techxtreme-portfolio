@@ -26,7 +26,7 @@ const timeline = [
 
 export function About() {
   return (
-    <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
+    <main className="page-shell">
       <Reveal>
         <SectionLabel>About</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
@@ -59,7 +59,7 @@ export function About() {
             theme for Virtalent.com, an NDA AI terminal tracking 2,600+ markets, and the JEE Notes Wallah mobile
             product. R&D: Project Aura.
           </p>
-          <ul className="mt-8 grid grid-cols-3 gap-4">
+          <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
             {[
               { k: "Custom", v: "Themes & UI" },
               { k: "Async", v: "Clear updates" },
@@ -75,7 +75,7 @@ export function About() {
       </Reveal>
 
       <Reveal className="mt-20">
-        <h2 className="font-display text-[2.5rem] font-bold leading-tight">Stack &amp; tools</h2>
+        <h2 className="font-display text-[clamp(1.75rem,5vw,2.5rem)] font-bold leading-tight">Stack &amp; tools</h2>
         <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3">
           {SKILLS.map((s) => (
             <div

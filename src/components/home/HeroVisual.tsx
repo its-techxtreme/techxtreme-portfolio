@@ -102,7 +102,7 @@ export function HeroVisual() {
   return (
     <div
       ref={containerRef}
-      className="relative mx-auto mt-8 h-[min(420px,80vw)] w-full max-w-[380px] sm:mt-12 sm:h-[min(520px,65vw)] sm:max-w-[520px] lg:mx-0 lg:mt-0 lg:h-[min(600px,52vh)] lg:max-w-none"
+      className="relative mx-auto mt-6 h-[min(340px,88vw)] w-full max-w-[360px] sm:mt-10 sm:h-[min(460px,72vw)] sm:max-w-[480px] lg:mx-0 lg:mt-0 lg:h-[min(600px,52vh)] lg:max-w-none"
     >
       <div
         className="pointer-events-none absolute inset-0 rounded-[2rem] opacity-60"
@@ -244,7 +244,8 @@ export function HeroVisual() {
       <div className="pointer-events-none absolute inset-0 rounded-[2rem] ring-1 dark:ring-white/[0.06] light:ring-light-accent/[0.12]" aria-hidden />
       {active !== null && (
         <p className="pointer-events-none absolute -bottom-2 left-0 right-0 text-center font-mono text-[0.58rem] uppercase tracking-widest opacity-75 sm:-bottom-1 sm:text-[0.62rem] dark:text-muted light:text-light-muted">
-          Click outside to close · Esc to exit
+          <span className="sm:hidden">Tap outside to close</span>
+          <span className="hidden sm:inline">Click outside to close · Esc to exit</span>
         </p>
       )}
     </div>

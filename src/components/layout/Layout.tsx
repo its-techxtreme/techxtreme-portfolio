@@ -18,7 +18,9 @@ export function Layout() {
       <div className="pointer-events-none fixed inset-0 z-0 grid-bg" aria-hidden />
       <Preloader />
       <Navbar />
-      <Outlet />
+      <div className="min-w-0 overflow-x-hidden">
+        <Outlet />
+      </div>
       <Footer />
     </>
   );

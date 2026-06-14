@@ -54,7 +54,7 @@ export function Navbar() {
     <>
       <motion.header
         className={clsx(
-          "fixed left-1/2 top-4 z-[9000] flex w-[calc(100%-2rem)] max-w-3xl items-center justify-between gap-2 rounded-full glass px-2 py-1.5 lg:w-auto lg:justify-start lg:gap-1",
+          "fixed left-1/2 top-[max(1rem,env(safe-area-inset-top,0px))] z-[9000] flex w-[calc(100%-2rem)] max-w-3xl items-center justify-between gap-2 rounded-full glass px-2 py-1.5 lg:w-auto lg:justify-start lg:gap-1",
           "dark:shadow-[0_20px_60px_rgba(0,0,0,0.5)] light:shadow-[0_4px_20px_rgba(45,100,140,0.18)]"
         )}
         initial={false}
@@ -99,8 +99,10 @@ export function Navbar() {
           </ButtonLink>
         </div>
 
-        <div className="flex shrink-0 items-center gap-2 lg:hidden">
-          <ThemeToggle />
+        <div className="flex shrink-0 items-center gap-1.5 sm:gap-2 lg:hidden">
+          <div className="origin-right scale-90 sm:scale-100">
+            <ThemeToggle />
+          </div>
           <button
             type="button"
             className="grid h-10 w-10 place-items-center rounded-full border border-line text-zinc-100 dark:border-line dark:text-zinc-100 light:border-light-line light:text-slate-900 light:bg-white/60"

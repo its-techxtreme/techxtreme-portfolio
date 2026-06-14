@@ -22,7 +22,7 @@ export function Work() {
   }, [filter]);
 
   return (
-    <main className="relative z-10 mx-auto max-w-site px-6 pb-24 pt-32 md:px-12">
+    <main className="page-shell">
       <Reveal>
         <SectionLabel>Portfolio</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
@@ -44,8 +44,8 @@ export function Work() {
             className={clsx(
               "rounded-full border px-5 py-2.5 text-sm font-semibold transition",
               filter === f.id
-                ? "border-zinc-100 bg-zinc-100 text-bg"
-                : "border-line text-muted hover:text-zinc-100"
+                ? "border-zinc-100 bg-zinc-100 text-bg dark:border-zinc-100 dark:bg-zinc-100 dark:text-bg light:border-light-primary light:bg-light-primary light:text-white"
+                : "border-line text-muted hover:text-zinc-100 light:hover:text-light-primary"
             )}
           >
             {f.label}

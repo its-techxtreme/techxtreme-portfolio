@@ -5,7 +5,7 @@ import { Reveal } from "../ui/Reveal";
 
 export function CtaBand() {
   return (
-    <Reveal className="relative z-10 mx-4 mb-20 sm:mx-6 md:mx-12 md:mb-24">
+    <Reveal className="relative z-10 mx-auto mb-16 max-w-site px-4 sm:mb-20 sm:px-6 md:mb-24 md:px-12">
       <ParallaxCapsule
         image={PANEL_GRAPHICS.cta}
         className="px-6 py-14 text-center sm:px-8 md:py-20"

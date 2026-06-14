@@ -180,6 +180,11 @@
     background: #ffffff;
     box-shadow: 0 8px 24px var(--theme-shadow);
   }
+
+  .page-shell {
+    @apply relative z-10 mx-auto w-full max-w-site overflow-x-hidden px-4 pb-20 sm:px-6 sm:pb-24 md:px-12;
+    padding-top: max(7rem, calc(5.5rem + env(safe-area-inset-top, 0px)));
+  }
 }
 
 @keyframes heroScan {

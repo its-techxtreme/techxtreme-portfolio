@@ -46,7 +46,7 @@ export function ImageGallery({ images }: { images: string[] }) {
           >
             <button
               type="button"
-              className="absolute right-6 top-6 rounded-full border border-line px-4 py-2 text-sm"
+              className="absolute right-4 top-[max(1rem,env(safe-area-inset-top,0px))] rounded-full border border-line px-4 py-2 text-sm sm:right-6 sm:top-6"
               onClick={() => setLightbox(null)}
             >
               Close ✕
