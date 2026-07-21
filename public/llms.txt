@@ -27,12 +27,12 @@ GitHub: https://github.com/its-techxtreme
 ## Featured projects
 
 - [OutreachOS](https://techxtreme.me/work/outreachos): Production cold-outreach lead vault — https://outreachos.techxtreme.me
-- [Project AP-I](https://techxtreme.me/work/project-ap-i): Short-form content automation queue — https://project-ap-i.vercel.app
+- [Project AP-I](https://techxtreme.me/work/project-ap-i): Short-form content automation queue — https://ap-i.techxtreme.me
 - [London Museums Directory](https://techxtreme.me/work/london-museums): Custom WordPress SEO directory — https://londonmuseums.co.uk
 - [Project Logic Arbitrage](https://techxtreme.me/work/pla): Private AI research terminal (NDA)
 - [Virtalent](https://techxtreme.me/work/virtalent): Custom VA service theme — https://virtalent.com
 - [Project Aura](https://techxtreme.me/work/aura): Local-first personal AI R&D
-- [Panache Designs](https://techxtreme.me/work/panache-designs): Luxury interior portfolio (Next.js)
+- [Panache Designs](https://techxtreme.me/work/panache-designs): Luxury interior portfolio — https://panache.techxtreme.me
 - [Clientverse](https://techxtreme.me/work/clientverse): Reddit/X lead scanning automation
 - [JEE Notes Wallah](https://techxtreme.me/work/study-notes): EdTech mobile UI + Firebase
 

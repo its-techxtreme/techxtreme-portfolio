@@ -81,12 +81,12 @@ export const projects: Project[] = [
     caseStudy: [
       "Manual short-form ops looks simple until you repeat it every day: download, watermark, caption, upload twice, remember failures. Project AP-I replaces that loop with a submit → process → publish queue and an operator dashboard for retries, review, and account health.",
       "Niches map server-side to exact destination accounts so submitters never pick destinations by hand. Heavy work (yt-dlp, FFmpeg, Playwright with real Chrome profiles) runs on a local worker by design; the public app and admin UI run on Vercel with Supabase status and audit logs.",
-      "Demo at project-ap-i.vercel.app: public submit form plus a read-only admin account (ProjectAPIDemo) so reviewers can browse overview, jobs, failed review, and accounts without mutating the live queue.",
+      "Demo at ap-i.techxtreme.me: public submit form plus a read-only admin account (ProjectAPIDemo) so reviewers can browse overview, jobs, failed review, and accounts without mutating the live queue.",
     ],
     image: "/assets/projects/ap-i/submit.png",
     categories: ["rd", "ai"],
     tags: ["R&D", "Automation", "YouTube", "Instagram", "n8n", "2026"],
-    liveUrl: "https://project-ap-i.vercel.app",
+    liveUrl: "https://ap-i.techxtreme.me",
     featured: true,
     bentoClass: "md:col-span-5 md:row-span-2",
     stats: [
@@ -264,7 +264,7 @@ export const projects: Project[] = [
     image: "/assets/projects/panache-hero.png",
     categories: ["live", "client"],
     tags: ["Live", "Client work", "Next.js", "Interior design", "2026"],
-    liveUrl: "https://panache-designs-demo.vercel.app",
+    liveUrl: "https://panache.techxtreme.me",
     bentoClass: "md:col-span-4",
     gallery: [
       "/assets/projects/panache-hero.png",

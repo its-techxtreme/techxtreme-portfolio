@@ -12,7 +12,7 @@ Stack: Next.js, Tailwind, Supabase, Vercel
 
 ## Project AP-I
 URL: https://techxtreme.me/work/project-ap-i
-Live: https://project-ap-i.vercel.app
+Live: https://ap-i.techxtreme.me
 Type: R&D + automation pipeline
 Summary: Short-form content intake → download → FFmpeg watermark → AI metadata → Drive staging → YouTube + Instagram publish for Memes / Anime / Sports niches. Operator dashboard with jobs, failed review, account health. Local worker + Vercel app.
 Stack: Next.js, Supabase, yt-dlp, FFmpeg, Playwright, n8n
@@ -40,6 +40,7 @@ Summary: Voice I/O, hierarchical memory, persona engine, approval-gated automati
 
 ## Panache Designs
 URL: https://techxtreme.me/work/panache-designs
+Live: https://panache.techxtreme.me
 Type: Luxury interior portfolio (Next.js)
 
 ## Clientverse
