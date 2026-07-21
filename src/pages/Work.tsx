@@ -28,7 +28,7 @@ export function Work() {
         title="Work"
         path="/work"
         description="Techxtreme portfolio — OutreachOS, Project AP-I, London Museums, Virtalent, AI dashboards, and more shipped builds with real screenshots."
-        image="/assets/projects/outreachos/landing.png"
+        image="/assets/og-techxtreme.png"
       />
       <Reveal>
         <SectionLabel>Portfolio</SectionLabel>

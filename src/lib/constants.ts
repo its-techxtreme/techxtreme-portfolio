@@ -4,6 +4,7 @@ export const SITE_NAME = "Techxtreme";
 export const SITE_TAGLINE = "Remote digital studio — websites, directories, AI platforms & automation";
 export const SITE_DESCRIPTION =
   "Techxtreme is a remote digital studio building high-converting websites, SEO directories, lead-gen service sites, and private AI / automation platforms for founders worldwide. Shipped work includes London Museums, Virtalent, OutreachOS, Project AP-I, and more.";
+export const SITE_OG_IMAGE = `${SITE_URL}/assets/og-techxtreme.png`;
 export const SITE_KEYWORDS = [
   "Techxtreme",
   "web development studio",

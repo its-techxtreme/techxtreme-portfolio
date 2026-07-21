@@ -44,7 +44,7 @@ export function Home() {
       <Seo
         path="/"
         description={SITE_DESCRIPTION}
-        image="/assets/projects/outreachos/landing.png"
+        image="/assets/og-techxtreme.png"
         jsonLd={projectsItemListJsonLd()}
       />
       <Hero />

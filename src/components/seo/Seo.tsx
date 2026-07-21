@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_URL, SOCIAL } from "../../lib/constants";
+import { SITE_DESCRIPTION, SITE_NAME, SITE_OG_IMAGE, SITE_URL, SOCIAL } from "../../lib/constants";
 import { projects } from "../../data/projects";
 
 type SeoProps = {
@@ -47,7 +47,7 @@ export function Seo({
   title,
   description = SITE_DESCRIPTION,
   path = "/",
-  image = `${SITE_URL}/assets/projects/londonmuseums-home.png`,
+  image = SITE_OG_IMAGE,
   type = "website",
   noIndex = false,
   jsonLd,
@@ -69,12 +69,16 @@ export function Seo({
     upsertMeta("property", "og:description", description);
     upsertMeta("property", "og:url", url);
     upsertMeta("property", "og:image", absImage);
+    upsertMeta("property", "og:image:width", "1200");
+    upsertMeta("property", "og:image:height", "630");
+    upsertMeta("property", "og:image:alt", fullTitle);
     upsertMeta("property", "og:locale", "en_US");
 
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", fullTitle);
     upsertMeta("name", "twitter:description", description);
     upsertMeta("name", "twitter:image", absImage);
+    upsertMeta("name", "twitter:image:alt", fullTitle);
 
     if (jsonLd) upsertJsonLd("seo-jsonld-page", jsonLd);
   }, [title, description, path, image, type, noIndex, jsonLd]);
