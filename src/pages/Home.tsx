@@ -1,4 +1,4 @@
-import { projects } from "../data/projects";
+﻿import { projects } from "../data/projects";
 import { AuraShowcase } from "../components/home/AuraShowcase";
 import { CtaBand } from "../components/home/CtaBand";
 import { Hero } from "../components/home/Hero";
@@ -24,15 +24,15 @@ const testimonials = [
   },
   {
     quote:
-      "The AI dashboard replaced hours of manual research. Multi-model consensus in one screen — game changer for our trading desk.",
+      "The AI dashboard replaced hours of manual research. Multi-model consensus in one screen â€” game changer for our trading desk.",
     name: "Private platform client",
-    role: "Prediction markets · NDA",
+    role: "Prediction markets Â· NDA",
   },
   {
     quote:
       "Fast turnaround, clear written updates. The VA site went live and started generating consultation leads within weeks.",
     name: "Service business founder",
-    role: "Lead-gen · Service site",
+    role: "Lead-gen Â· Service site",
   },
 ];
 
@@ -44,7 +44,7 @@ export function Home() {
       <Seo
         path="/"
         description={SITE_DESCRIPTION}
-        image="/assets/og-techxtreme.png"
+        image="/assets/og-techxtreme.jpg"
         jsonLd={projectsItemListJsonLd()}
       />
       <Hero />
@@ -59,7 +59,7 @@ export function Home() {
             <span className="text-gradient">Real screenshots.</span>
           </h2>
           <p className="mt-4 max-w-xl text-muted">
-            Live client sites use real captures. Aura R&D and client apps use designed product UI — never stock
+            Live client sites use real captures. Aura R&D and client apps use designed product UI â€” never stock
             photos pretending to be yours.
           </p>
         </Reveal>
@@ -87,7 +87,7 @@ export function Home() {
 
         <Reveal className="mt-10 text-center">
           <ButtonLink to="/work" variant="ghost">
-            View all projects →
+            View all projects â†’
           </ButtonLink>
         </Reveal>
       </SectionAmbient>

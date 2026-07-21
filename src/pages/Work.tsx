@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+﻿import { useMemo, useState } from "react";
 import clsx from "clsx";
 import { projects, type ProjectCategory } from "../data/projects";
 import { ProjectTile } from "../components/projects/ProjectCard";
@@ -27,8 +27,8 @@ export function Work() {
       <Seo
         title="Work"
         path="/work"
-        description="Techxtreme portfolio — OutreachOS, Project AP-I, London Museums, Virtalent, AI dashboards, and more shipped builds with real screenshots."
-        image="/assets/og-techxtreme.png"
+        description="Techxtreme portfolio â€” OutreachOS, Project AP-I, London Museums, Virtalent, AI dashboards, and more shipped builds with real screenshots."
+        image="/assets/og-techxtreme.jpg"
       />
       <Reveal>
         <SectionLabel>Portfolio</SectionLabel>
@@ -38,7 +38,7 @@ export function Work() {
           <span className="text-gradient">Zero filler.</span>
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted">
-          Filter by type — every project links to a full case study with real screenshots. Newest: OutreachOS and
+          Filter by type â€” every project links to a full case study with real screenshots. Newest: OutreachOS and
           Project AP-I.
         </p>
       </Reveal>
