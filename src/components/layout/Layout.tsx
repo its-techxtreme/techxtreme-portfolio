@@ -4,6 +4,7 @@ import { useLenis } from "../../hooks/useLenis";
 import { Footer } from "./Footer";
 import { Navbar } from "./Navbar";
 import { Preloader } from "./Preloader";
+import { SiteJsonLd } from "../seo/Seo";
 
 export function Layout() {
   useLenis();
@@ -15,6 +16,7 @@ export function Layout() {
 
   return (
     <>
+      <SiteJsonLd />
       <div className="pointer-events-none fixed inset-0 z-0 grid-bg" aria-hidden />
       <Preloader />
       <Navbar />

@@ -12,6 +12,8 @@ import { ParallaxCapsule } from "../components/ui/ParallaxCapsule";
 import { SectionAmbient } from "../components/ui/SectionAmbient";
 import { SectionLabel } from "../components/ui/SectionLabel";
 import { PANEL_GRAPHICS } from "../lib/panelGraphics";
+import { projectsItemListJsonLd, Seo } from "../components/seo/Seo";
+import { SITE_DESCRIPTION } from "../lib/constants";
 
 const testimonials = [
   {
@@ -39,6 +41,12 @@ export function Home() {
 
   return (
     <main className="overflow-x-hidden">
+      <Seo
+        path="/"
+        description={SITE_DESCRIPTION}
+        image="/assets/projects/outreachos/landing.png"
+        jsonLd={projectsItemListJsonLd()}
+      />
       <Hero />
       <HorizonStrip />
 

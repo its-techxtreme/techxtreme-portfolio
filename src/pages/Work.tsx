@@ -4,6 +4,7 @@ import { projects, type ProjectCategory } from "../data/projects";
 import { ProjectTile } from "../components/projects/ProjectCard";
 import { Reveal } from "../components/ui/Reveal";
 import { SectionLabel } from "../components/ui/SectionLabel";
+import { Seo } from "../components/seo/Seo";
 
 const filters: { id: "all" | ProjectCategory; label: string }[] = [
   { id: "all", label: "All" },
@@ -23,15 +24,22 @@ export function Work() {
 
   return (
     <main className="page-shell">
+      <Seo
+        title="Work"
+        path="/work"
+        description="Techxtreme portfolio — OutreachOS, Project AP-I, London Museums, Virtalent, AI dashboards, and more shipped builds with real screenshots."
+        image="/assets/projects/outreachos/landing.png"
+      />
       <Reveal>
         <SectionLabel>Portfolio</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
-          Five builds.
+          Shipped builds.
           <br />
           <span className="text-gradient">Zero filler.</span>
         </h1>
         <p className="mt-4 max-w-xl text-lg text-muted">
-          Filter by type — every project links to a full case study with real screenshots.
+          Filter by type — every project links to a full case study with real screenshots. Newest: OutreachOS and
+          Project AP-I.
         </p>
       </Reveal>
 

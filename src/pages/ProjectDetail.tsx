@@ -8,6 +8,7 @@ import { ImageGallery } from "../components/ui/ImageGallery";
 import { ButtonLink } from "../components/ui/Button";
 import { Reveal } from "../components/ui/Reveal";
 import { assetUrl } from "../lib/assets";
+import { projectJsonLd, Seo } from "../components/seo/Seo";
 
 function tagClass(tag: string) {
   if (tag === "Live") return "border-lime/35 text-lime";
@@ -28,6 +29,14 @@ export function ProjectDetail() {
 
   return (
     <main className="page-shell">
+      <Seo
+        title={project.title}
+        path={`/work/${project.slug}`}
+        description={project.description}
+        image={project.image}
+        type="article"
+        jsonLd={projectJsonLd(project.slug) ?? undefined}
+      />
       <div className="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)] lg:gap-12">
         <aside className="min-w-0 lg:sticky lg:top-28 lg:self-start">
           <Link to="/work" className="text-sm text-muted hover:text-accent">

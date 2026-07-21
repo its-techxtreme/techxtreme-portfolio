@@ -3,8 +3,19 @@ import { Reveal } from "../components/ui/Reveal";
 import { SectionLabel } from "../components/ui/SectionLabel";
 import { SKILLS } from "../data/skills";
 import { assetUrl } from "../lib/assets";
+import { Seo } from "../components/seo/Seo";
 
 const timeline = [
+  {
+    year: "2026",
+    title: "OutreachOS",
+    desc: "Production lead vault for cold outreach — Excel import, filters, call scripts, live at outreachos.techxtreme.me.",
+  },
+  {
+    year: "2026",
+    title: "Project AP-I",
+    desc: "Short-form content automation queue — Memes / Anime / Sports → YouTube + Instagram with operator dashboard.",
+  },
   {
     year: "2024–26",
     title: "London Museums Directory",
@@ -27,6 +38,11 @@ const timeline = [
 export function About() {
   return (
     <main className="page-shell">
+      <Seo
+        title="About"
+        path="/about"
+        description="About Techxtreme — product-grade websites, directories, AI platforms, and automation. Stack, process, and shipped timeline."
+      />
       <Reveal>
         <SectionLabel>About</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">
@@ -55,9 +71,10 @@ export function About() {
             handed over with docs you can operate.
           </p>
           <p className="mt-4 text-muted">
-            Recent client work includes a fully custom museum directory theme (London Museums), a conversion
-            theme for Virtalent.com, an NDA AI terminal tracking 2,600+ markets, and the JEE Notes Wallah mobile
-            product. R&D: Project Aura.
+            Recent client and product work includes OutreachOS (live lead vault), Project AP-I (short-form
+            automation), a fully custom museum directory theme (London Museums), a conversion theme for
+            Virtalent.com, an NDA AI terminal tracking 2,600+ markets, and the JEE Notes Wallah mobile product.
+            R&D: Project Aura.
           </p>
           <ul className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4">
             {[

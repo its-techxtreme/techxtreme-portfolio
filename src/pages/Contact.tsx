@@ -4,6 +4,7 @@ import { EMAIL, FORM_ACTION } from "../lib/constants";
 import { Button } from "../components/ui/Button";
 import { Reveal } from "../components/ui/Reveal";
 import { SectionLabel } from "../components/ui/SectionLabel";
+import { Seo } from "../components/seo/Seo";
 
 const faqs = [
   {
@@ -150,6 +151,11 @@ export function Contact() {
 
   return (
     <main className="page-shell">
+      <Seo
+        title="Contact"
+        path="/contact"
+        description="Contact Techxtreme — share scope, timeline, and budget for websites, directories, AI platforms, or automation. Reply within 24 hours on qualified leads."
+      />
       <Reveal>
         <SectionLabel>Contact</SectionLabel>
         <h1 className="font-display text-[clamp(2.25rem,6vw,4.5rem)] font-bold leading-tight tracking-tight">

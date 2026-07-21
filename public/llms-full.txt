@@ -1,0 +1,51 @@
+# Techxtreme — full project index for LLMs
+
+Site: https://techxtreme.me
+Email: techxtremebuisness@gmail.com
+
+## OutreachOS
+URL: https://techxtreme.me/work/outreachos
+Live: https://outreachos.techxtreme.me
+Type: Production SaaS / lead management
+Summary: Personal lead vault for cold outreach. Excel import, niche/country/status filters, sticky call scripts, CSV export, sketchbook UI, Supabase auth, per-account privacy. Demo peek available.
+Stack: Next.js, Tailwind, Supabase, Vercel
+
+## Project AP-I
+URL: https://techxtreme.me/work/project-ap-i
+Live: https://project-ap-i.vercel.app
+Type: R&D + automation pipeline
+Summary: Short-form content intake → download → FFmpeg watermark → AI metadata → Drive staging → YouTube + Instagram publish for Memes / Anime / Sports niches. Operator dashboard with jobs, failed review, account health. Local worker + Vercel app.
+Stack: Next.js, Supabase, yt-dlp, FFmpeg, Playwright, n8n
+
+## London Museums Directory
+URL: https://techxtreme.me/work/london-museums
+Live: https://londonmuseums.co.uk
+Type: Client WordPress SEO directory
+Summary: Fully custom theme + directory plugin. 100+ listings, 350+ monthly organic visits, $0 ads.
+
+## Project Logic Arbitrage
+URL: https://techxtreme.me/work/pla
+Type: Private client AI terminal (NDA)
+Summary: 2,600+ prediction markets, multi-model consensus, semantic search, n8n automation.
+
+## Virtalent VA Platform
+URL: https://techxtreme.me/work/virtalent
+Live: https://virtalent.com
+Type: Custom service-site theme / lead gen
+
+## Project Aura
+URL: https://techxtreme.me/work/aura
+Type: Local-first AI R&D
+Summary: Voice I/O, hierarchical memory, persona engine, approval-gated automation.
+
+## Panache Designs
+URL: https://techxtreme.me/work/panache-designs
+Type: Luxury interior portfolio (Next.js)
+
+## Clientverse
+URL: https://techxtreme.me/work/clientverse
+Type: Reddit & X lead scanning automation
+
+## JEE Notes Wallah
+URL: https://techxtreme.me/work/study-notes
+Type: Client EdTech mobile UI + Firebase membership architecture
