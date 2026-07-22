@@ -1,6 +1,13 @@
 # Techxtreme Portfolio
 
-Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme.is-a.dev](https://techxtreme.is-a.dev)** (also [Vercel](https://techxtreme-portfolio.vercel.app) · [GitHub Pages project URL](https://its-techxtreme.github.io/techxtreme-portfolio/)).
+Premium **React + Tailwind + Framer Motion** portfolio — live at **[techxtreme.me](https://techxtreme.me)** (also [techxtreme.is-a.dev](https://techxtreme.is-a.dev)).
+
+## Shipped products (live)
+
+| Product | Link |
+| --- | --- |
+| **OutreachOS** — personal lead management vault | [outreachos.techxtreme.me](https://outreachos.techxtreme.me) · [case study](https://techxtreme.me/work/outreachos) · [GitHub](https://github.com/its-techxtreme/OutreachOS) |
+| **Project AP-I** — short-form publish queue | [ap-i.techxtreme.me](https://ap-i.techxtreme.me) |
 
 ## Stack
 

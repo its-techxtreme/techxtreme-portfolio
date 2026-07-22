@@ -16,6 +16,7 @@ export interface Project {
   categories: ProjectCategory[];
   tags: string[];
   liveUrl?: string;
+  repoUrl?: string;
   featured?: boolean;
   bentoClass?: string;
   stats?: { value: string; label: string }[];
@@ -41,6 +42,7 @@ export const projects: Project[] = [
     categories: ["live", "ai"],
     tags: ["Live", "Production", "SaaS", "Lead gen", "Next.js", "2026"],
     liveUrl: "https://outreachos.techxtreme.me",
+    repoUrl: "https://github.com/its-techxtreme/OutreachOS",
     featured: true,
     bentoClass: "md:col-span-7 md:row-span-2",
     stats: [

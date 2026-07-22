@@ -106,6 +106,16 @@ export function ProjectDetail() {
                 {project.liveUrl.replace("https://", "")} ↗
               </a>
             )}
+            {project.repoUrl && (
+              <a
+                href={project.repoUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-1 block break-all text-sm text-muted hover:text-accent hover:underline sm:text-base"
+              >
+                {project.repoUrl.replace("https://", "")} ↗
+              </a>
+            )}
           </Reveal>
 
           <Reveal className="mt-8">
@@ -192,6 +202,11 @@ export function ProjectDetail() {
             {project.liveUrl && (
               <ButtonLink to={project.liveUrl} external>
                 Visit live site →
+              </ButtonLink>
+            )}
+            {project.repoUrl && (
+              <ButtonLink to={project.repoUrl} external variant="ghost">
+                View on GitHub →
               </ButtonLink>
             )}
             <ButtonLink to="/contact" variant="ghost">

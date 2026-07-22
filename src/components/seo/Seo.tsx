@@ -166,6 +166,8 @@ export function projectJsonLd(slug: string) {
     image: `${SITE_URL}${p.image}`,
     creator: { "@id": `${SITE_URL}/#organization` },
     keywords: p.tags.join(", "),
-    ...(p.liveUrl ? { sameAs: [p.liveUrl] } : {}),
+    ...(p.liveUrl || p.repoUrl
+      ? { sameAs: [p.liveUrl, p.repoUrl].filter(Boolean) as string[] }
+      : {}),
   };
 }

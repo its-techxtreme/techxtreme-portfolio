@@ -17,6 +17,14 @@ export function Footer() {
         <Link to="/contact" className="inline-flex min-h-11 items-center text-sm text-muted hover:text-accent">
           Contact
         </Link>
+        <a
+          href="https://outreachos.techxtreme.me"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex min-h-11 items-center text-sm text-muted hover:text-accent"
+        >
+          OutreachOS
+        </a>
       </div>
       <span className="text-sm text-muted">© {year} Techxtreme</span>
     </footer>

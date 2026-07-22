@@ -5,21 +5,29 @@ import { SKILLS } from "../data/skills";
 import { assetUrl } from "../lib/assets";
 import { Seo } from "../components/seo/Seo";
 
-const timeline = [
+const timeline: {
+  year: string;
+  title: string;
+  desc: string;
+  href?: string;
+}[] = [
   {
     year: "2026",
     title: "OutreachOS",
-    desc: "Production lead vault for cold outreach — Excel import, filters, call scripts, live at outreachos.techxtreme.me.",
+    desc: "Production personal lead management vault for cold outreach — Excel import, filters, call scripts.",
+    href: "https://outreachos.techxtreme.me",
   },
   {
     year: "2026",
     title: "Project AP-I",
     desc: "Short-form content automation queue — Memes / Anime / Sports → YouTube + Instagram with operator dashboard.",
+    href: "https://ap-i.techxtreme.me",
   },
   {
     year: "2024–26",
     title: "London Museums Directory",
     desc: "Fully custom WordPress theme + directory plugin; 350+ monthly organic visits.",
+    href: "https://londonmuseums.co.uk",
   },
   {
     year: "2025–26",
@@ -30,6 +38,7 @@ const timeline = [
     year: "2024",
     title: "Virtalent.com",
     desc: "Custom service-site theme — video hero, trust modules, consultation funnel.",
+    href: "https://virtalent.com",
   },
   { year: "Ongoing", title: "Project Aura", desc: "Local-first voice AI, memory tiers, terminal UI (R&D)." },
   { year: "Client", title: "JEE Notes Wallah", desc: "EdTech mobile app UI + Firebase membership architecture." },
@@ -71,8 +80,25 @@ export function About() {
             handed over with docs you can operate.
           </p>
           <p className="mt-4 text-muted">
-            Recent client and product work includes OutreachOS (live lead vault), Project AP-I (short-form
-            automation), a fully custom museum directory theme (London Museums), a conversion theme for
+            Recent client and product work includes{" "}
+            <a
+              href="https://outreachos.techxtreme.me"
+              className="font-semibold text-accent underline-offset-2 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              OutreachOS
+            </a>{" "}
+            (live lead vault),{" "}
+            <a
+              href="https://ap-i.techxtreme.me"
+              className="font-semibold text-accent underline-offset-2 hover:underline"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Project AP-I
+            </a>{" "}
+            (short-form automation), a fully custom museum directory theme (London Museums), a conversion theme for
             Virtalent.com, an NDA AI terminal tracking 2,600+ markets, and the JEE Notes Wallah mobile product.
             R&D: Project Aura.
           </p>
@@ -111,7 +137,18 @@ export function About() {
             <div className="grid gap-4 py-8 md:grid-cols-[120px_1fr]">
               <span className="font-mono text-sm text-accent">{t.year}</span>
               <div>
-                <strong className="font-display text-lg">{t.title}</strong>
+                {t.href ? (
+                  <a
+                    href={t.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="font-display text-lg font-bold text-ink underline-offset-4 hover:text-accent hover:underline"
+                  >
+                    {t.title} ↗
+                  </a>
+                ) : (
+                  <strong className="font-display text-lg">{t.title}</strong>
+                )}
                 <p className="mt-1 text-muted">{t.desc}</p>
               </div>
             </div>
